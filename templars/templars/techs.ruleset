@@ -1,0 +1,4001 @@
+; This is the Templar ruleset for technologies. See doc/README.ruleset_templar
+; for a detailed description.
+
+; Modifying this file:
+; You should not modify this file except to make bugfixes or
+; for other "maintenance".  If you want to make custom changes,
+; you should create a new datadir subdirectory and copy this file
+; into that directory, and then modify that copy.  Then use the
+; command "rulesetdir <mysubdir>" in the server to have freeciv
+; use your new customized file.
+
+[datafile]
+description="Templar technology data for Freeciv"
+options="+Freeciv-2.5-ruleset"
+
+[control]
+; Names for custom tech flags. There can be up to 8 of these.
+; name          = rule name; In some circumstances user may see this
+;                 as part of some sentences, so try to make it descriptive
+;                 and sensible.
+; helptxt       = displayed in the help for advances with this flag (optional)
+;flags =
+;  { "name", "helptxt"
+;  }
+
+; /* <-- avoid gettext warnings
+;
+; Below: The individual advances, one per section.
+; The number can be variable, up to 196.
+;
+; The actual tag used (the * in [advance_*]) does not matter, except 
+; it must be unique within this file, and it may be used in debug 
+; output when reading this file.
+;
+; Notes:
+;
+; name          = translatable name as seen by user
+; rule_name     = (optional) name for savegames, rulesets etc; if not
+;                 present, 'name' is used. Since the name used in savegames
+;                 must not change, use this when renaming a tech after a
+;                 ruleset has been released.
+; req1, req2	= advances required before researching this one
+; root_req      = tech required before acquiring this tech, by any
+;     means, inherited by all techs that require this tech in turn unless
+;     "None" is given here explicitly; and you can make a tech available
+;     only through the init_tech of a nation by making it root_req itself.
+; flags         = special flag strings
+; graphic       = icon for technology
+; graphic_alt   = alternate icon
+; helptext	= optional help text string (set units ruleset for examples)
+; bonus_message = text seen when a player is the first to 
+;                 discover an bonus tech.
+; cost          = if tech_cost_style is set to 2, this field is read for
+;                 information on how much a tech costs
+;
+; Special values for req1 and req2 are "None" (first section below) 
+; and "Never" (never available).  If only one tech is required, 
+; it should be listed as req1. 
+;
+; As well as custom flags defined above, the following flag strings are
+; possible:
+;
+; "Bonus_Tech" = player gets extra tech if reached first
+; "Bridge"   = "Settler" unit types can build roads with "RequiresBridge" flag
+;              over roads with "PreventsOtherRoads" flag (rivers)
+; "Farmland" = "Settler" unit types can build farmland
+; "Population_Pollution_Inc" = Increase the pollution factor created by
+;                              population by one
+; "Build_Airborne" = from now on can build air units (for use by AI)
+; "Claim_Ocean"    = Player claims ocean tiles even if they are not
+;                    adjacent to border source
+;
+; */ <-- avoid gettext warnings
+
+[advance_agriculture]
+name 	  = _("Agriculture")
+req1 	  = "Qanat"
+req2 	  = "Carruca"
+root_req  = "Qanat"
+flags 	  = ""
+graphic   = "a.agriculture"
+graohic_alt = "-"
+cost	  = 60
+helptext = _("\
+Agriculture in the Middle Ages describes the farming practices, crops,\
+ technology, and agricultural society and economy of Europe from the\
+ fall of the Western Roman Empire in 476 to approximately 1500. The\
+ Middle Ages are sometimes called the Medieval Age or Period.\
+ Epidemics and climatic cooling caused a large decrease in the\
+ European population in the 6th century. Compared to the Roman period,\
+ agriculture in the Middle Ages in Western Europe became more focused\
+ on self-sufficiency. The Feudal period began about 1000. The\
+ agricultural population under feudalism in Northern Europe was\
+ typically organized into manors consisting of several hundred or\
+ more acres of land presided over by a Lord of the manor, with a\
+ Roman Catholic church and priest.\
+")
+
+[advance_agronomy]
+name 	  = _("Agronomy")
+req1 	  = "Agriculture"
+req2 	  = "University"
+root_req  = "Qanat"
+flags 	  = ""
+graphic   = "a.agronomy"
+graohic_alt = "-"
+cost	  = 60
+helptext = _("\
+A branch of agriculture, agronomy is the science and technology of\
+ producing and using plants in agriculture for food, fuel, fiber,\
+ recreation, and land restoration. Agronomy has come to encompass work\
+ in the areas of plant genetics, plant physiology, meteorology, and\
+ soil science. It is the application of a combination of sciences like\
+ biology, chemistry, economics, ecology, earth science, and genetics.\
+ Agronomists of today are involved with many issues, including producing\
+ food, creating healthier food, and managing the environmental impact of\
+ agriculture. Agronomists often specialize in areas such as crop\
+ rotation, irrigation and drainage, plant breeding, plant physiology,\
+ soil classification, soil fertility, weed control, turfgrass and\
+ insect and pest control.\
+")
+
+[advance_alchemy]
+name	 = _("Alchemy")
+req1 	 = "Chemistry"
+req2 	 = "Engineering"
+root_req = "Chemistry"
+flags 	 = ""
+graphic  = "a.alchemy"
+graphic_alt = "-"
+helptext = _("\
+Alchemy in the Middle Ages was a mixture of science, philosophy, and\
+ mysticism. Far from operating within the modern definition of a\
+ scientific discipline, medieval alchemists approached their craft\
+ with a holistic attitude; they believed that purity of mind, body,\
+ and spirit was necessary to pursue the alchemical quest successfully.\
+At the heart of medieval alchemy was the idea that all matter was\
+ composed of four elements: earth, air, fire, and water. With the right\
+ combination of elements, it was theorized, any substance on earth\
+ might be formed. This included precious metals as well as elixirs to\
+ cure disease and prolong life. Alchemists believed that the\
+ 'transmutation' of one substance into another was possible. The\
+ discover of Alchemy leads to dicovering Explosives.\ 
+")
+
+[advance_advanced_archery]
+name     = _("Advanced Archery")
+req1     = "Classical Mechanics"
+req2     = "Steel"
+;root_req = "Templar"
+flags    = ""
+graphic     = "a.advanced_archery"
+graphic_alt = "-"
+helptext = _("\
+Discovery of adnavced archery allows for the longbow and crossbow. The\
+ English longbow was a powerful medieval type of longbow (a tall bow\
+ for archery) about 6 ft (1.8 m) long used by the English and Welsh\
+ for hunting and as a weapon in warfare. A skilled longbowman could\
+ shoot about 12 shots per minute. A crossbow is a ranged weapon\
+ using an elastic launching device similar to a bow; it consists of a\
+ bow-like assembly called a prod, mounted horizontally on a main frame\
+ called a tiller, which is hand-held in a similar fashion to the stock\
+ of a long gun. Crossbows shoot arrow-like projectiles called bolts or\
+ quarrels. \
+")
+
+[advance_alphabet]
+name     = _("Alphabet")
+req1     = "Templar"
+req2     = "None"
+root_req = "Templar"
+flags    = ""
+graphic     = "a.alphabet"
+graphic_alt = "-"
+helptext = _("\
+An alphabet is a standardized set of basic written symbols or graphemes\
+ (called letters) that represent the phonemes of certain spoken\
+ languages. Not all writing systems represent language in this way; in\
+ a syllabary, each character represents a syllable, for instance, and\
+ logographic systems use characters to represent words, morphemes, or\
+ other semantic units. The first fully phonemic script, the Proto-\
+ Canaanite script, later known as the Phoenician alphabet, is\
+ considered to be the first alphabet, and is the ancestor of most\
+ modern alphabets, including Arabic, Cyrillic, Greek, Hebrew, Latin,\
+ and possibly Brahmic. Its discover leads to the decovery of\
+ Mathematics, Map Making, Code of Laws, and writing.\
+")
+
+[advance_amphibious_warfare]
+name     = _("Amphibious Warfare")
+req1     = "Navigation"
+req2     = "Tactics"
+root_req = "Tactics"
+flags    = ""
+graphic     = "a.amphibious_warfare"
+graphic_alt = "-"
+helptext = _("\
+Amphibious warfare is a type of offensive military operation that uses\
+ naval ships to project ground power onto a hostile or potentially\
+ hostile shore at a designated landing beach. n 1565, the island of\
+ Malta was invaded by the Ottoman Turks during the Great Siege of\
+ Malta, forcing its defenders to retreat to the fortified cities. A\
+ strategic choke point in the Mediterranean Sea, its loss would have\
+ been so menacing for the Western European kingdoms that forces were\
+ urgently raised in order to relieve the island. But it took four\
+ months to train, arm, and move a 5,500-man amphibious force to lift\
+ the siege. Spain decided to train and assign amphibious-assault\
+ skilled units to the Royal Armada. These units were trained\
+ specifically for fighting on and from ships. The idea was to set up\
+ a permanent assignation of land troops to the Royal Spanish Navy,\
+ available for the Crown. Thus,  other countries adopted the idea and\
+ subsequently raised their own, early marine forces as well.
+")
+
+[advance_animal_husbandry]
+name 	  = _("Animal Husbandry")
+req1 	  = "Agriculture"
+req2 	  = "University"
+root_req  = "Qanat"
+flags 	  = ""
+graphic   = "a.animal_husbandry"
+graohic_alt = "-"
+cost	  = 60
+helptext = _("\
+Animal husbandry is the branch of agriculture concerned with animals\
+ that are raised for meat, fibre, milk, eggs, or other products. It\
+ includes day-to-day care, selective breeding and the raising of\
+ livestock. Husbandry has a long history, starting with the Neolithic\
+ revolution when animals were first domesticated, from around 3,000\
+ BC onwards, antedating farming of the first crops. By the time of\
+ early civilisations such as ancient Egypt, cattle, sheep, goats and\
+ pigs were being raised on farms.\
+")
+
+[advance_arched_saddle]
+name     = _("Arched Saddle")
+req1     = "Guilds"
+req2     = "Animal Husbandry"
+root_req = "Guilds"
+flags    = ""
+graphic     = "a.arched_saddle"
+graphic_alt = "-"
+helptext = _("\
+Saddles were improved upon during the Middle Ages, as knights needed\
+ saddles that were stronger and offered more support. The resulting\
+ saddle had a higher cantle and pommel (to prevent the rider from\
+ being unseated in warfare) and was built on a wooden tree that\
+ supported more weight from a rider with armor and weapons. This\
+ saddle, a predecessor to the modern Western saddle, was originally\
+ padded with wool or horsehair and covered in leather or textiles. It\
+ was later modified for cattle tending and bullfighting in addition\
+ to the continual development for use in war.\
+") 
+
+[advance_artesian_drilling]
+name     = _("Artesian Drilling")
+req1     = "Metallurgy"
+req2     = "Magnetism"
+root_req = "Metallurgy"
+flags    = ""
+graphic     = "a.artesian_drill"
+graphic_alt = "-"
+helptext = _("\
+An artesian aquifer is a confined aquifer containing groundwater under\
+ positive pressure. An artesian aquifer has trapped water, surrounded\
+ by layers of impermeable rock or clay which apply positive pressure\
+ to the water contained within the aquifer.[1] If a well were to be\
+ sunk into an artesian aquifer, water in the well-pipe would rise to a\
+ height corresponding to the point where hydrostatic equilibrium is\
+ reached. 
+A well drilled into such an aquifer is called an artesian well. If\
+ water reaches the ground surface under the natural pressure of the\
+ aquifer, the well is termed a flowing artesian well.\
+") 
+
+[advance_astronomy]
+name     = _("Astronomy")
+req1     = "Mysticism"
+req2     = "Mathematics"
+root_req = "Mathematics"
+flags    = ""
+graphic     = "a.astronomy"
+graphic_alt = "-"
+helptext = _("\
+With the fall of Rome, much of the astronomy of the classical age was\
+ lost to Europeans. Astronomy was revived in Europe during the\
+ eleventh century with the arrival of the astrolabe, a device for\
+ measuring the position of heavenly bodies which was introduced to\
+ Europe from the Islamic world.\
+")
+
+[advance_battlefield_medicine]
+name     = _("Battlefield Medicine")
+req1     = "Medical Research"
+req2	 = "Combined Arms"
+flags    = ""
+graphic     = "a.battlefield_medicine"
+graphic_alt = "-"
+helptext = _("\
+During the Crusades, one of the duties of surgeons was to travel around\
+ a battlefield, assessing soldiers' wounds and declaring whether or not\
+ the soldier was deceased. Because of this task, surgeons were deft at\
+ removing arrowheads from their patients' bodies.[33] Another class of\
+ surgeons that existed were barber surgeons. They were expected not only\
+ to be able to perform formal surgery, but also to be deft at cutting\
+ hair and trimming beards. Some of the surgical procedures they would\
+ conduct were bloodletting and treating sword and arrow wounds.\
+ This technology speed the recovery of damaged units.\
+")
+
+[advance_banking]
+name     = _("Banking")
+req1     = "Trade"
+req2     = "The Republic"
+root_req = "The Republic"
+flags    = ""
+graphic     = "a.banking"
+graphic_alt = "-"
+helptext = _("\
+By the end of the thirteenth century, with its economic resurgence,\
+ three classes of credit agents became distinguishable: the \
+ pawnbroker, the moneychangers and deposit bankers, and the merchant\
+ bankers. The latter were the new elite of the profession,\
+ unprecedented in antiquity and in the early Middle Ages.\
+Together with the Marketplace improvement, a Bank increases the\
+ luxury and tax production within a city by 100%.\
+")
+
+[advance_biology]
+name     = _("Biology")
+req1     = "Trade"
+req2     = "Literacy"
+root_req = "Literacy"
+flags    = ""
+graphic     = "a.biology"
+graphic_alt = "-"
+helptext = _("\
+The philosopher Aristotle was the most influential scholar of the\
+ living world from classical antiquity. Though his early work in natural\
+ philosophy was speculative, Aristotle's later biological writings were\
+ more empirical, focusing on biological causation and the diversity of\
+ life. He made countless observations of nature, especially the habits\
+ and attributes of plants and animals in the world around him, which\
+ he devoted considerable attention to categorizing. In all, Aristotle\
+ classified 540 animal species, and dissected at least 50. He believed\
+ that intellectual purposes, formal causes, guided all natural\
+ processes. The decline of the Roman Empire led to the disappearance\
+ or destruction of much knowledge, though physicians still incorporated\
+ many aspects of the Greek tradition into training and practice. In\
+ Byzantium and the Islamic world, many of the Greek works were translated\
+ into Arabic and many of the works of Aristotle were preserved. The\
+ pursuit of increasing biological unerstanding produces an increase\
+ in science output.\
+")
+
+[advance_biochemistry]
+name     = _("Biochemistry")
+req1     = "Biology"
+req2     = "Chemistry"
+root_req = "Biology"
+flags    = ""
+graphic     = "a.biochemistry"
+graphic_alt = "-"
+helptext = _("\
+The ancient Greeks conception of 'biochemistry' was linked with their\
+ ideas on matter and disease, where good health was thought to come from\
+ a balance of the four elements and four humors in the human body. As in\
+ the majority of early sciences, the Islamic world contributed significantly\
+ to early biological advancements as well as alchemical advancements;\
+ especially with the introduction of clinical trials and clinical\
+ pharmacology presented in Avicenna's The Canon of Medicine. The\
+ pursuit of increasing biochemical unerstanding produces an increase\
+ in science output.\
+")
+
+[advance_bridge_building]
+name     = _("Bridge Building")
+req1     = "Iron Working"
+req2     = "Construction"
+root_req = "Construction"
+flags    = "Bridge"
+graphic     = "a.bridge_building"
+graphic_alt = "-"
+helptext = _("\
+After the fall of the Roman Empire, progress in European bridge\
+ building slowed considerably until the Renaissance. Fine bridges\
+ sporadically appeared, however. Medieval bridges are particularly\
+ noted for the ogival, or pointed arch. With the pointed arch the\
+ tendency to sag at the crown is less dangerous, and there is less\
+ horizontal thrust at the abutments. Medieval bridges served many\
+ purposes. Chapels and shops were commonly built on them, and many\
+ were fortified with towers and ramparts. Some featured a drawbridge,\
+ a medieval innovation. The most famous bridge of that age was Old\
+ London Bridge, begun in the late 12th century under the direction of\
+ a priest, Peter of Colechurch, and completed in 1209, four years after\
+ his death. This technology allows roads to be built on river tiles.\
+")
+
+[advance_bronze_working]
+name     = _("Bronze Working")
+req1     = "Templar"
+req2     = "None"
+root_req = "Templar"
+flags    = ""
+graphic     = "a.bronze_working"
+graphic_alt = "-"
+helptext = _("\
+Bronze is the first fruit of the technological development of an early\
+ civilization - a pliable metal which is easily shaped, but hard and\
+ durable. Bronze proves so useful, in creating durable tools of all\
+ sorts, that it ushers a whole new age in human history. Even the\
+ tangled Rainforests can't resist these new tools! But it is one of\
+ its particular uses which proves much more important than anything\
+ else: its use in creating weapons and armor. In short, before bronze\
+ there were wooden clubs with stone heads; after bronze there are\
+ swords, spears, shield and armor.\ 
+")
+
+[advance_cavalry] ; formerly refining
+name     = _("Cavalry")
+req1     = "Tactics"
+req2     = "Arched Saddle"
+root_req = "Tactics"
+flags    = ""
+graphic     = "a.cavalry"
+graphic_alt = "-"
+helptext = _("\
+Cavalry (from the French word cavalerie, itself derived from 'cheval'\
+ meaning 'horse') are soldiers or warriors who fight mounted on\
+ horseback. Cavalry were historically the most mobile of the combat\
+ arms, operating as light cavalry in the roles of reconnaissance,\
+ screening and harassing in many armies, or as heavy cavalry for\
+ decisive shock attacks in other armies. Cavalry had the advantage of\
+ improved mobility, and a soldier fighting from horseback also had\
+ the advantages of greater height, speed, and inertial mass over an\
+ opponent on foot. Another element of horse mounted warfare is the\
+ psychological impact a mounted soldier can inflict on an opponent.\ 
+ ")
+
+[advance_carruca]
+name     = _("Carruca")
+req1     = "Physics"
+req2     = "Invention"
+flags    = ""
+graphic     = "a.carruca"
+graphic_alt = "-"
+helptext = _("\
+The carruca or caruca was a kind of heavy plow important to medieval\
+ agriculture in Northern Europe. The carruca used a heavy iron\
+ plowshare to turn heavy soil and may have required a team of eight\
+ oxen. The carruca also bore a coulter and moldboard. It gave its name\
+ to the English carucate. The heavy iron moldboard plow was developed\
+ in China's Han Empire in the 1st and 2nd century.
+")
+
+[advance_ceremonial_burial]
+name     = _("Ceremonial Burial")
+req1     = "Templar"
+req2     = "None"
+root_req = "Templar"
+flags    = ""
+graphic     = "a.ceremonial_burial"
+graphic_alt = "-"
+helptext = _("\
+Groping for an explanation of the world around them, the earliest\
+ humans developed the first concepts of religion. Gradually, rites of\
+ worship grew to include sacrifices, ceremonies, vigils, symbology,\
+ sacred items, and prater. One significant step in the advance of\
+ worship was the ceremonial burial, often a ritual preparation of the\
+ deceased's body for the afterlife his or her culture anticipated. The\
+ remains of ceremonial burials offer some of the most detailed\
+ information about past civilizations. 
+")
+
+[advance_chemistry]
+name     = _("Chemistry")
+req1     = "University"
+req2     = "Medicine"
+root_req = "Medicine"
+flags    = ""
+graphic     = "a.chemistry"
+graphic_alt = "-"
+helptext = _("\
+The earliest practical use of chemical processes were by metal smiths\
+ of the ancient world. These artisans learned how to use heat to melt\
+ various naturally occurring metals together to form alloys such as\
+ bronze. Early manufacturers of cloth also used primitive chemical\
+ processes to set dyes. Tn the following centuries, chemical processes\
+ were studied through the pseudo-science of alchemy, which attempted\
+ to change base metals into gold. Although alchemists were, of course,\
+ unsuccessful, they did develop many valuable chemical processes as a\
+ result. The manuscripts produced by the alchemists were studied by \
+ succeeding generations, and an effective knowledge of chemistry had\
+ been accumulated by the late 13th century. Tin the 17th century, the\
+ ideas of alchemy finally died out as an increasing body of true\
+ chemical knowledge was gained through experimental analysis, leading\
+ to the modern science of chemistry.\ 
+")
+ 
+[advance_chivalry] 
+name     = _("Chivalry")
+req1     = "Feudalism"
+req2     = "Horseback Riding"
+root_req = "Feudalism"
+flags    = ""
+graphic     = "a.chivalry"
+graphic_alt = "-"
+helptext = _("\
+Chivalry was a code of rules governing the behavior of an aristocratic\
+ loyalty represented a fusion of Chistian and military morality. A\
+ similar code of behavior known as 'Bushido' or 'the way of the warrior'\
+ governed the behavior of the samurai warriors of ancient Japan.\
+ Although the strict practice of chivalry had all but disappeared by the\
+ 15th century, the ideals of chivalric behavior became the basis for what\
+ is now considered to be gentlemanly conduct.\ 
+")
+
+[advance_class_mech]
+name     = _("Classical Mechanics")
+req1     = "Magnetism"
+req2     = "Theory of Impetus"
+root_req = "Magnetism"
+flags    = ""
+graphic     = "a.physics"
+graphic_alt = "-"
+helptext = _("\
+The study of the motion of bodies is an ancient one, making classical\
+ mechanics one of the oldest and largest subjects in science,\
+ engineering and technology. Some Greek philosophers of antiquity,\
+ among them Aristotle, founder of Aristotelian physics, may have been\
+ the first to maintain the idea that 'everything happens for a reason'\
+ and that theoretical principles can assist in the understanding of\
+ nature. While to a modern reader, many of these preserved ideas come\
+ forth as eminently reasonable, there is a conspicuous lack of both\
+ mathematical theory and controlled experiment, as we know it. These\
+ later became decisive factors in forming modern science, and their\
+ early application came to be known as classical mechanics.\
+") 
+
+[advance_climate_analysis]
+name     = _("Climate Analysis")
+req1     = "Environmentalism"
+req2     = "None"
+flags    = ""
+graphic     = "a.global_warming"
+graphic_alt = "-"
+helptext = _("\
+The Medieval Warm Period (MWP) was a time of warm climate from about\
+ 900–1300 AD, when global temperatures were somewhat warmer than at present.\
+ Temperatures in the GISP2 ice core were about 2°F (1°C) warmer than modern\
+ temperatures. The effects of the warm period were particularly evident in
+ Europe, where grain crops flourished, alpine tree lines rose, many new\
+ cities arose, and the population more than doubled. However, there was\
+ also a warm period from about 1-150 AD, followed by a 'little ice age.\
+")
+
+[advance_code_of_laws]
+name     = _("Code of Laws")
+req1     = "Alphabet"
+req2     = "None"
+root_req = "Alphabet"
+flags    = ""
+graphic     = "a.code_of_laws"
+graphic_alt = "-"
+helptext = _("\
+The earliest tribal civilizations were bonded together by mutual needs\
+ and beliefs. These groups were ruled by a tribal chieftain, who acted\
+ as an advisor, and enforcer of the will of the gods. No formal laws\
+ existed in these early cultures, but fear of the gods and a sense of\
+ tribal customs and morality kept order in the tribe. As societies\
+ became larger and more diverse, the need arose for established rules\
+ of conduct. The earliest known codes of laws existed in Babylon, India,\
+ and Palestine. The Twelve Tables of Rome written in 500 BC, and its\
+ successors such as the Justinian Code, were the first codes of law to\
+ distinguish between public law, which involves the state, and private\
+ law, which concerns disputed between citizens. Roman law was the first\
+ formalized written system of laws, and went on to influence many of\
+ the legal systems of the modern world.\ 
+")
+
+[advance_combined_arms]
+name     = _("Combined Arms")
+req1     = "Mobile Warfare"
+req2     = "Rocketry"
+root_req = "Advanced Archery"
+flags    = ""
+graphic     = "a.combined_arms"
+graphic_alt = "-"
+helptext = _("\
+At the Battle of Hastings (1066) English infantry fighting from behind\
+ a shield wall were defeated by a Norman army consisting of archers,\
+ foot soldiers (infantry), and mounted knights (cavalry). One of the\
+ tactics used by the Normans was to tempt the English to leave the\
+ shield wall to attack retreating Norman infantry only to destroy\
+ them in the open with cavalry. Likewise Scottish sheltrons – which\
+ had been developed to counter the charges by English heavy cavalry,\
+ and had been used successfully against English cavalry at the Battle \
+ of Stirling Bridge (1297) – were destroyed at the Battle of Falkirk\
+ (1298) by English archers acting in concert with mounted knights.\
+ Both Hastings and Falkirk showed how combined arms could be used to\
+ defeat enemies relying on only one arm.
+")
+
+[advance_collectivism]
+name     = _("Collectivism")
+req1     = "Philosophy"
+req2     = "Milling"
+root_req = "Templar"
+flags    = ""
+graphic     = "a.collectivism"
+graphic_alt = "-"
+helptext = _("\
+Collectivism is a value that is characterized by emphasis on\
+ cohesiveness among individuals and prioritization of the group over\
+ the self. Individuals or groups that subscribe to a collectivist\
+ worldview tend to find common values and goals as particularly salient\
+ and demonstrate greater orientation toward in-group than toward out-\
+ group. The term 'in-group' is thought to be more diffusely defined\
+ for collectivist individuals to include societal units ranging from\
+ the nuclear family to a religious or racial/ethnic group.\
+ Reduces the effect of Cathedrals\
+")
+
+[advance_conscription]
+name     = _("Conscription")
+req1     = "Democracy"
+req2     = "Metallurgy"
+root_req = "Metallurgy"
+flags    = ""
+graphic     = "a.draft_board"
+graphic_alt = "-"
+helptext = _("\
+Compulsory enrollment in the armed forces has been practiced for\
+ thousands of years. In ancient Greece, before the introduction of a\
+ professional militia in about 2000 BC, men between the ages of 17 and\ 
+ 60 were obligated to serve in civilian militia. The modern form of\
+ conscription was introduced in France during the Revolution in 1789.\
+ By the 19th century, nearly every country except for Great Britain\
+ and the United States had instituted a program of peacetime\
+ conscription. Many of the combatants in both World Wars fought with\
+ forces composed largely of conscripted troops.\
+")
+
+[advance_construction]
+name     = _("Construction")
+req1     = "Masonry"
+req2     = "Currency"
+root_req = "Currency"
+flags    = ""
+graphic     = "a.construction"
+graphic_alt = "-"
+helptext = _("\
+The development of masonry led to a widespread use of stone in simple\
+ structures such as fortifications, but due to the weight and cumbersome\
+ nature of stone blocks, more complex structures had to be made of\
+ simpler materials. The need for the widespread use of more durable and\
+ permanent materials eventually became apparent, forcing ancient artisans\
+ to learn new techniques. The biggest problem to overcome was finding a\
+ stable way to span the distance between two upright columns or walls\
+ using stone blocks. To solve this problem, fundamental architectural\
+ elements such as the arch and vault evolved. These basic construction\
+ techniques allowed larger and more elaborate buildings to be created\
+ from stone and mortar. Many of the buildings erected by these early\
+ builders are still standing, a testament to the sound construction\
+ techniques employed in their construction.\ 
+Allows Settlers, Workers and Engineers to build fortresses.
+")
+
+[advance_currency]
+name     = _("Currency")
+req1     = "Bronze Working"
+req2     = "None"
+root_req = "Bronze Working"
+flags    = ""
+graphic     = "a.currency"
+graphic_alt = "-"
+helptext = _("\
+As cities grew, their internal economies became more complicated.\
+People became specialists, some primarily producing grain, some pottery,\
+ some bricks, etc. A system of barter developed, so that one\
+ individual's wares and services could be exchanged for those of\
+ another. Gold and silver were widely used in such transactions, but\
+ the pieces needed to be weighed and tested for purity each time they\
+ changed hands. In 600 BC, the Lydians found a way around this problem.\
+ They began the practice of shaping electrum, an alloy of gold and\
+ silver, into pieces of predetermined weight and purity, stamped with\
+ an official symbol. This idea caught on, and within 50 years all the\
+ important trading centers of the world had adopted similar practices.\
+ The widespread use of currency created universal standards of value,\
+ allowing people from various societies to conduct business almost\
+ anywhere without being forced to bring along bulky goods for trade\
+ and barter.\
+")
+
+[advance_democracy]
+name     = _("Democracy")
+req1     = "Banking"
+req2     = "Theology"
+root_req = "Invention"
+flags    = ""
+graphic     = "a.democracy"
+graphic_alt = "-"
+helptext = _("\
+Democracy is a ruling system where the citizens have a great deal of\
+ control over the actions of the government, either directly or through\
+ elected representatives. Democratic governments can be traced back to\
+ the city-states of ancient Greece and Rome. Citizens would gather in\
+ a public forum, and each one would have the opportunity to speak and\
+ vote on issues affecting the community. This direct democracy system\
+ was possible due to the relatively small populations of the city-\
+ states. Starting in the 17th century, the monarchs of Europe began\
+ to be stripped of their absolute power, and by the end of the 19th\
+ century the citizens had a strong voice in government in many\
+ European nations. Large populations made public forums impractical,\
+ so the people elected groups of representatives to carry their views\
+ to the ruling powers. Strictly speaking, this type of system more\
+ closely resembles a republican system rather than a true democracy.\
+ This type of representative democracy is considered the best governing\
+ system in the modern world because of the personal and economic\
+ freedom enjoyed by the citizens.\
+")
+
+[advance_die_casting]
+name     = _("Die Casting")
+req1     = "Guilds"
+req2     = "Steel"
+root_req = "Steel"
+flags    = ""
+graphic     = "a.die_casting"
+graphic_alt = "-"
+helptext = _("\
+The die casting process forces molten metal under high pressure into\
+ mold cavities (which are machined into dies). Most die castings are\
+ made from nonferrous metals, specifically zinc, copper, and aluminium-\
+ based alloys, but ferrous metal die castings are possible. The die\
+ casting method is especially suited for applications where many small\
+ to medium-sized parts are needed with good detail, a fine surface\
+ quality and dimensional consistency.\
+") 
+
+[advance_economics]
+name     = _("Economics")
+req1     = "Banking"
+req2     = "Trade"
+flags    = ""
+graphic     = "a.economics"
+graphic_alt = "-"
+helptext = _("\
+The ideas of supply and demand, and the philosophies concerning trade\
+ and the production and consumption of goods and services, are concepts\
+ that have existed since the dawn of mankind. As societies became more\
+ complex, however, people began to study these abstract concepts in a\
+ more formal way. The first recorded study of economics as a science,\
+ rather than a philosophical or political concept was the book 'The\
+ Wealth of Nations' by Scottish economist Adam smith. This book\
+ represents the first attempt to fully analyze sources of income and\
+ the distribution of wealth. Smith's analysis of economics served as\
+ a guide by which many of the governmental economic policies of the\
+ present day were formed.\
+")
+
+[advance_engineering]
+name     = _("Engineering")
+req1     = "The Wheel"
+req2     = "Construction"
+root_req = "Construction"
+flags    = ""
+graphic     = "a.engineering"
+graphic_alt = "-"
+helptext = _("\
+Engineering is the application of scientific and mathematical\
+ principles to the design and/or manufacture of theoretical systems\
+ and physical objects. prior to the mid-18th century, all engineering\
+ functions were carried out by military engineers. Their work involved\
+ the construction of roads, bridges, fortifications, and the\
+ performance of other duties relating to the military. In the late\
+ 18th century, civil engineers took over all nonmilitary engineering\
+ functions. Other fields of engineering prior to the 20th century\
+ included mining engineers, who designed mines and methods of mining,\
+ and mechanical engineers, who dealt with the design and construction\
+ of machinery. As new technologies developed, new fields of\
+ engineering developed along with them. Today, there are engineers\
+ specifically trained in nearly every field, from electronics and\
+ computers to chemistry and atomics.\
+")
+
+[advance_enlightenment]
+name     = _("Enlightenment")
+req1     = "Freemasonry"
+req2     = "Movable Type"
+root_req = "Freemasonry"
+flags    = ""
+graphic     = "a.enlightenment"
+graphic_alt = "-"
+helptext = _("\
+The Enlightenment was an intellectual movement centered in northern\
+ Europe during the late 1600s and 1700s that is largely responsible\
+ for establishing our modern convictions concerning the virtues of\
+ representative government, religious toleration, and human rights.\
+ Islamic advances in science from this time laid the foundations for\
+ many later Western advances.\
+")
+
+[advance_environmentalism]
+name     = _("Environmentalism")
+req1     = "Solid Waste Treatment"
+req2     = "Hydro Power"
+flags    = ""
+graphic     = "a.environmentalism"
+graphic_alt = "-"
+helptext = _("\
+The Middle Ages was a critical and formative time for Western approaches\
+ to our natural surroundings. An Environmental History of the Middle Ages\ 
+ is a unique and unprecedented cultural survey of attitudes towards the
+\ environment during this period. Humankind’s relationship with the\ 
+environment shifted gradually over time from a predominantly adversarial\
+ approach to something more overtly collaborative, until a series of\
+ ecological crises in the late Middle Ages. With the advent of shattering\
+ events such as the Great Famine and the Black Death, considered\
+ efflorescences of the climate downturn known as the Little Ice Age that\
+ is comparable to our present global warming predicament, medieval people\
+ began to think of and relate to their natural environment in new and more\
+ nuanced ways. They now were made to be acutely aware of the consequences\
+ of human impacts upon the environment, anticipating the cyclical, 'new\
+ ecology' approach of the modern world.\
+")
+
+[advance_espionage]
+name     = _("Espionage")
+req1     = "Collectivism"
+req2     = "Freemasonry"
+root_req = "Collectivism"
+flags    = ""
+graphic     = "a.espionage"
+graphic_alt = "-"
+helptext = _("\
+As far back as 500 BC, the Chinese military strategist Sun Tzu stressed\
+ the importance of the gathering of covert information about one's enemy.\
+ Although every world government has strict laws and penalties to deal\
+ with spies, covert intelligence is an important political, technological,\
+ and military commodity. During times of war, covert operatives provide\
+ important information about enemy troop movements and weapons technology.\
+ Spies may also be called upon to perform acts of sabotage in order to\
+ delay or divert the enemy. In peacetime, organizations such as the CIA\
+ use operatives to keep track of potential political situations abroad.\
+ Spying is not limited to politics and war; industrial spies are often\
+ used to gain information about rival companies.\
+")
+
+[advance_explosives]
+name     = _("Explosives")
+req1     = "Gunpowder"
+req2     = "Alchemy"
+root_req = "Gunpowder"
+flags    = ""
+graphic     = "a.explosives"
+graphic_alt = "-"
+helptext = _("\
+An explosive is a chemical compound or mixture that undergoes rapid\
+ combustion and produces heat, gas, and pressure effects. The earliest\
+ explosive compound known was gunpowder, which was first used in the\
+ 13th century, and was the only explosive known for hundred of years.\
+ The first modern explosive, a compound known as nitroglycerin, was\
+ discovered in 1846. Compounds similar to nitroglycerin are the most\
+ commonly used explosives today. Explosives vary in brisance, or\
+ shattering effect, and in their stability under various enviornmental\
+ conditions. Aside from their obvious use in weaponry, explosives are\
+ also used in such peaceful applications as rocket propellants and for\
+ mining and demolition work.\
+")
+
+[advance_feudalism]
+name     = _("Feudalism")
+req1     = "Warrior Code"
+req2     = "Monarchy"
+root_req = "Monarchy"
+flags    = ""
+graphic     = "a.feudalism"
+graphic_alt = "-"
+helptext = _("\
+In the unsettled times following the collapse of Charlemagne's Frankish\
+ empire, a new social and political system arose in Europe called\
+ Feudalism. Derived from the concept of Monarchy, feudalism was a\
+ hierarchical system in which each descending stratum owed allegiance\
+ to those above. The king, whose authority was second only to God,\
+ granted tracts of land, or fiefs, to his barons. The barons might\
+ then grant smaller estates to knights, who swore to protect and serve\
+ the baron. The Knights, in turn, might then grant fractions of their\
+ fiefs to subordinates who would serve the knights. At the bottom of\
+ the feudal pyramid were the serfs, who could not own land, and acted\
+ essentially as slave laborers who worked the land for their masters.\
+ Feudalism began to decline in the 13th century, when standing armies\
+ and mercenaries began to fulfill the protective role once served by\
+ the vassals and knights.\
+")
+
+[advance_forestry]
+name     = _("Forestry")
+req1     = "Environmentalism"
+req2     = "None"
+flags    = ""
+graphic     = "a.forestry"
+graphic_alt = "-"
+helptext = _("\
+Deforestation during the Roman period was a result of the geographical\
+ expansion of the Roman Empire, with its increased population, large-\
+ scale agriculture, and unprecedented economic development. Roman\
+ expansion marks the transition in the Mediterranean from prehistory\
+ (around 1,000 BC) to the historical period beginning around 500 BC.\
+ Earth sustained a few million people 8,000 years ago and was still\
+ fundamentally pristine,[1] but Rome drove human development in Western\
+ Europe and was a leading contributor of the deforestation around the\
+ Mediterranean. This trend continued and spread to europe due to the\
+ population growth in cities and resulting from feudalism.
+")
+
+[advance_freemasonry]
+name     = _("Freemasonry")
+req1     = "Guilds"
+req2     = "Classical Mechanics"
+root_req = "Guilds"
+flags    = ""
+graphic     = "a.freemasonry"
+graphic_alt = "-"
+helptext = _("\
+Freemasonry has, almost from its inception, encountered considerable\
+ opposition from organized religion, especially from the Roman Catholic\
+ Church, and from various states. Freemasonry is not a Christian\
+ institution, though it has often been mistaken for such. Freemasonry\
+ contains many of the elements of a religion; its teachings enjoin\
+ morality, charity, and obedience to the law of the land. In most\
+ traditions, the applicant for admission is required to be an adult\
+ male, and all applicants must also believe in the existence of a\
+ Supreme Being and in the immortality of the soul.\
+") 
+
+[advance_geophysics]
+name     = _("Geophysics")
+req1     = "Scientific Method"
+req2     = "Climate Analysis"
+root_req = "Physics"
+flags    = ""
+graphic     = "a.geophysics"
+graphic_alt = "-"
+helptext = _("\
+Geophysics (/ˌdʒiːoʊˈfɪzɪks/) is a subject of natural science concerned\
+ with the physical processes and physical properties of the Earth and\
+ its surrounding space environment, and the use of quantitative methods\
+ for their analysis. The term geophysics sometimes refers only to\
+ geological applications: Earth's shape; its gravitational and magnetic\
+ fields; its internal structure and composition; its dynamics and their\
+ surface expression in plate tectonics, the generation of magmas,\
+ volcanism and rock formation.[3] However, modern geophysics\
+ organizations and pure scientists use a broader definition that
+\ includes the water cycle including snow and ice; fluid dynamics of\
+ the oceans and the atmosphere; electricity and magnetism in the\
+ ionosphere and magnetosphere and solar-terrestrial physics; and\
+ analogous problems associated with the Moon and other planets\
+") 
+
+[advance_guilds]
+name     = _("Guilds")
+req1     = "Economics"
+req2     = "Milling"
+root_req = "Milling"
+flags    = ""
+graphic     = "a.guilds"
+graphic_alt = "-"
+helptext = _("\
+In medieval cities, craftsmen tended to form associations based on\
+ their trades, confraternities of textile workers, masons, carpenters,\
+ carvers, glass workers, each of whom controlled secrets of\
+ traditionally imparted technology, the 'arts' or 'mysteries' of their\
+ crafts. Usually the founders were free independent master craftsmen\
+ who hired apprentices. There were several types of guilds, including\
+ the two main categories of merchant guilds and craft guilds but also\
+ the frith guild and religious guild. Guilds arose beginning in the\
+ High Middle Ages as craftsmen united to protect their common interests.\
+")
+ 
+[advance_gunpowder]
+name     = _("Gunpowder")
+req1     = "Invention"
+req2     = "Iron Working"
+root_req = "Invention"
+flags    = ""
+graphic     = "a.gunpowder"
+graphic_alt = "-"
+helptext = _("\
+Gunpowder is a chemical mixture of saltpeter, sulfur, and charcoal.\
+ When ignited, it burns rapidly and explodes if contained to any degree.\
+ Gunpowder is beleived to have been developed by the Chinese, who used\
+ it in fireworkds as early as the 9th century, but it did not rach\
+ Europe until the 14th century. Europeans immediately saw the potential\
+ of this substance, and manufactured it for use in weapons as early as\
+ 1334. The discovery of gunpowder led to the invention of firearms, such\
+ as the muskey which led to the replacement of archers in most armis of\
+ the world by the late 1500s. Gunpowder marked one of the major\
+ technological turning points in military history, significantly\
+ changing the way wars were fought.\
+")
+
+[advance_horseback_riding]
+name     = _("Horseback Riding")
+req1     = "Templar"
+req2     = "None"
+root_req = "Templar"
+flags    = ""
+graphic     = "a.horseback_riding"
+graphic_alt = "-"
+helptext = _("\
+The horse was first domesticated for transportation and warfare by\
+ tribesmen on the Asian steppes. These tribesmen used their superior\
+ mobility and speed to overwhelm the proto-civilizations just rising\
+ in southeast Europe and the Middle East. In approximately 2000 BC,\
+ domestic horses were introduced into Babylonia. Within the next\
+ several centuries, horses had spread throughout much of Europe and\
+ northern Africa. It was not long before nearly every civilization\
+ had put horses to work as field animals and as a means of\
+ transportation. Horses also went on to play an important role in\
+ the military conflicts of nearly every civilization in the world, \
+ borth as mounts for horsemen and cavalry, and as draft anumals for \
+ pulling war chariots and heavy weapons into battle.\
+")
+
+[advance_hydro_power]
+name 	 = _("Hydro Power")
+req1 	 = "Simple Machines"
+req2 	 = "Classical Mechanics"
+root_req = "Classical Mechanics"
+flags	 = ""
+graphic  = "a.hydro_power"
+graphic_alt = "-"
+helptext = _("
+Dozens of archaeological sites, most particularly in present-day\
+ Iraq, Iran and the Arabian Peninsula, point to the extensive\
+ use of water power throughout the Islamic world after the\
+ seventh century. This technolgy allows for the Answan Dam.\
+")
+
+[advance_indirect_fire]
+name     = _("Indirect Fire")
+req1     = "Ordnance"
+req2     = "Theory of Impetus"
+;root_req = "Templar"
+flags    = ""
+graphic     = "a.medieval_artillery"
+graphic_alt = "-"
+helptext = _("
+Indirect fire is aiming and firing a projectile without relying on a\
+ direct line of sight between the weapon and its target. Indirect\
+ arrow fire by archers was commonly used by ancient armies. It was\
+ used during both battles and sieges. For several centuries Coehorn\
+ mortars were fired indirectly because their fixed elevation meant\
+ range was determined by the amount of propelling powder. It is\
+ also reasonable conjecture that if these mortars were used from\
+ inside fortifications their targets may have been invisible to them\
+ and therefore met the definition of indirect fire.\
+")
+
+[advance_invention]
+name     = _("Invention")
+req1     = "Engineering"
+req2     = "Literacy"
+root_req = "Engineering"
+flags    = ""
+graphic     = "a.invention"
+graphic_alt = "-"
+helptext = _("
+A civilization that acquires Invention enters the Renaissance era. In\
+ history, this was around the time that international treaties\
+ designed to preserve the balance of power between nation-states\
+ began to develop. Thus, the AI will begin to make pacts between\
+ themselves to “contain” the “aggression” of the civilization that\
+ is Supreme in the power scale. This acts as a balancing mechanism\
+ for the game as well as modeling the diplomatic system of early\
+ modern Europe and beyond. The player should be prepared if their\
+ civilization is Supreme when rivals acquire Invention, as these\
+ pacts quickly can escalate to conflicts involving many nations at\
+ once. Increases units' vision when in fortresses.\
+")
+
+[advance_iron_working]
+name     = _("Iron Working")
+req1     = "Bronze Working"
+req2     = "Warrior Code"
+root_req = "Bronze Working"
+flags    = ""
+graphic     = "a.iron_working"
+graphic_alt = "-"
+helptext = _("
+Some examples of iron ornamentation date back to 4000 BC, but the use\
+ of iron for tools, weapons, and other practical purposes did not\
+ become common until much later. Prior to this time, bronze was the\
+ most widely used metal for such purposes. Although the term 'Iron Age'\
+ denotes a period of time starting around 1000 BC, iron replaced bronze\
+ as the metal of choice at different times in different places. Iron is\
+ more common than both copper and tin, the component metals of bronze,\
+ but iron is seldom found in a free state; it is most commonly found\
+ mixed with other minerals and elements. In order to be used, the iron\
+ must be separated from the ore. Once this technique was developed,\
+ iron working became commonplace. Worked iron was harder, less brittle,\
+ and could hold a much sharper edge than bronze. Iron has remained an\
+ important metal throughout history, and is one of the major components\
+ in the production of steel. Decreases one-time revenue from new trade\
+ routes.\
+")
+
+[advance_leadership]
+name     = _("Leadership")
+req1     = "Chivalry"
+req2     = "Gunpowder"
+root_req = "Gunpowder"
+flags    = ""
+graphic     = "a.leadership"
+graphic_alt = "-"
+helptext = _("
+Through the Middle Ages, military forces were only assembled as needed,\
+ and continued to serve until the current conflict had ended. Though\
+ certain leaders had proven to be adept and occasionally brilliant in\
+ their methods, the short periods for which they served made their fame\
+ short-lived. As regular armies became more prevalent, military leaders\
+ had the opportunity to distinguish themselves through the formulation\
+ of brilliant military tactics. The tactics of leaders such as these\
+ would be studied by successive generations, and modified to fit new\
+ situations up to and including the present day. Decreases one-time\
+ revenue from new trade routes.\
+")
+
+[advance_literacy]
+name     = _("Literacy")
+req1     = "Writing"
+req2     = "Code of Laws"
+root_req = "Writing"
+flags    = ""
+graphic     = "a.literacy"
+graphic_alt = "-"
+helptext = _("
+Writing was a powerful new tool for the advancement of knowledge, but,\
+ like all tools, it was only useful if employed. Literacy, the ability\
+ to read and understand a written language, was originally a skill\
+ limited to priests and scribes. Because of this, knowledge was still\
+ spread to the masses orally. Eventually, improving systems of\
+ education brought literacy to private citizens. Civilization in\
+ which a high percentage if the population was literate had faster\
+ technological and economic growth than those where literacy was less\
+ common. In the modern world, while industrialized nations still have\
+ illiteracy rates approaching 80 percent of their overall population.\
+ Illiteracy severely stunts the development of a country, even more so\
+ now than in the ancient world. Decreases one-time revenue from new\
+ trade routes.\
+")
+
+[advance_machine_tools]
+name     = _("Machine Tools")
+req1     = "Steel"
+req2     = "Tactics"
+root_req = "Steel"
+flags    = ""
+graphic     = "a.machine_tools"
+graphic_alt = "-" 
+helptext = _("
+ One of the most important steps in the move toward industrialization\
+ was the ability to precisely shape or 'machine' solid metal into a\
+ desired form. Through mechanical, chemical, and other means, machine\
+ tools mold and shape raw materials into precision parts for complex\
+ machinery. The first machine tool, a horizontal boring device, was\
+ produced in the late 1700's. The development of measuring devices\
+ accurate within a millionth of an inch allowed for the mass\
+ production of items with interchangeable parts. The technology\
+ of the 20th century has produced computer-controlled machine tolls\
+ that can be adapted to a wide variety of applications. The speed\
+ and accuracy of these machines allowes for the economical mass\
+ production of extremely complex products. Decreases one-time revenue\
+ from new trade routes.\
+")
+
+[advance_magnetism]
+name     = _("Magnetism")
+req1     = "Iron Working"
+req2     = "Physics"
+root_req = "Physics"
+flags    = ""
+graphic     = "a.magnetism"
+graphic_alt = "-"
+helptext = _("
+The phenomenon of magnetism was known to the ancient Greeks, Romans,\
+ and Chinese. They observed that lodestone, an iron-bearing ore,\
+ attracted other iron. They also noted that pieces of iron that came\
+ into contact with lodestone gained magnetic properties as well. The\
+ electromagnetic force of attraction and repulsion between various\
+ substances is due to the motion of positively and negatively charged\
+ electrons. Every magnet has a positive and negative side, called\
+ poles. Poles with a like charge repel one another, and poles with\
+ opposite charges attract one another. The study of magnetic\
+ phenomena soon showed that a free-floating magnet aligns itself\
+ with the Earth's magnetic field, one pole of the magnet pointing\
+ north, the other south. This was an important discovery, and led\
+ to the invention of the compass in the early 13th century. The\
+ use of the compass revolutionized sea travel by reducing the\
+ reliance on landmarks and stars for navigation. Decreases one-time\
+ revenue from new trade routes.\
+")
+
+[advance_map_making]
+name     = _("Map Making")
+req1     = "Alphabet"
+req2     = "None"
+root_req = "Alphabet"
+flags    = ""
+graphic     = "a.map_making"
+graphic_alt = "-"
+helptext = _("
+Maps provide, a diagrammatic representation of an area, showing terrain\
+ features, cities, and other landmarks. The earliest maps were etched\
+ clay tablets charting Babylonian land for the purposes of taxation.\
+ Around the same time, the Chinese produced regional maps drawn on silk\
+ cloth. In between 600 and 200 BC, the Greeks produced several maps of\
+ the known world, including the first map showing a primitive system of\
+ latitude and longitude. These early maps were primarily used by traders\
+ and merchants. Seamen, who often set their courses based only on the\
+ tales brought back by previous voyagers, benefited most from the science\
+ of map making. Decreases one-time revenue from new trade routes.\
+")
+
+[advance_masonry]
+name     = _("Masonry")
+req1     = "Templar"
+req2     = "None"
+root_req = "Templar"
+flags    = ""
+graphic     = "a.masonry"
+graphic_alt = "-"
+helptext = _("
+The early dwellings of most tribal cultures were built of materials\
+ that were readily available and easy to work with, such as bricks of\
+ clay and mud. As tribes gave up their nomadic ways and settled the\
+ first cities, they soon found that they had a need for more permanent\
+ and durable structures. The skill of masonry was developed to fill\
+ this need. The earliest stone structures consisted of little more\
+ than rocks which were stacked atop one another to form crude walls.\
+ Artisans soon began to square off the rocks, forming them into\
+ regular shapes and stacking them. These early examples of masonry\
+ used no mortar; the weight of the stacked stones provided overall\
+ strength and stability. Without the use of mortar and knowledge of\
+ architectural techniques, masonry was used primarily for simple\
+ structures such as fortifications. However, some examples of early\
+ masonry are quite spectacular, including the Great Pyramids in Egypt,\
+ which are still standing after thousands of years. Decreases one-time\
+ revenue from new trade routes.\
+")
+
+[advance_pilgrimage]
+name     = _("Pilgrimage")
+req1     = "Mobile Warfare"
+req2     = "Scientific Method"
+root_req = "Mobile Warfare"
+flags    = "Population_Pollution_Inc"
+graphic     = "a.pilgrimage"
+graphic_alt = "-"
+helptext	= _("\
+;---------------------------------------------------------------------\
+A pilgrimage is a journey, often into an unknown or foreign place,\
+ where a person goes in search of new or expanded meaning about their\
+ self, others, nature, or a higher good through the experience. It can\
+ lead to a personal transformation, after which the pilgrim returns to\
+ their daily life.Neutralizes the pollution generated by the population.\
+ The population simply has no effect on the pollution generated in the\
+ city, which reduces pollution.\
+")
+
+[advance_mathematics]
+name     = _("Mathematics")
+req1     = "Alphabet"
+req2     = "Masonry"
+root_req = "Alphabet"
+flags    = ""
+graphic     = "a.mathematics"
+graphic_alt = "-"
+helptext	= _("\
+Rudimentary arithmetic was purely quantitative, used to keep track of\
+ quantities and measurements in trade. Building on this fundamental\
+ base, ancient civilizations began to formulate more complex\
+ mathematical concepts. As early as 1800 BC, the Egyptians had\
+ developed a system for working with fractional numbers and simple\
+ algebraic problems. They also formulated geometric formulae for\
+ finding area and volume, and came up with a constant for determining\
+ the area of a circle that was very close to the value of pi. By\
+ about the 5th century BC, the mathematicians of Greece had greatly\
+ contributed to both geometry and algebra. Around the same time,\
+ advanced mathematics was applied to other sciences and fields of\
+ study such as astronomy and mechanics. One of the earliest\
+ applications of mathematical principles was in the construction\
+ of complex weaponry such as the catapult.\
+")
+
+[advance_medical_research]
+name  	= _("Medical Research")
+req1     = "Phlebotomy"
+req2     = "Biochemistry"
+flags    = ""
+graphic     = "a.medicine"
+graphic_alt = "-"
+helptext = _("\
+Medicine in the monasteries was concentrated on assisting the individual\
+ to return to normal health. Being able to identify symptoms and\
+ remedies was the primary focus. In some instances identifying the\
+ symptoms led the monastic clergy to have to take into consideration\
+ the cause of the illness in order to implement a solution. Research\
+ and experimental processes were continuously being implemented in\
+ monasteries to be able to successfully fulfill their duties to God to\
+ take care of all God's people. Allows for building the Schola Medica\
+ Salernitana.\
+")
+
+[advance_medicine]
+name     = _("Medicine")
+req1     = "Philosophy"
+req2     = "Trade"
+root_req = "Philosophy"
+flags    = ""
+graphic     = "a.medicine"
+graphic_alt = "-"
+helptext	= _("\
+Primitive man attributed the onset of serious disease as the influence\
+ of the gods, or possession by evil spirits. Over time, however, it\
+ was found that such 'possessions' could be treated through the use of\
+ elixirs made from plant extracts. Methods were also developed to\
+ clean and treat wounds, and set fractured bones. The ancient Greeks\
+ established the first schools to teach medical sciences circa 500 BC.\
+ The texts produced by the students of these schools, most notably\
+ ody in the 13th century, pointed out flaws in early Greek theories,\
+ and led to more accurate medical texts based on detailed analysis and\
+ observation used by scientists in other fields were applied to the\
+ study of medicine. This paved the way for the increasingly effective\
+ methods of treatment and surgery that have prevailed over the last\
+ 200 years.\
+")
+
+[advance_metallurgy]
+name     = _("Metallurgy")
+req1     = "Gunpowder"
+req2     = "University"
+root_req = "Gunpowder"
+flags    = ""
+graphic     = "a.metallurgy"
+graphic_alt = "-"
+helptext	= _("\
+Metallurgy is the study of the properties of metals and the methods\
+ used to separate metal deposits from metal-bearing ores. Through the\
+ course of history, artisans have switched the materials from which\
+ they constructed weapons and tools to harder, more durable metals as\
+ they were discovered. However, metallurgy as a science wasn't studied\
+ in earnest until the powers of Europe began to compete against one\
+ another in an attempt to design better and more effective weapons\
+ starting around the 14th Century.\
+")
+
+[advance_milling]
+name     = _("Milling")
+req1     = "Improved Roads"
+req2     = "Banking"
+root_req = "Improved Roads"
+flags    = "Population_Pollution_Inc"
+graphic     = "a.milling"
+graphic_alt = "-"
+helptext	= _("\
+;---------------------------------------------------------------------\
+In medieval times, some of the technological groundwork for a mechanized\
+ society was being laid. One major source of natural power had been\
+ harnessed, and the people of the Middle Ages were to learn how to\
+ exploit another. To the watermill – a legacy of the Ancient World –\
+ the medieval west added its own peculiar creation, the post windmill.\
+ Later centuries would see the watermill in particular play the crucial\
+ role in industrialisation and economic growth, with the Industrial\
+ Revolution becoming only in the latter part of the nineteenth century\
+ emphatically a triumph of the steam engine rather than of the waterwheel.\
+") 
+
+[advance_mobile_warfare]
+name     = _("Mobile Warfare")
+req1     = "Cavalry"
+req2     = "Indirect Fire"
+root_req = "Cavalry"
+flags    = ""
+graphic     = "a.mobile_warfare"
+graphic_alt = "-"
+helptext	= _("\
+The idea of using heavy weapons on the battlefield dates back to the\
+ 15th century when heavy cannons were mounted on wheels and towed into\
+ battle by horses. Early artillery played a limited role in the Hundred\
+ Years' War, and it became indispensable in the Italian Wars of 1494–1559,\
+ marking the beginning of early modern warfare. Charles VIII, during his\
+ invasion of Italy, brought with him the first truly mobile siege train:\
+ culverins and bombards mounted on wheeled carriages, which could be\
+ deployed against an enemy stronghold immediately after arrival.\ 
+")
+
+[advance_monarchy]
+name     = _("Monarchy")
+req1     = "Ceremonial Burial"
+req2     = "Code of Laws"
+root_req = "Code of Laws"
+flags    = ""
+graphic     = "a.monarchy"
+graphic_alt = "-"
+helptext	= _("\
+Rule by monarchy developed as a logical extension of the absolute rule\
+ of tribal chieftains. Many of the earliest monarchs, such as those in\
+ ancient Egypt, claimed that they ruled by divine right. In the spread\
+ of European monarchy during the Middle Ages, however, rulership was\
+ generally conveyed upon a leader who could most effectively raise and\
+ command an army. Monarchies are dynastic, with rule of the country\
+ passing to the eldest son when the king dies or retires. Monarchs had\
+ absolute rule over their subjects, severely limiting the personal and\
+ economic freedom of all citizens except for nobility and the rich\
+ upper-class. Although monarchies ruled most of Europe for centuries,\
+ the unhappiness of lower-class citizens eventually grew intolerable,\
+ causing several revolutions. By the mid-18th century, the power of\
+ the European monarchs had been severely limited, paving the way for\
+ participatory systems of government.\
+")
+
+[advance_monotheism]
+name     = _("Monotheism")
+req1     = "Philosophy"
+req2     = "Polytheism"
+root_req = "Philosophy"
+flags    = ""
+graphic     = "a.monotheism"
+graphic_alt = "-"
+helptext	= _("\
+Monotheism is the belief that there is only one God. Perhaps the oldest\
+ monotheistic religion is Judaism. The original Israelites were\
+ polytheistic in a sense, since they did not deny the existence of\
+ other gods in addition to their own. However, after being exiled to\
+ Babylonia in 586 BC, the Judeans turned to a truly monotheistic\
+ religion. where the God of Israel was seen as the universal God ruling\
+ the destiny of all nations. The scriptures of Judaism became part of\
+ the teachings of the two most widespread monotheistic religions,\
+ Christianity and Islam. More developed than earlier polytheistic\
+ religions, Christianity and Islam. More developed than earlier\
+ polytheistic beliefs, monotheistic religions tend to encompass and\
+ structure the entire lifestyles of the people who practice them.\ 
+")
+
+[advance_movable_type]
+name     = _("Movable Type")
+req1     = "Die Casting"
+req2     = "Simple Machines"
+root_req = "Die Casting"
+flags    = ""
+graphic     = "a.movable_type"
+graphic_alt = "-"
+helptext = _("
+Johannes Gutenberg of Mainz, Germany, invented a metal movable-type\
+ printing system in Europe: the printing press. Gutenberg, as a\
+ goldsmith, knew techniques of cutting punches for making coins from\
+ moulds. Between 1436 and 1450 he developed hardware and techniques\
+ for casting letters from matrices using a device called the hand mould.\
+ Gutenberg's key invention and contribution to movable-type printing in\
+ Europe, the hand mould, was the first practical means of making cheap\
+ copies of letterpunches in the vast quantities needed to print complete\
+ books, making the movable-type printing process a viable enterprise.\ 
+")
+
+[advance_mysticism]
+name     = _("Mysticism")
+req1     = "Ceremonial Burial"
+req2     = "None"
+root_req = "Ceremonial Burial"
+flags    = ""
+graphic     = "a.mysticism"
+graphic_alt = "-"
+helptext = _("
+People of the ancient world were fascinated and awed by the forces of\
+ nature surrounding them. Earthquakes, storms and other phenomena were\
+ generally regarded as signs from heaven. Individuals and groups arose\
+ to formulate explanations for these events, and pass the knowledge\
+ along to the tribe. The Priests and priestesses of mysticism, often\
+ called oracles, claimed union with the divine through meditation and\
+ trance-like contemplation. Primitive mysticism offered mankind the\
+ first, tenuous links with the powers that shaped their world, and\
+ represented the first move toward the organized polytheistic and\
+ monotheistic religions to come. Improves the effect of Temples.\
+")
+
+[advance_navigation]
+name     = _("Navigation")
+req1     = "Seafaring"
+req2     = "Astronomy"
+root_req = "Astronomy"
+flags    = ""
+graphic     = "a.navigation"
+graphic_alt = "-"
+helptext	= _("\
+In the early days of seafaring, sailors operated solely through a\
+process known as 'piloting', in which the position and course of the\
+ ship was determined by referring to geographical landmarks. The need\
+ to stay in view of the shore severely limited the extent of sea\
+ voyages. Through experience, sailors learned to applu the science of\
+ astronomy to their profession, noting the positions and movement of\
+ particular stars. They realized that even when the shore was out of\
+ sight, they could steer by certain reliable stars. This crude, yet\
+ practical application of astronomy allowed the adventurous to sail\
+ into the unknown with a reasonable chance of finding their way. As\
+ a result, ship building technology quickly improved, producing larger,\
+ more stable ships designed for longer voyages.\
+")
+
+[advance_nutrition]
+name     = _("Nutrition")
+req1     = "Yakhchal"
+req2     = "Medical Research"
+root_req = "Yakhchal"
+flags    = ""
+graphic     = "a.nutrition"
+graphic_alt = "-"
+helptext	= _("\
+Medical science of the Middle Ages had a considerable influence on\
+ what was considered healthy and nutritious among the upper classes.\
+ One's lifestyle—including diet, exercise, appropriate social behavior,\
+ and approved medical remedies—was the way to good health, and all types\
+ of food were assigned certain properties that affected a person's\
+ health. All foodstuffs were also classified on scales ranging from hot\
+ to cold and moist to dry, according to the four bodily humours theory\
+ proposed by Galen that dominated Western medical science from late\
+ Antiquity until the 17th century. Allows for building the stove and\
+ 'The Forme of Cury'.
+")
+
+[advance_ordnance]
+name     = _("Ordnance")
+req1     = "Explosives"
+req2     = "Conscription"
+root_req = "Explosives"
+flags    = ""
+graphic     = "a.ordnance"
+graphic_alt = "-"
+helptext	= _("\
+Artillery weapons in medieval Europe included the mounted crossbow\
+ (ballista) and single-arm torsion catapult (mangonel), both similar\
+ to ancient Roman machines. As armies battled further afield such as\
+ in the Byzantine Empire and against the Arab caliphates, in particular,\
+ so new ideas spread from China and India across Eurasia and into\
+ western Europe. The trebuchet arrived from the late 12th century CE,\
+ which was similar to the mangonel but used a counterweight as a means\
+ to propel missiles further and with greater accuracy. Used by both\
+ attackers and defenders during siege warfare, batteries of artillery\
+ caused devastation to people and fortifications. Cannons were used\
+ from the 13th century CE, and although they were highly dangerous to\
+ use and largely ineffective because of their lack of accuracy, by the\
+ 15th century CE, technology had improved dramatically. Gunpowder-\
+ projected missiles of all sizes became the norm, finally ending the \
+ knight's and bowmen's long domination of the medieval battlefield.\
+ ")
+
+[advance_philosophy]
+name     = _("Philosophy")
+req1     = "Mysticism"
+req2     = "Literacy"
+root_req = "Literacy"
+flags    = "Bonus_Tech"
+bonus_message = _("Great philosophers from all the world join \
+your civilization: you get an immediate advance.")
+graphic     = "a.philosophy"
+graphic_alt = "-"
+helptext	= _("\
+The term philosophy comes from a Greek term meaning 'love of wisdom.'\
+ In ancient Greece, literacy and an interest in the natural world were\
+ common in a burgeoning upper class. In their leisure time, these\
+ people contemplated principles of thinking and being, logic and\
+ mathematics, and the natures of reality and existence. In ancient\
+ times, the study of philosophy was indistinguishable from the study\
+ of science, and many of the theories formulated by the early\
+ philosophers became the basis for studies in the fields of\
+ astronomy, medicine, chemistry, and physics. The teachings and\
+ writings of the ancient philosophers of Greece and the Orient\
+ also, in part, laid the groundwork for many of the world's oldest\
+ organized religions.\
+")
+
+[advance_phlebotomy] ; 
+name     = _("Phlebotomy")
+req1     = "Medicine"
+req2     = "Guilds"
+root_req = "Guilds"
+flags    = ""
+graphic     = "a.phlebotomy"
+graphic_alt = "-"
+helptext	= _("\
+In the middle ages, bloodletting was not performed by physicians, but\
+ by “barber-surgeon”. These barber-surgeons also performed amputations\
+ and pulled teeth, which is why the red stripe on a barber pole is\
+ symbolic of the bloodletting portion of their profession while the\
+ white stripe represented tooth enamel. Towards the end of the 16th\
+ century, surgery became more sophisticated as a number of fields of\
+ medicine began to advance and the job of bloodletting went back to\
+ trained physicians.\
+ ")
+
+[advance_physics]
+name     = _("Physics")
+req1     = "Literacy"
+req2     = "Navigation"
+root_req = "Navigation"
+flags    = ""
+graphic     = "a.physics"
+graphic_alt = "-"
+helptext	= _("\
+Physics is the study of the many forms of matter and energy and of the\
+ way they interact with themselves and each other. A number of ancient\
+ races made observations about certain aspects of physics, such as\
+ planetary motion, but were unable to develop theories as to the\
+ reasons for these motions. Some of the earliest applications of\
+ physics were by the Greek mathematician Archemedes, who applied\
+ physics to create such devices as levers and screws. It was jot until\
+ the 17th century that experimental methods and scientific measuring\
+ devices led to a true understanding of many fundamental physical\
+ laws. Early scientists such as Johannes Kepler and Sir Isaac Newton\
+ began to disprove the theories of the ancient Greek Philosophers and\
+ scientifically prove their theories concerning the laws of physics.\
+ Discoveries in physics rarely have direct application, however they \
+ do provide a basic understanding of the laws governing the universe,\
+ thus forming the basis for practical advances in technology.\
+")
+
+[advance_polytheism]
+name     = _("Polytheism")
+req1     = "Horseback Riding"
+req2     = "Ceremonial Burial"
+root_req = "Horseback Riding"
+flags    = ""
+graphic     = "a.polytheism"
+graphic_alt = "-"
+helptext	= _("\
+Polytheism is the belief that the world and the enviornment us rule or\
+ controlled by a number of different gods or divinities. Many ancient\
+ religions were polytheistic, notably those of the Egyptians, the\
+ Greeks, the Norse, and the Romans. Often, polytheistic religions have\
+ different gods for each force of nature and earthly phenomenon; for\
+ instance: a sun god, a moon god, a god of thunder, a god of the\
+ forests, and so forth. The reason for such diversity in divine beings\
+ probably stems from ancient civilizations attempting to find\
+ explanations for natural events they could not understand. Although\
+ some isolated examples still exist today, most polytheistic religions\
+ have either died out or evolved into monotheism.\
+")
+
+[advance_pottery]
+name     = _("Pottery")
+req1     = "Templar"
+req2     = "None"
+root_req = "Templar"
+flags    = ""
+graphic     = "a.pottery"
+graphic_alt = "-"
+helptext	= _("\
+The invention of pottery was essential to the development of\
+ agricultural societies. To get the most out of seasonal crops and\ 
+ domesticated animals, a tribe needed sturdy, waterproof containers in\
+ which to store and protect surplus food. The discoveries of the\
+ properties of clay, the invention of the kiln, and the potter's wheel\
+ made it possible to build such containers. The earliest examples of\
+ Western pottery date back to as early as 6500 BC. Most of the\
+ examples from this period were strictly utilitarian. Although use\
+ continued to be primarily practical, decorative pottery soon became\
+ a ritualistic and aesthetic art form in cultures all over the world.\
+ Some of the most impressive examples of artistic pottery came from\
+ the pre-Columbian cultures of South America, and from the Ming\
+ dynasty in 14th century China.\
+")
+
+[advance_qanat]
+name	 = _("Qanat")
+req1 	 = "Construction"
+req2 	 = "None"
+root_req = "Construction"
+graphic  = "a.qanat"
+graphic_alt = "-"
+helptext = _("\
+ A qanat or kariz is a gently sloping underground channel to transport\
+ water from an aquifer or water well to the surface for irrigation and\
+ drinking, acting as an underground aqueduct. Qanats originated in\
+ Persia. They are needed to build an aquaduct.\
+")
+
+[advance_railroad]
+name     = _("?tech:Improved Roads")
+req1     = "Carruca"
+req2     = "Bridge Building"
+root_req = "Carruca"
+flags    = ""
+graphic     = "a.imp_roads"
+graphic_alt = "-"
+helptext = _("\
+The first improved trails would have been at fords, mountain passes and\
+ through swamps. The first improvements would have consisted largely of\
+ clearing trees and big stones from the path. As commerce increased,\
+ the tracks were often flattened or widened to accommodate human and\
+ animal traffic. Improved roadse roads were built in three layers:\
+ large stones, a mixture of road material, and a layer of gravel.\
+ Improved roads allow Settlers, Workers and Engineers to upgrade roads\
+ to Improved Roads.\
+")
+
+[advance_recipes]
+name     = _("Recipe Books")
+req1     = "Nutrition"
+req2     = "Movable Type"
+flags    = ""
+graphic     = "a.recipe_book"
+graphic_alt = "-"
+helptext = _("\
+Knowing the foods and ingredients for healthy meals was spread word of\
+ until movable type and the printing press were developed. The dishes like\
+ tart de brymlent, a fish pie from the recipe collection Forme of Cury,\
+ could be properly prepared. It includes a mix of figs, raisins, apples and\
+ pears with fish (salmon, codling or haddock) and pitted damson plums under\
+ the top crust. It was considered important to make sure that the dish agreed\
+ with contemporary standards of medicine and dietetics. This meant that food\
+ had to be 'tempered' according to its nature by an appropriate combination\
+ of preparation and mixing certain ingredients, condiments and spices.\
+ Enables development of 'The Forme of Cury', written by the master cooks of
+ King Richard II
+")
+
+[advance_rocketry]
+name     = _("Rocketry")
+req1     = "Advanced Archery"
+req2     = "Tactics"
+;root_req = "Templar"
+flags    = ""
+graphic     = "a.rocketry"
+graphic_alt = "-"
+helptext = _("\
+Rockets are projectiles that are propelled by the expulsion of gases\
+ generated in a combustion chamber. The first solid-fuel rockets,\
+ invented by the Chinese in the 13th century, used a mixture similar\
+ to gunpowder for fuel. Although rockets were used in warfare to set\
+ fire to buildings and the sails of ships for nearly 500 years, it\
+ wasn't until the early 19th century that the first crude explosive\
+ rockets were used in battle.\
+ ")
+
+[advance_sanitation]
+name     = _("Sanitation")
+req1     = "Engineering"
+req2     = "Medicine"
+root_req = "Medicine"
+flags    = ""
+graphic     = "a.sanitation"
+graphic_alt = "-"
+helptext = _("\
+An increase waste produced by growing populations over time eventually\
+ led to potential health hazards. It then became necessary to come up\
+ with systems to dispose of garbage and human waste in a sanitary\
+ manner. Plumbing systems designed to remove waste water from\
+ dwellings and public buildings became commonplace, as did sewage\
+ plants which treated the wastewater before it was dumped into local\
+ waterways. Landfills were established, and garbage was collected for\
+ sanitary disposal in dumps and landfills a safe distance from the\
+ general population. These measures led to a healthier environment,\
+ and allowed for further population growth.\
+ ")
+
+[advance_scientific_method]
+name     = _("Scientific Method")
+req1     = "Classical Mechanics"
+req2     = "Simple Machines"
+root_req = "Classical Mechanics"
+flags    = ""
+graphic     = "a.scientific_method"
+graphic_alt = "-"
+helptext = _("\
+The scientific method is an empirical method of acquiring knowledge\
+ that has characterized the development of science since at least the\
+ 17th century. It involves careful observation, applying rigorous\
+ skepticism about what is observed, given that cognitive assumptions\
+ can distort how one interprets the observation. It involves formulating\
+ hypotheses, via induction, based on such observations; experimental\
+ and measurement-based testing of deductions drawn from the hypotheses;\
+ and refinement (or elimination) of the hypotheses based on the\
+ experimental findings. Allows for building a Research Lab.\
+")
+
+[advance_seafaring]
+name     = _("Seafaring")
+req1     = "Pottery"
+req2     = "Map Making"
+root_req = "Map Making"
+flags    = ""
+graphic     = "a.seafaring"
+graphic_alt = "-"
+helptext = _("\
+As empires grew and trade expanded to new areas, travel by sea became\
+ increasingly important to the civilizations of the world. Experienced\
+ sailors passed down their lore and techniques to new generations who\
+ sailed to increasingly distant lands. Originally, these long voyages\
+ were trade-oriented. But the ability to travel great distances led\
+ to a new breed of adventurers whose goal was primarily one of\
+ exploration. The Vikings were some of the earliest and most\
+ successful explorers in history. Their knowledge of the sea and\
+ experience with long ocean voyages allowed explorers such as Leif\
+ Ericson to successfully cross the Atlantic and land in the Americas\
+ more than 500 years before Columbus. The pioneering spirit of these\
+ early ocean travelers formed the basis for the seafaring traditions\
+ of generations to come.\ 
+")
+
+[advance_simple_machines]
+name 	 = _("Simple Machines")
+req1 	 = "Die Casting"
+req2 	 = "Machine Tools"
+flags 	 = ""
+graphic     = "a.simple_machines"
+graphic_alt = "-"
+helptext = _("\
+In medieval times society was very dependent on what were often very\
+ large ‘simple machines’ scaled up in size to generate large forces.\
+ Water wheels and windmills, medieval weapons such as trebuchets\
+ (which threw large stones or dead cows over castle walls), moat\
+ crossing bridges, castle wall ram and towers are just some examples\
+ that were based on the design of ‘simple machines’.\
+") 
+
+[advance_solid_waste_treatment]
+name     = _("Solid Waste Treatment")
+req1     = "Medical Research"
+req2     = "Sanitation"
+root_req = "Medical Research"
+flags    = ""
+graphic     = "a.solid_waste"
+graphic_alt = "-"
+helptext = _("\
+People in the Middle Ages were no less sensitive to foul odors or\
+ disgusted by human waste than we are. They also did not understand\
+ exactly how human waste could spread disease, but they knew it did—\
+ they just thought it was something to do with its odors. So medieval\
+ towns and cities actually had a lot of ordinances and laws to do with\
+ waste disposal, latrines, and toilets.\
+ ")
+
+[advance_steel]
+name     = _("Steel")
+req1     = "Metallurgy"
+req2     = "Milling"
+root_req = "Milling"
+flags    = ""
+graphic     = "a.steel"
+graphic_alt = "-"
+helptext = _("\
+The iron alloys produced up until about the 14th century were made by\
+ heating a mixture of iron ore and charcoal in a forge, then pounding\
+ the moltedn metal to drive out the impurities or 'slag'. Occasionally,\
+ the iron mixture would absorb more carbon, creating steel rather than\
+ wrought iron. Because steel proved to be less brittle and more resistant\
+ to corrosion than iron, techniques were developed to produce steel.\
+ This was done by blowing a coal derivative called coke through molten\
+ iron. Most modern steel making utilizes the 'blast furnace', developed\
+ by Henry Bessemer in 1855, to accomplish this task on a large-scale\
+ basis. The strength and other qualities of steel make it the material\
+ of choice for warships, planes, and many other vehicles.\ 
+")
+
+[advance_stove]
+name     = _("The Stove")
+req1     = "Nutrition"
+req2     = "None"
+flags    = ""
+graphic     = "a.medieval_stove"
+graphic_alt = "-"
+helptext = _("\
+In the Middle Ages, waist-high brick-and-mortar hearths and the first\
+ chimneys appeared, so that cooks no longer had to kneel or sit to tend\
+ to foods on the fire. The fire was built on top of the construction;\
+ the cooking done mainly in cauldrons hung above the fire or placed on\
+ trivets. The heat was regulated by placing the cauldron higher or lower\
+ above the fire. Open fire systems had three significant disadvantages:\
+ it was dangerous, it produced much smoke, and the heat efficiency was\
+ poor. An early step was the fire chamber: the fire was enclosed on three\
+ sides by brick-and-mortar walls and covered by an iron plate. This\
+ technique also caused a change in the kitchenware used for cooking, for\
+ it required flat-bottomed pots instead of cauldrons. The first design\
+ that completely enclosed the fire was the 1735 Castrol stove, built by\
+ the French architect François de Cuvilliés. 
+")
+
+[advance_survivability]
+name     = _("Survivability")
+req1     = "Recipe Books"
+req2     = "Amphibious Warfare"
+flags    = ""
+graphic     = "a.sere"
+graphic_alt = "-"
+helptext = _("\
+Weapons and tactics aside, armies could not surive the harsh envornment\
+ of the desert without water and proper nutrition. So prominant was the\
+ need to feed and water an army, deesert springs became strategic locations\
+ in endieval desert warfare, and wher the key to survival. Discovery of this\
+ advance increases the output of an oasis.
+")
+
+[advance_tactics]
+name     = _("Tactics")
+req1     = "Conscription"
+req2     = "Leadership"
+root_req = "Conscription"
+flags    = ""
+graphic     = "a.tactics"
+graphic_alt = "-"
+helptext = _("\
+The science of the deployment of military forces to accomplish a
+ short- range goal or objective is known as tactics. In unique or difficult\
+ situations, the maneuvers and methods of attack must be chosen wisely\
+ to give ones troops the maximum possible advantage over the enemy by\
+ taking advantage of the enemy's weaknesses. The successful tactics of\
+ military commanders are studied by their successors for possible\
+ modification and use under current conditions. Although tactics that\
+ work well in certain situations may not always be successful when used\
+ again, proven military tactics have worked well in many different battle\
+ situations throughout history. The vast amount of advanced equipment and\
+ resources available in modern warfare make the proper tactical\
+ coordination of a campaign vital, but difficult to achieve with total\
+ success.\
+")
+ 
+[advance_the_republic]
+name     = _("The Republic")
+req1     = "Code of Laws"
+req2     = "Literacy"
+root_req = "Literacy"
+flags    = ""
+graphic     = "a.the_republic"
+graphic_alt = "-"
+helptext = _("\
+The republic is a system of government in which the citizens appoint,\
+ by popular vote, a head of state and officials to represent the views\
+ of the general public. The concept of the republic first appeared in\
+ ancient rome, where local provinces sent elected representatives to\
+ the Senate, which governed all Roman lands. Both the head of state\
+ and the local representatives in a republic are lected; no one is\
+ granted a position by birth or divine right. Republican governments\
+ are similar in some ways to democracies, in that they offer a great\
+ deal of personal, financial, and political freedom to their citizens.\
+ The main difference between the two systems is that a true democract\
+ allows the participation of every voting citizen in any and all\
+ political matters, whereas in a republic, the views and opinions of\
+ the people are represented by a body of elected officials. Although\
+ an effective system, personal agendas of political representatives\
+ might act to decrease the effectiveness in representing the views of\
+ the people. Due to human nature, corruption is fairly common in a\
+ republican government.
+ ")
+
+[advance_the_wheel]
+name     = _("The Wheel")
+req1     = "Horseback Riding"
+req2     = "None"
+root_req = "Horseback Riding"
+flags    = ""
+graphic     = "a.the_wheel"
+graphic_alt = "-"
+helptext = _("\
+The invention of the wheel represented a major turning point in human\
+ civilization. The first wheels, disks carved from solid wood, may have\
+ been built as early as 3500 BC. The earliest use of this device was\
+ the potter's wheel, used to spin and shape clay pottery. It was not\
+ long before the true potential of the wheel was discovered, and\
+ wheeled carts soon replaced the sledge as a means of transportation.\
+ Rapid developments, such as wheels consisting of a ring with radial\
+ spokes, made the wheel even more practical by reducing its weight. By\
+ using the wheel, mankind gained the ability to work more efficiently\
+ and travel more quickly. Besides its use in transportation, the wheel\
+ went on to become the basic principle behind almost every mechanical\
+ device.\ 
+")
+
+[advance_theology]
+name     = _("Theology")
+req1     = "University"
+req2     = "Monotheism"
+root_req = "Feudalism"
+flags    = ""
+graphic     = "a.theology"
+graphic_alt = "-"
+
+helptext = _("\
+Theology is the study of God and religious truth. Theologians take a\
+ more or less scientific approach to questions of religion, deeply\
+ studying the underlying meaning of scriptures and religious teachings\
+ rather than 'taking them on faith'. Theological seminaries teach\
+ courses of study in theology to prepare people as priests and\
+ clergymen. Many of the earliest colleges of the western world were\
+ originally established for this purpose. Theological study helped to\
+ remove some of the superstitions that had surrounded religion for so\
+ long, and brought religious study into a more enlightened age.\
+")
+
+[advance_theory_of_gravity]
+name     = _("Theory of Gravity")
+req1     = "Astronomy"
+req2     = "University"
+root_req = "University"
+flags    = ""
+graphic     = "a.theory_of_gravity"
+graphic_alt = "-"
+helptext = _("\
+In the 17th century, Sir Isaac Newton developed the law of universal\
+ gravitation. This law recognized that every mass in the universe\
+ exerts an attraction on every other mass. Newton postulated that\
+ gravity was a universal force that affected all matter. Newton's\
+ theory served to explain the forces of attraction between the Earth\
+ and nearby objects, as well as the forces that affected the motion\
+ of planets and other astronomical bodies. In the early 20th century,\
+ Albert Einstein's special theory of relativity led to a major\
+ reinterpretation and clarification of Newton's theory of Gravity.\
+ Scientists now believe that gravity affects energy as well as matter,\
+ and that gravity is actually a fundamental warping of the fabric of\
+ space-time. Some theorize that the force of this warping is transmitte\
+ by as-yet-unobserved particles called gravitons.\ 
+")
+
+[advance_theory_of_impetus] ; formerly atomic theory
+name     = _("Theory of Impetus")
+req1     = "Theory of Gravity"
+req2     = "Physics"
+;root_req = "Templar" ; change after testing
+flags    = "Bonus_Tech"
+graphic     = "a.theory_of_impetus"
+graphic_alt = "-"
+helptext = _("\
+In the 6th century, John Philoponus partly accepted Aristotle's theory\ 
+that 'continuation of motion depends on continued action of a force,'\ 
+but modified it to include his idea that the hurled body acquires a\
+ motive power or inclination for forced movement from the agent\
+ producing the initial motion and that this power secures the\ 
+ continuation of such motion. However, he argued that this impresse\
+ virtue was temporay: that it was a self-expending inclination, and\
+ thus the violent motion produced comes to an end, changing back into\
+ natural motion. In the 11th century, Avicenna (Ibn Sīnā) discussed\
+ Philoponus' theory in The Book of Healing, in Physics IV.14 he says:\
+ When we independently verify the issue (of projectile motion), we\
+ find the most correct doctrine is the doctrine of those who think\
+ that the moved object acquires an inclination from the mover. Ibn\
+ Sīnā agreed that an impetus is imparted to a projectile by the\
+ thrower, but unlike Philoponus, who believed that it was a temporary\
+ virtue that would decline even in a vacuum, he viewed it as persistent,\
+ requiring external forces such as air resistance to dissipate.\
+")
+
+[advance_trade]
+name     = _("Trade")
+req1     = "Currency"
+req2     = "Code of Laws"
+root_req = "Currency"
+flags    = ""
+graphic     = "a.trade"
+graphic_alt = "-"
+helptext = _("\
+One of the oldest and most widespread social institutions is the\
+ exchange of goods, or trade. Most ancient trade consisted of barter,\
+ where two traders would exchange goods with one another. The\
+ widespread practice of trade allowed civilizations to exchange raw\
+ materials and goods which they had in abundance or could easily\
+ produce, for items that were rare or nonexistent in their geographic\
+ region. The introduction of regulated currency that could be\
+ exchanged for items resulted in easier, more convenient trade. \
+ Merchants soon roamed the world, connecting different lands with \
+ webs of economic interdependence. In addition to goods and profits,\
+ traders also brought back tales and technology from these foreign\
+ lands. Well-traveled traders like Marco Polo were among the most\
+ learned sources on the cultures and traditions of foreign lands.\ 
+")
+
+[advance_university]
+name     = _("University")
+req1     = "Mathematics"
+req2     = "Philosophy"
+root_req = "Philosophy"
+flags    = ""
+graphic     = "a.university"
+graphic_alt = "-"
+helptext = _("\
+Institutes of higher learning, such as the Academy of Plato in Athens\
+ which taught advanced philosophical principles, existed in the ancient\
+ world. It was not until the 12th century, however, that the model for\
+ the modern university system was born. In the Middle Ages, some royal\
+ governments and ecclesiastical organizations founded exclusive schools\
+ dedicated to training young men in specific professions. At that time,\
+ each university specialized in a single topic like law, theology,\
+ music, or medicine. Through the centuries, universities diversified\
+ to include a number of different fields of study. Modern universities\
+ consists of several faculties, or colleges, each of which has a\
+ specific curriculum. In addition to their roles as learning\
+ institutions, universities have, since their inception, acted as\
+ centers for scientific research and advancement.\ 
+ ")
+
+[advance_warrior_code]
+name     = _("Warrior Code")
+req1     = "Templar"
+req2     = "None"
+root_req = "Templar"
+flags    = ""
+graphic     = "a.warrior_code"
+graphic_alt = "-"
+helptext = _("\
+The samurai of feudal Japan lived by a doctrine known as 'Bushido', or\
+ 'the way of the warrior'. This code of behavior stressed such virtues\
+ as loyalty, courage, and politeness. The honor of the warrior could\
+ only be maintained if the rules of the code were followed. A similar\
+ code of behavior known as chivalry was later developed under the\
+ feudal system in medieval Europe. Although the strict adherence to\
+ both Bushido and chivalry were abandoned along with the feudal\
+ system in the 1800's, certain principles of discipline and behavior\
+ inherent in these systems can still be found in the military today.\
+") 
+
+[advance_writing]
+name     = _("Writing")
+req1     = "Alphabet"
+req2     = "None"
+root_req = "Alphabet"
+flags    = ""
+graphic     = "a.writing"
+graphic_alt = "-"
+helptext = _("\
+The development of writing is considered one of the most important\
+ advances of civilization. The earliest forms of writing were simple\
+ symbols and marks, used to keep accounts and inventories. Some\
+ cultures developed pictographic symbols to tell stories and record\
+ events. Eventually, complete systems of writing were developed,\
+ capable of conveying any thought that could be expressed orally. At\
+ this point scribes replaced the oral historian as the chief keepers\
+ of records. Writing allowed the presentation of information in a\
+ form that could be reliably transmitted from person to person and\
+ made it possible for ideas, history, and knowledge to be stored\
+ permanently and passed between cultures more reliably than through\
+ oral recitation.\ 
+")
+
+[advance_refrigeration]
+name 	  = _("Yakhchal")
+req1 	  = "Agronomy"
+req2 	  = "Artesian Drilling"
+root_req  = "Agriculture"
+flags 	  = "Farmland"
+graphic   = "a.yakhchal"
+graphic_alt = ""
+helptext = _("\
+By 400 BCE, Persian engineers had mastered the technique of storing\
+ ice in the middle of summer in the desert. The ice could be brought\
+ in during the winters from nearby mountains. Then the ice was\
+ stored in yakhchals — specially designed, naturally cooled\
+ refrigerators. Yakhchal is needed to build a supermarket.\
+")
+
+; TECHS
+
+[advance_order_of_the_red_cross]
+name 	  = _("Order of the Red Cross")
+req1 	  = "Enlightenment"
+req2 	  = "Pilgrimage"
+root_req  = "Enlightenment"
+flags 	  = ""
+graphic   = "a.order_of_the_red_cross"
+graphic_alt = ""
+helptext = _("\
+To become a member of the Knights Templar, candidates must first\
+ pass through the 'Illustrious Order of the Red Cross'. It is an\
+ Order emphasizing the lesson of truth. Elements of this Order were\
+ practiced in Ancient Lodges before the final form of the Master\
+ Mason Degree came into use. It is still practiced in the full\
+ ceremonial form by the Knight Masons of Ireland and the Knight
+ Masons of the United States, and as the Red Cross of Babylon in
+ the English Order of the Allied Masonic Degrees. This order\
+ prepares candidates for the 'Order of Malta'.\
+")
+
+[advance_order_of_malta]
+name 	  = _("Order of Malta")
+req1 	  = "Order of the Red Cross"
+req2 	  = "Battlefield Medicine"
+root_req  = "Order of the Red Cross"
+flags 	  = ""
+graphic   = "a.order_of_malta"
+graphic_alt = ""
+helptext = _("\
+The Oder of Malta is an order An Order emphasizing the lesson of\
+ faith. This Order requires the Mason to profess and practice the\
+ Christian faith. The pass degree of the Mediterranean Pass, or\
+ Knight of St. Paul prepares the candidate for the Order by introducing\
+ the lesson and example of the unfearing and faithful martyr of\
+ Christianity. The Order is centered on allegorical elements of the\
+ Knights of Malta, inheritors of the medieval Knights Hospitaller.
+")
+
+[advance_order_of_the_temple]
+name 	  = _("Order of the Temple")
+req1 	  = "Order of Malta"
+req2	  = "Environmentalism"
+root_req  = "Freemasonry"
+flags 	  = ""
+graphic   = "a.order_of_the_temple"
+graphic_alt = ""
+helptext = _("\
+The 'Order of the Temple' is an oderemphasizing the lessons of self-\
+ sacrifice and reverence. It is meant to rekindle the spirit of the\
+ medieval Knights Templar devotion and self-sacrifice to Christianity.\
+ The history of the Masonic Order is long and convoluted, with the\
+ Order's ritual differing between that conferred in England and in the
+ United States. That practiced in the United States has a slight\
+ militant zeal to the lesson of Christianity, whereas the English\
+ ritual is more allegorical. However, the American ritual is most\
+ impressive, and more emphasis is placed on the solemnity and\
+ reverence associated with the Crucifixion, Resurrection, and\
+ Ascension of Christ. The Templar Eye Foundation performs research\ 
+ for occular diseases, making the environemt an important aspect of\
+ templar life.\
+")
+
+[advance_grail_research]
+name     = _("Grail Research")
+req1     = "Order of the Temple"
+req2	 = "Theology"
+flags    = ""
+graphic     = "a.grail_research"
+graphic_alt = "-"
+helptext	= _("\
+From the knights of medieval legends to Indiana Jones, the Holy Grail\
+ has been the most sought-after Christian relic in popular culture for\
+ centuries. The Grail is most commonly identified as the cup that Jesus\
+ drank from at the Last Supper and that Joseph of Arimathea used to\
+ collect Jesus’s blood when he was crucified. Tradition has it that the\
+ Templars were in possession of the Grail when Acre fell into the hands\
+ of Salidan's army and was probably lost in the battle. This advance\
+ allows for building the Grail Map required for the 'Search for the Grail'.\
+")
+
+[advance_grail_search]
+name     = _("Search for the Grail")
+req1     = "Grail Research"
+req2	 = "Survivability"
+flags    = ""
+graphic     = "a.grail_search"
+graphic_alt = "-"
+helptext	= _("\
+From the knights of medieval legends to Indiana Jones, the Holy Grail\
+ has been the most sought-after Christian relic in popular culture for\
+ centuries. The Grail is most commonly identified as the cup that Jesus\
+ drank from at the Last Supper and that Joseph of Arimathea used to\
+ collect Jesus’s blood when he was crucified. Tradition has it that the\
+ Templars were in possession of the Grail when Acre fell into the hands\
+ of Salidan's army and was probably lost in the battle. You must find\
+ the Grail to win the game.\
+")
+
+[advance_grail_security]
+name     = _("Grail Security")
+req1     = "Search for the Grail"
+req2	 = "None"
+flags    = ""
+graphic     = "a.grail_security"
+graphic_alt = "-"
+helptext	= _("\
+The Grail is most commonly identified as the cup that Jesus drank from\
+ at the Last Supper and that Joseph of Arimathea used to collect Jesus’s\
+ blood when he was crucified. Tradition has it that the Templars were in\
+ possession of the Grail when Acre fell into the hands of Salidan's army\
+ and was probably lost in the battle. If the grail is discovered, many\
+ factions will seek to have it for their own; However, when recovered it\
+ must be securely transported to the Vatican. You must find the Grail to\
+ win the game.\
+")
+
+[advance_search_for_the ark]
+name     = _("Search for the Ark of the Covenant")
+req1     = "Order of the Temple"
+req2	 = "None"
+flags    = ""
+graphic     = "a.ark_of_the_covenant"
+graphic_alt = "-"
+helptext	= _("\
+From the knights of medieval legends to Indiana Jones, the Ark of the\
+ Covenant has been the a sought-after religious relic in popular culture\
+ for centuries. The Ark is the cheeat that conatined the Ten Commandments\
+ given to Moses by God in the wilderness. The Ark contained othed holy\
+ relics and was is believed to contain incredible healing powers, if not\
+ the source of immortality. Some believe that the Ark was discovered by\
+ the Templars beneath the Dome of the Rock, the site formerly occupied\
+ by Solomon's Temple, and is cashed away the rest of the unrecovered\
+ Templar treasure.\
+")
+
+; INITIAL TECHS
+
+[advance_templar]
+name     = _("Templar")
+req1     = "None"
+req2     = "None"
+root_req = "Templar"
+flags    = ""
+graphic     = "a.templar"
+graphic_alt = "-"
+helptext = _("\
+Allows special Templar units.\
+")
+
+[advance_christian]
+name     = _("Christian")
+req1     = "None"
+req2     = "None"
+root_req = "Christian"
+flags    = ""
+graphic     = "a.christianity"
+graphic_alt = "-"
+helptext = _("\
+Allows special Christian units.\
+")
+
+[advance_papacy]
+name     = _("Papacy")
+req1     = "None"
+req2     = "None"
+root_req = "Papacy"
+flags    = ""
+graphic     = "a.papacy"
+graphic_alt = "-"
+helptext = _("\
+Allows special Papacy units.\
+")
+
+[advance_saracen]
+name     = _("Saracen")
+req1     = "None"
+req2     = "None"
+root_req = "Saracen"
+flags    = ""
+graphic     = "a.saracen"
+graphic_alt = "-"
+helptext = _("\
+Allows special Saracen units.\
+")
+
+[advance_viking]
+name     = _("Viking")
+req1     = "None"
+req2     = "None"
+root_req = "Viking"
+flags    = ""
+graphic     = "a.viking2"
+graphic_alt = "-"
+helptext = _("\
+Allows special Viking units.\
+")
+
+[advance_abbasid]
+name     = _("Abbasid")
+req1     = "None"
+req2     = "None"
+root_req = "Abbasid"
+flags    = ""
+graphic     = "a.fundamentalism"
+graphic_alt = "-"
+helptext = _("\
+Allows special Abbasid units.\
+")
+
+[advance_ayyubid]
+name     = _("Ayyubid")
+req1     = "None"
+req2     = "None"
+root_req = "Ayyubid"
+flags    = ""
+graphic     = "a.fundamentalism"
+graphic_alt = "-"
+helptext = _("\
+Allows special Ayyubid units.\
+")
+
+[advance_byzantine]
+name     = _("Byzantine")
+req1     = "None"
+req2     = "None"
+root_req = "Byzantine"
+flags    = ""
+graphic     = "a.monarchy"
+graphic_alt = "-"
+helptext = _("\
+Allows special Byzantine units.\
+")
+
+[advance_danish]
+name     = _("Danish")
+req1     = "None"
+req2     = "None"
+root_req = "Danish"
+flags    = ""
+graphic     = "a.monarchy"
+graphic_alt = "-"
+helptext = _("\
+Allows special Danish units.\
+")
+
+[advance_english]
+name     = _("English")
+req1     = "None"
+req2     = "None"
+root_req = "English"
+flags    = ""
+graphic     = "a.monarchy"
+graphic_alt = "-"
+helptext = _("\
+Allows special English units.\
+")
+
+[advance_french]
+name     = _("French")
+req1     = "None"
+req2     = "None"
+root_req = "French"
+flags    = ""
+graphic     = "a.monarchy"
+graphic_alt = "-"
+helptext = _("\
+Allows special French units.\
+")
+
+[advance_hungarian]
+name     = _("Hungarian")
+req1     = "None"
+req2     = "None"
+root_req = "Hungarian"
+flags    = ""
+graphic     = "a.monarchy"
+graphic_alt = "-"
+helptext = _("\
+Allows special Hungarian units.\
+")
+
+[advance_imereti]
+name     = _("Imereti")
+req1     = "None"
+req2     = "None"
+root_req = "Imereti"
+flags    = ""
+graphic     = "a.monarchy"
+graphic_alt = "-"
+helptext = _("\
+Allows special Imereti units.\
+")
+
+[advance_mamluk]
+name     = _("Mamluk")
+req1     = "None"
+req2     = "None"
+root_req = "Mamluk"
+flags    = ""
+graphic     = "a.monarchy"
+graphic_alt = "-"
+helptext = _("\
+Allows special Mamluk units.\
+")
+
+[advance_monaspa]
+name     = _("Monaspa")
+req1     = "None"
+req2     = "None"
+root_req = "Monaspa"
+flags    = ""
+graphic     = "a.monarchy"
+graphic_alt = "-"
+helptext = _("\
+Allows special Monaspa units.\
+")
+
+[advance_mongolian]
+name     = _("Mongolian")
+req1     = "None"
+req2     = "None"
+root_req = "Mongolian"
+flags    = ""
+graphic     = "a.monarchy"
+graphic_alt = "-"
+helptext = _("\
+Allows special Mongolian units.\
+")
+
+[advance_persian]
+name     = _("Persian")
+req1     = "None"
+req2     = "None"
+root_req = "Persian"
+flags    = ""
+graphic     = "a.monarchy"
+graphic_alt = "-"
+helptext = _("\
+Allows special Persian units.\
+")
+
+[advance_polish]
+name     = _("Polish")
+req1     = "None"
+req2     = "None"
+root_req = "Polish"
+flags    = ""
+graphic     = "a.monarchy"
+graphic_alt = "-"
+helptext = _("\
+Allows special Polish units.\
+")
+
+[advance_seljuk]
+name     = _("Seljuk")
+req1     = "None"
+req2     = "None"
+root_req = "Seljuk"
+flags    = ""
+graphic     = "a.monarchy"
+graphic_alt = "-"
+helptext = _("\
+Allows special Seljuk units.\
+")
+
+[advance_swedish]
+name     = _("Swedish")
+req1     = "None"
+req2     = "None"
+root_req = "Swedish"
+flags    = ""
+graphic     = "a.monarchy"
+graphic_alt = "-"
+helptext = _("\
+Allows special Swedish units.\
+")
+
+[advance_timurid]
+name     = _("Timurid")
+req1     = "None"
+req2     = "None"
+root_req = "Timurid"
+flags    = ""
+graphic     = "a.monarchy"
+graphic_alt = "-"
+helptext = _("\
+Allows special Timurid units.\
+")
+
+[advance_turkish]
+name     = _("Turkish")
+req1     = "None"
+req2     = "None"
+root_req = "Turkish"
+flags    = ""
+graphic     = "a.monarchy"
+graphic_alt = "-"
+helptext = _("\
+Allows special Turkish units.\
+")
+
+[advance_turkmen]
+name     = _("Turkmen")
+req1     = "None"
+req2     = "None"
+root_req = "Turkmen"
+flags    = ""
+graphic     = "a.monarchy"
+graphic_alt = "-"
+helptext = _("\
+Allows special Turkmen units.\
+")
+
+[advance_vatican]
+name     = _("Vatican")
+req1     = "None"
+req2     = "None"
+root_req = "Vatican"
+flags    = ""
+graphic     = "a.papacy"
+graphic_alt = "-"
+helptext = _("\
+Allows special Vatican units.\
+")
+
+[advance_admin]
+name     = _("Admin")
+req1     = "None"
+req2     = "None"
+root_req = "Admin"
+flags    = ""
+graphic     = "a.admin"
+graphic_alt = "-"
+helptext = _("\
+Allows admin only units.\
+")
+
+;--------------------------------------------------------
+; ISLAMIC NATION TECHS
+;--------------------------------------------------------
+
+[advance_islam1]
+name     = _("Islam")
+req1     = "None"
+req2     = "None"
+root_req = "Islam"
+flags    = ""
+graphic     = "a.fundamentalism"
+graphic_alt = "-"
+helptext = _("\
+Allows discovery of technologies of the Islamic nation.\
+")
+
+[advance_arabic_alphabet]
+name     = _("Arabic Alphabet")
+req1     = "None"
+req2     = "None"
+flags    = ""
+graphic     = "a.alphabet"
+graphic_alt = "-"
+helptext = _("\
+An alphabet is a standardized set of basic written symbols or graphemes\
+ (called letters) that represent the phonemes of certain spoken\
+ languages. Not all writing systems represent language in this way; in\
+ a syllabary, each character represents a syllable, for instance, and\
+ logographic systems use characters to represent words, morphemes, or\
+ other semantic units. The first fully phonemic script, the Proto-\
+ Canaanite script, later known as the Phoenician alphabet, is\
+ considered to be the first alphabet, and is the ancestor of most\
+ modern alphabets, including Arabic. Its discover leads to the decovery\
+ of Mathematics, Map Making, Code of Laws, and Writing.\
+")
+
+[advance_islamic_writing]
+name     = _("Islamic Writing")
+req1     = "Arabic Alphabet"
+req2     = "None"
+flags    = ""
+graphic     = "a.islamic_writing"
+graphic_alt = "-"
+helptext = _("\
+The development of writing is considered one of the most important\
+ advances of civilization. The earliest forms of writing were simple\
+ symbols and marks, used to keep accounts and inventories. Some\
+ cultures developed pictographic symbols to tell stories and record\
+ events. Eventually, complete systems of writing were developed,\
+ capable of conveying any thought that could be expressed orally. At\
+ this point scribes replaced the oral historian as the chief keepers\
+ of records. Writing allowed the presentation of information in a\
+ form that could be reliably transmitted from person to person and\
+ made it possible for ideas, history, and knowledge to be stored\
+ permanently and passed between cultures more reliably than through\
+ oral recitation.\ 
+")
+
+[advance_islamic_ceremonial_burial]
+name     = _("Islamic Ceremonial Burial")
+req1     = "Islamic Writing"
+req2     = "None"
+flags    = ""
+graphic     = "a.islamic_burial"
+graphic_alt = "-"
+helptext = _("\
+Islamic Burial rituals normally take place as soon as possible and\
+ include:
+   - Collective bathing of the dead body, except in extraordinary\
+     circumstances, as in the battle of Uhud.
+   - Enshrouding the dead body in a white cotton or linen cloth.
+   - Funeral prayer (صلاة الجنازة).
+   - Burial of the dead body in a grave.
+   - Positioning the deceased so that the head is faced towards\
+     Mecca (Makkah Al-Mukarramah).
+   - Reciteing Surah Yaseen over a dying person.\  
+")
+
+[advance_islamic_pottery]
+name     = _("Islamic Pottery")
+req1     = "Arabic Alphabet"
+req2     = "None"
+flags    = ""
+graphic     = "a.islamic_pottery"
+graphic_alt = "-"
+helptext	= _("\
+Medieval Islamic pottery occupied a geographical position between\
+ Chinese ceramics, the unchallenged leaders of Eurasian production,\
+ and the pottery of the Byzantine Empire and Europe. For most of the\
+ period it can fairly be said to have been between the two in terms\
+ of aesthetic achievement and influence as well, borrowing from China\
+ and exporting to and influencing Byzantium and Europe. The use of\
+ drinking and eating vessels in gold and silver, the ideal in ancient\
+ Rome and Persia as well as medieval Christian societies, is\
+ prohibited by the Hadiths, with the result that pottery and glass\
+ were used for tableware by Muslim elites, as pottery (but less often\
+ glass) also was in China but was much rarer in Europe and Byzantium.\
+ In the same way, Islamic restrictions greatly discouraged figurative\
+ wall-painting, encouraging the architectural use of schemes of\
+ decorative and often geometrically patterned titles, which are the\
+ most distinctive and original specialty of Islamic ceramics.\
+")
+
+[advance_islamic_architecture]
+name     = _("Islamic Architecture")
+req1     = "Islamic Writing"
+req2     = "None"
+flags    = ""
+graphic     = "a.golden_temple"
+graphic_alt = "-"
+helptext = _("
+Islamic architecture, building traditions of Muslim populations of the\
+ Middle East and elsewhere from the 7th century on. Islamic architecture\
+ finds its highest expression in religious buildings such as the mosque\
+ and madrasah. Early Islamic religious architecture, exemplified by\
+ Jerusalem’s Dome of the Rock (ad 691) and the Great Mosque (705) in\
+ Damascus, drew on Christian architectural features such as domes,\
+ columnar arches, and mosaics but also included large courts for\
+ congregational prayer and a mihrab. From early times, the\
+ characteristic semicircular horseshoe arch and rich, nonrepresentational\
+ decoration of surfaces were employed. Religious architecture came into\
+ its own with the creation of the hypostyle mosque (see hypostyle hall)\
+ during the Abbasid Caliphate.\
+")
+
+[advance_arabic_horsemanship]
+name     = _("Furūsiyya")
+req1     = "Arabic Alphabet"
+req2     = "None"
+flags    = ""
+graphic     = "a.horseback_riding"
+graphic_alt = "-"
+helptext = _("\
+Furūsiyya is the arabic word horsemanship and was comprised of three\
+ categories: (1) veterinary aspects of proper care for the horse and\
+ the proper riding techniques; (2) horse archery; and (3) charging with\
+ the lance. The first known such treatise in Arabic is due to Ibn Akhī\
+ Ḥizām (ابن أخي حزام), an Abbasid-era commander and stable master to\
+ caliph Al-Muʿtadid (r. 892–902), author of Kitāb al-Furūsiyya wa\
+ 'l-Bayṭara (Book of Horsemanship and Hippiatry). Ibn al-Nadim in the\
+ late 10th century records the availability in Baghdad of several\
+ treatises on horses and veterinary medicine attributed to Greek authors.\
+")
+
+[advance_islamic_bronze_working]
+name     = _("Islamic Bronze Working")
+req1     = "Islamic Metal Working"
+req2     = "None"
+flags    = ""
+graphic     = "a.bronze_working"
+graphic_alt = "-"
+helptext = _("\
+Bronze is the first fruit of the technological development of an early\
+ civilization - a pliable metal which is easily shaped, but hard and\
+ durable. Bronze proves so useful, in creating durable tools of all\
+ sorts, that it ushers a whole new age in human history. Even the\
+ tangled Rainforests can't resist these new tools! But it is one of\
+ its particular uses which proves much more important than anything\
+ else: its use in creating weapons and armor. In short, before bronze\
+ there were wooden clubs with stone heads; after bronze there are\
+ swords, spears, shield and armor.\ 
+")
+ 
+[advance_islamic_metal_working]
+name     = _("Islamic Metal Working")
+req1     = "Islamic Writing"
+req2     = "None"
+flags    = ""
+graphic     = "a.metal_working"
+graphic_alt = "-"
+helptext = _("\
+During this period Iranian metalwork underwent considerable modification\
+ in terms of technical, iconographic, and aesthetic standards. Although\
+ the mechanism for transmission is not always clear, it is apparent that\
+ Jaziran (i.e., of Upper Mesopotamia) and Syro-Egyptian metalwork of this\
+ period also benefited from as well as contributed to these developments\
+ in the modern-day Abbasid Caliphate.\
+") 
+
+[advance_islamic_warrior_code]
+name	= _("Islamic Warrior Code")
+req1     = "Islamic Writing"
+req2     = "Furūsiyya"
+flags    = ""
+graphic     = "a.islamic_code"
+graphic_alt = "-"
+helptext = _("\
+The Islamic law of war sought to humanize armed conflict by protecting\
+ the lives of non-combatants, respecting the dignity of enemy combatants,\
+ and forbidding damage to an adversary's property except when absolutely\
+ required by military necessity or when it happens unintentionally, as\
+ collateral damage.\
+")
+
+[advance_futuwwa]
+name     = _("Futuwwa")
+req1     = "Islamic Warrior Code"
+req2     = "None"
+flags    = ""
+graphic     = "a.futuwwa"
+graphic_alt = "-"
+helptext = _("\
+Futuwwa is a code of conduct for those that seek to emulate the Prophetic\
+ example. It has been translated as chivalry in the past, a more accurate\
+ translation would combine the characteristics of bravery, integrity,\
+ generosity, humility, service, kindliness, steadfastness, loyalty and\
+ personal discipline.\
+")
+
+[advance_islamic_literacy]
+name     = _("Islamic Literacy")
+req1     = "Futuwwa"
+req2     = "None"
+flags    = ""
+graphic     = "a.literacy"
+graphic_alt = "-"
+helptext = _("\
+The Holy Qur'an which Muslims believe to be the revealed words of the\
+ Almighty lays great emphasis on reading, study, and acquisition of\
+ knowledge. The first verses to be revealed were: Read in the name\
+ of the Lord, Who created, Created man from a clot of blood, Recite!\
+")
+
+[advance_adab]
+name     = _("Adab")
+req1     = "Islamic Literacy"
+req2     = "Islamic Ceremonial Burial"
+flags    = ""
+graphic     = "a.adab"
+graphic_alt = "-"
+helptext = _("
+One term for Islamic literature is al-adab al-islami, or adab. Adab\
+ material had been growing in volume in Arabia before Islam and had been\
+ transmitted orally for the most part. With the advent of Islam, its\
+ growth continued and it became increasingly diversified. It was\
+ gradually collected and written down in books, ayrab literature other\
+ material adapted from Persian, Sanskrit, Greek, and other tongues as\
+ the Arabic language spread with the expansion of Islam's political\
+ dominion in the world. It included stories and saying from the Bible,\
+ the Qur’ān, and the Ḥadīth. Eventually, the heritage of adab became so\
+ large that philologists and other scholars had to make selections,\
+ therefore, each according to his interests and his plans to meet the\
+ needs of particular readers, such as students seeking learning and\
+ cultural refinement, or persons associated with the Islamic state such\
+ as viziers, courtiers, chancellors, judges, and government secretaries\
+ seeking useful knowledge and success in polished quarters.\
+")
+
+[advance_sharia]
+name     = _("Sharia")
+req1     = "Islamic Building Construction"
+req2     = "Adab"
+flags    = ""
+graphic     = "a.sharia"
+graphic_alt = "-"
+helptext = _("\
+Sharia, Arabic sharīʿah, the fundamental religious concept of Islam—namely,\
+ its law. Since the Sharia originated with Allah, Muslims consider it sacred.\
+ Between the seventh century when Muhammad died and the 10th century, many\
+ Islamic legal scholars attempted to interpret the Sharia and to adapt it to\
+ the expanding Muslim Empire. The classic Sharia of the 10th century\
+ represented an important part of Islam’s golden age. From that time, the\
+ Sharia has continued to be reinterpreted and adapted to changing\
+ circumstances and new issues. In the modern era, the influences of Western\
+ colonialism generated efforts to codify it. Allows construction of the\ 
+ Golden Temple.\
+")
+
+[advance_islamic_university]
+name     = _("Islamic University")
+req1     = "Islamic Literacy"
+req2     = "None"
+flags    = ""
+graphic     = "a.university"
+graphic_alt = "-"
+helptext = _("\
+Madrasa Arabic: (مدرسة madrasa, pl. مدارس, madāris)) is the Arabic word\
+ for any type of educational institution, secular or religious (of any\
+ religion), whether for elementary education or higher learning. In the\
+ late 11th century, during the late ʻAbbāsid period, the Seljuk vizier\
+ Niẓām al-Mulk created one of the first major official academic\
+ institutions known in history as the Madrasah Niẓāmīyah, based on the\
+ informal majālis (sessions of the shaykhs). Niẓām al-Mulk, who would\
+ later be murdered by the Assassins (Ḥashshāshīn), created a system of\
+ state madrasas (in his time they were called the Niẓāmiyyahs, named\
+ after him) in various Seljuk and ʻAbbāsid cities at the end of the 11th\
+ century, ranging from Mesopotamia to Khorasan. Although madrasa-type\
+ institutions appear to have existed in Iran before Nizam al-Mulk, this\
+ period is nonetheless considered by many as the starting point for the\
+ proliferation of the formal madrasah across the rest of the Muslim\
+ world, adapted for use by all four different Sunni Islamic legal\
+ schools and Sufi orders. Part of the motivation for this widespread\
+ adoption of the madrasah by Sunni rulers and elites was a desire to\
+ counter the influence and spread of Shi'ism at the time, by using these\
+ institutions to spread Sunni teachings.\
+")
+
+[advance_islamic_alchemy]
+name	 = _("Islamic Alchemy")
+req1 	 = "Islamic University"
+req2 	 = "None"
+flags 	 = ""
+graphic  = "a.alchemy"
+graphic_alt = "-"
+helptext = _("\
+Alchemy in the medieval Islamic world refers to both traditional alchemy\
+ and early practical chemistry (the early chemical investigation of nature\
+ in general) by Muslim scholars in the medieval Islamic world. The word\
+ alchemy was derived from the Arabic word كيمياء or kīmiyāʾ and may\
+ ultimately derive from the ancient Egyptian word kemi, meaning black.\
+ After the fall of the Western Roman Empire and the Islamic conquest of\
+ Roman Egypt, the focus of alchemical development moved to the Caliphate\
+ and the Islamic civilization.\
+") 
+
+[advance_islamic_astronomy]
+name     = _("Islamic Astronomy")
+req1     = "Islamic Mathematics"
+req2     = "None"
+flags    = ""
+graphic     = "a.astrolabe_islamic"
+graphic_alt = "-"
+helptext = _("\ 
+Astronomy became a major discipline within Islamic science. Astronomers\
+ devoted effort both towards understanding the nature of the cosmos and to\
+ practical purposes. One application involved determining the Qibla, the\
+ direction to face during prayer. Another was astrology, predicting events\
+ affecting human life and selecting suitable times for actions such as going\
+ to war or founding a city. Al-Battani (850–922) accurately determined the\
+ length of the solar year. He contributed to the Tables of Toledo, used by\
+ astronomers to predict the movements of the sun, moon and planets across\
+ the sky. Copernicus (1473-1543) later used some of Al-Battani's astronomic\
+ tables.\
+")
+
+[advance_islamic_biology]
+name     = _("Islamic Biology")
+req1     = "Islamic University"
+req2     = "None"
+flags    = ""
+graphic     = "a.biology"
+graphic_alt = "-"
+helptext = _("\ 
+From the 3rd until the 11th century, biology was essentially an Arab science.\
+ Although the Arabic scholars themselves were not great innovators, they\
+ discovered the works of such men as Aristotle and Galen, translated those\
+ works into Arabic, studied them, and wrote commentaries about them. Of the\
+ Arab biologists, al-Jāḥiẓ, who died about 868, is particularly noteworthy.\
+ Among his biological writings is Kitāb al-ḥayawān (Book of Animals), which,\
+ although revealing some Greek influence, is primarily an Arabic work. In it\
+ the author emphasized the unity of nature and recognized relationships between\
+ different groups of organisms. Because al-Jāḥiẓ believed that earth contained\
+ both male and female elements, he found the Greek doctrine of spontaneous\ 
+ generation (life emerging from mud) to be quite reasonable.\
+")
+  
+[advance_islamic_pharmacology]
+name     = _("Islamic Pharmacology")
+req1     = "Islamic Biology"
+req2     = "None"
+flags    = ""
+graphic     = "a.pharmacology"
+graphic_alt = "-"
+helptext = _("\
+Advances in botany and chemistry in the Islamic world encouraged\
+ developments in pharmacology. Muhammad ibn Zakarīya Rāzi (Rhazes)\
+ (865–915) promoted the medical uses of chemical compounds. Abu al-Qasim\
+ al-Zahrawi (Abulcasis) (936–1013) pioneered the preparation of\ 
+ medicines by sublimation and distillation. His Liber servitoris\
+ provides instructions for preparing simples from which were\
+ compounded the complex drugs then used. Sabur Ibn Sahl (died 869) was\
+ the first physician to describe a large variety of drugs and remedies\
+ for ailments. Al-Muwaffaq, in the 10th century, wrote The foundations\
+ of the true properties of Remedies, describing chemicals such as\
+ arsenious oxide and silicic acid. He distinguished between sodium\
+ carbonate and potassium carbonate, and drew attention to the poisonous\
+ nature of copper compounds, especially copper vitriol, and also of\
+ lead compounds. Al-Biruni (973–1050) wrote the Kitab al-Saydalah (The\
+ Book of Drugs), describing in detail the properties of drugs, the role\
+ of pharmacy and the duties of the pharmacist. Ibn Sina (Avicenna)\
+ described 700 preparations, their properties, their mode of action\
+ and their indications. He devoted a whole volume to simples in The\
+ Canon of Medicine.\
+")
+ 
+[advance_botony]
+name 	  = _("Islamic Botony")
+req1 	  = "Islamic Biology"
+req2 	  = "None"
+flags 	  = ""
+graphic   = "a.islamic_botony"
+graohic_alt = "-"
+cost	  = 60
+helptext = _("\
+The study of the natural world extended to a detailed examination of plants.\
+ The work done proved directly useful in the unprecedented growth of\
+ pharmacology across the Islamic world. Al-Dinawari (815–896) popularised\
+ botany in the Islamic world with his six-volume Kitab al-Nabat (Book of\
+ Plants). Only volumes 3 and 5 have survived, with part of volume 6\
+ reconstructed from quoted passages. The surviving text describes 637 plants\
+ in alphabetical order from the letters sin to ya, so the whole book must\
+ have covered several thousand kinds of plants. Al-Dinawari described the\
+ phases of plant growth and the production of flowers and fruit. The\
+ thirteenth century encyclopedia compiled by Zakariya al-Qazwini (1203–1283)\
+ – ʿAjā'ib al-makhlūqāt (The Wonders of Creation) – contained, among many\
+ other topics, both realistic botany and fantastic accounts.\ 
+ ")
+  
+[advance_islamic_agronomy]
+name 	  = _("Islamic Agronomy")
+req1 	  = "Islamic Animal Husbandry"
+req2 	  = "Islamic Irrigation"
+flags 	  = ""
+graphic   = "a.agronomy"
+graohic_alt = "-"
+cost	  = 60
+helptext = _("\
+The use and cultivation of plants was documented in the 11th century by\
+ Muhammad bin Ibrāhīm Ibn Bassāl of Toledo in his book Dīwān al-filāha (The\
+ Court of Agriculture), and by Ibn al-'Awwam al-Ishbīlī (also called Abū\
+ l-Khayr al-Ishbīlī) of Seville in his 12th century book Kitāb al-Filāha\
+ (Treatise on Agriculture). Ibn Bassāl had travelled widely across the Islamic\
+ world, returning with a detailed knowledge of agronomy that fed into the Arab\
+ Agricultural Revolution. His practical and systematic book describes over 180\
+ plants and how to propagate and care for them. It covered leaf- and root-\
+ vegetables, herbs, spices and trees.\
+")
+
+[advance_islamic_geography]
+name     = _("Islamic Geography")
+req1     = "Islamic Astronomy"
+req2     = "None"
+flags    = ""
+graphic     = "a.islamic_geography"
+graphic_alt = "-"
+helptext	= _("\
+The spread of Islam across Western Asia and North Africa encouraged an\
+ unprecedented growth in trade and travel by land and sea as far away as\
+ Southeast Asia, China, much of Africa, Scandinavia and even Iceland.\
+ Geographers worked to compile increasingly accurate maps of the known\
+ world, starting from many existing but fragmentary sources. Abu Zayd\
+ al-Balkhi (850–934), founder of the Balkhī school of cartography in Baghdad,\
+ wrote an atlas called Figures of the Regions (Suwar al-aqalim). Al-Biruni\
+ (973–1048) measured the radius of the earth using a new method. It involved\
+ observing the height of a mountain at Nandana (now in Pakistan). Al-Idrisi\
+ (1100–1166) drew a map of the world for Roger, the Norman King of Sicily\
+ (ruled 1105-1154).\
+") 
+
+[advance_islamic_mathematics]
+name     = _("Islamic Mathematics")
+req1     = "Islamic University"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.mathematics"
+graphic_alt = "-"
+helptext	= _("\
+Islamic mathematicians gathered, organised and clarified the mathematics they\
+ inherited from ancient Egypt, Greece, India, Mesopotamia and Persia, and went\
+ on to make innovations of their own. Islamic mathematics covered algebra,\
+ geometry and arithmetic. Algebra was mainly used for recreation: it had few\
+ practical applications at that time. Geometry was studied at different levels.\
+ Some texts contain practical geometrical rules for surveying and for measuring\
+ figures. Theoretical geometry was a necessary prerequisite for understanding\
+ astronomy and optics, and it required years of concentrated work. Early in the\
+ Abbasid caliphate (founded 750), soon after the foundation of Baghdad in 762,\
+ some mathematical knowledge was assimilated by al-Mansur's group of scientists\
+ from the pre-Islamic Persian tradition in astronomy. Astronomers from India\
+ were invited to the court of the caliph in the late eighth century; they\
+ explained the rudimentary trigonometrical techniques used in Indian astronomy.\
+ Ancient Greek works such as Ptolemy's Almagest and Euclid's Elements were\
+ translated into Arabic. By the second half of the ninth century, Islamic\
+ mathematicians were already making contributions to the most sophisticated\
+ parts of Greek geometry. Islamic mathematics reached its apogee in the Eastern\
+ part of the Islamic world between the tenth and twelfth centuries.\ 
+")
+
+[advance_islamic_medicine]
+name     = _("Islamic Medicine")
+req1     = "Islamic Medical School"
+req2     = "None"
+flags    = ""
+graphic     = "a.medicine"
+graphic_alt = "-"
+helptext	= _("\
+Islamic society paid careful attention to medicine, following a hadith\
+ enjoining the preservation of good health. Its physicians inherited\
+ knowledge and traditional medical beliefs from the civilisations of\
+ classical Greece, Rome, Syria, Persia and India. These included the\
+ writings of Hippocrates such as on the theory of the four humours,\
+ and the theories of Galen. al-Razi (c. 865–925) identified smallpox\
+ and measles, and recognized fever as a part of the body's defenses.\
+ He wrote a 23-volume compendium of Chinese, Indian, Persian, Syriac\
+ and Greek medicine. al-Razi questioned the classical Greek medical\
+ theory of how the four humours regulate life processes. He challenged\
+ Galen's work on several fronts, including the treatment of bloodletting,\
+ arguing that it was effective. al-Zahrawi (936–1013) was a surgeon\
+ whose most important surviving work is referred to as al-Tasrif\
+ (Medical Knowledge). It is a 30-volume set mainly discussing medical\
+ symptoms, treatments, and pharmacology. The last volume, on surgery,\
+ describes surgical instruments, supplies, and pioneering procedures.\
+ Avicenna (c. 980–1037) wrote the major medical textbook, The Canon of\
+ Medicine.\
+")
+
+[advance_islamic_optics]
+name     = _("Islamic Optics")
+req1     = "Islamic Mechanics"
+req2     = "Islamic Trade"
+flags    = ""
+graphic     = "a.islamic_optics"
+graphic_alt = "-"
+helptext	= _("\
+In the eleventh century Ibn al-Haytham (Alhazen, 965–1040) rejected the\
+ Greek ideas about vision, whether the Aristotelian tradition that held\
+ that the form of the perceived object entered the eye (but not its\
+ matter), or that of Euclid and Ptolemy which held that the eye emitted\
+ a ray. Al-Haytham proposed in his Book of Optics that vision occurs by\
+ way of light rays forming a cone with its vertex at the center of the\
+ eye. He suggested that light was reflected from different surfaces in\
+ different directions, thus causing objects to look different. He argued\
+ further that the mathematics of reflection and refraction needed to be\
+ consistent with the anatomy of the eye. He was also an early proponent\
+ of the scientific method, the concept that a hypothesis must be proved\
+ by experiments based on confirmable procedures or mathematical evidence,\
+ five centuries before Renaissance scientists.\
+ ")
+ 
+[advance_optometry]
+name     = _("Optometry")
+req1     = "Islamic Optics"
+req2     = "Islamic Medicine"
+flags    = ""
+graphic     = "a.islamic_optics"
+graphic_alt = "-"
+helptext	= _("\
+Optometry is a specialized health care profession that involves examining\
+ the eyes and related structures for defects or abnormalities. Optometrists\
+ are health care professionals who typically provide comprehensive primary\
+ eye care. It is unknown when the first spectacles were made. The British\
+ scientist and historian Sir Joseph Needham, in his Science and\
+ Civilization in China. Early Chinese sources (c. 1300) mention the\
+ eyeglasses were imported.\
+ ")
+
+[advance_islamic_mech]
+name     = _("Islamic Mechanics")
+req1     = "Islamic Mathematics"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.physics"
+graphic_alt = "-"
+helptext = _("\
+The fields of physics studied in this period, apart from optics and\
+ astronomy which are described separately, are aspects of mechanics:\
+ statics, dynamics, kinematics and motion. In the sixth century John\
+ Philoponus (c. 490 – c. 570) rejected the Aristotelian view of motion.\
+ He argued instead that an object acquires an inclination to move when\
+ it has a motive power impressed on it. In the eleventh century Ibn Sina\
+ adopted roughly the same idea, namely that a moving object has force\
+ which is dissipated by external agents like air resistance. Ibn Sina\
+ distinguished between force and inclination (mayl); he claimed that\
+ an object gained mayl when the object is in opposition to its natural\
+ motion. He concluded that continuation of motion depends on the\
+ inclination that is transferred to the object, and that the object\
+ remains in motion until the mayl is spent. He also claimed that a\
+ projectile in a vacuum would not stop unless it is acted upon. That\
+ view accords with Newton's first law of motion, on inertia. As a non-\
+ Aristotelian suggestion, it was essentially abandoned until it was\
+ described as impetus by Jean Buridan (c. 1295–1363), who was\
+ influenced by Ibn Sina's Book of Healing.\
+ ")
+ 
+[advance_zoology]
+name     = _("Islamic Zoology")
+req1     = "Islamic Biology"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.islamic_zoology"
+graphic_alt = "-"
+helptext = _("\ 
+Many classical works, including those of Aristotle, were transmitted from\
+ Greek to Syriac, then to Arabic, then to Latin in the Middle Ages.\
+ Aristotle's zoology remained dominant in its field for two thousand\
+ years. The Kitāb al-Hayawān (كتاب الحيوان, English: Book of Animals)\
+ is a 9th-century Arabic translation of History of Animals: 1–10, On\ 
+ the Parts of Animals: 11–14, and Generation of Animals: 15–19. The book\
+ was mentioned by Al-Kindī (died 850), and commented on by Avicenna (Ibn\
+ Sīnā) in his The Book of Healing. Avempace (Ibn Bājja) and Averroes (Ibn\
+ Rushd) commented on and criticised On the Parts of Animals and Generation\
+ of Animals.\
+ ")
+
+[advance_islamic_trade]
+name     = _("Islamic Trade")
+req1     = "Islamic Maritime"
+req2 	 = "Islamic Navigation"
+flags    = ""
+graphic     = "a.islamic_trade"
+graphic_alt = "-"
+helptext = _("\
+Islamic merchants dealt in a wide variety of trade goods including sugar,\
+ salt, textiles, spices, slaves, gold, and horses. The expanse of the\
+ Islamic Empire allowed merchants to trade goods all the way from China\
+ to Europe. Many merchants became quite wealthy and powerful. Islamic\
+ leaders used taxes from wealthy merchants to build and maintain public\
+ works such as schools, hospitals, dams, and bridges.\
+ ")
+
+[advance_islamic_money]
+name     = _("Islamic Money")
+req1     = "Islamic Literacy"
+req2     = "Sharia"
+flags    = ""
+graphic     = "a.currency"
+graphic_alt = "-"
+helptext = _("\
+Money is important for any economy, and this was no different for Islamic\
+ merchants. The main Islamic coins were the dinar (a gold coin) and the\
+ dirham (a silver coin). However, large transactions were often carried\
+ out on paper using letters of credit called suftaja. These letters\
+ were much easier to carry on long trade routes than heavy coins. After\
+ arriving in a new city, merchants could take the papers to a moneychanger\
+ to exchange for coins.\
+") 
+
+[advance_islamic_maritime]
+name     = _("Islamic Maritime")
+req1     = "Islamic Astronomy"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.seafaring"
+graphic_alt = "-"
+helptext = _("\
+The Arab Empire maintained and expanded a wide trade network across parts\
+ of Asia, Africa and Europe. This helped establish the Arab Empire\
+ (including the Rashidun, Umayyad, Abbasid Caliphates and also Fatimids)\
+ as the world's leading extensive economic power throughout the 8th–13th\
+ centuries. It is commonly believed that Mu‘awiya Ibn Abi Sufyan was the\
+ first planner and establisher of the Islamic navy. The early caliphate\
+ naval conquest managed to mark long time legacy of Islamic maritime\
+ enterprises from the Conquest of Cyprus, the famous Battle of the Masts\
+ up to of their successor states such as the area Transoxiana from area\
+ located in between the Jihun River(Oxus/Amu Darya) and Syr Darya, to\
+ Sindh (present day Pakistan), by Umayyad, naval cove of Saracen\
+ privateers in La Garde-Freinet by Cordoban Emirate, and the Sack of\
+ Rome by the Aghlabids in later era.\
+") 
+
+[advance_islamic_kalam]
+name     = _("Islamic Kalam")
+req1     = "Futuwwa"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.kalam"
+graphic_alt = "-"
+helptext = _("\
+ʿIlm al-Kalām (Arabic: علم الكلام) is the philosophy that seeks Islamic\
+ theological principles through dialectic. In Arabic, the word literally\
+ means speech. Thus, medieval Islamic philosophy could be characterized\
+ as a debate between reason and faith. Philosophers such as Al-Farabi,\
+ Ibn Sina, and Ibn Rushd argued that reason was superior to revelation.\
+ Al-Ghazali decried the efforts of philosophers such as Al-Farabi and Ibn\
+ Sina to accord higher status to philosophy and reason over theology and\
+ faith. Al-Ghazali wrote: True, a belief which results from simple\
+ acceptance of authority may not be free of some weakness at the beginning,\
+ in that it can be shaken and impaired by its opposite whenever that is\
+ mentioned. But the way to strengthen and confirm it does not lie in\
+ learning the art of argumentation and speculation. It is found in the\
+ reading and exposition of the Qur’an, in the study of traditions and\
+ their meaning, and in the performance of religious duties and acts of\
+ worship.\
+") 
+
+[advance_islamic_naviagtion]
+name     = _("Islamic Navigation")
+req1     = "Islamic Geography"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.navigation"
+graphic_alt = "-"
+helptext = _("\
+The history of Arabian Peninsula navigation was recorded at least from\
+ 2,000 years BC, to even as far as the era of Sargon of Akkad\
+ (r. c. 2334-2284 BCE), when shipping industry in Magan, in present-day\
+ Oman are mentioned. The Belitung ship is the oldest discovered Arabic\
+ ship to reach the Asian sea, dating back over 1,000 years. Meanwhile,\
+ French archaeologist Roman Gershman has presented the description of\
+ earliest contact of the Arabs to the east even further back to 15,000\
+ BC Arabian invasion on Iran, as Iran were the hub for the Indian\
+ subcontinent and far east Asia. Gus van Beek noted that all scholars\
+ accepted the south Arabians were engaged in early maritime trade on the\
+ Indian Ocean to the Arabian sea. Gus van Beek also theorized the\
+ scheduling of the Arabo Indian naval trade were similar with modern\
+ era, which is usually done during southwest monsoon. Hojjatollah\
+ Hezariyan concludes that the maritime trade activity on the Arabian gulf\
+ as indication of the earliest human navigation in history.\
+")
+
+[advance_hydo_engineering]
+name     = _("Islamic Hyro Engineering")
+req1     = "Islamic Mechanics"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.hydro_power"
+graphic_alt = "-"
+helptext = _("\
+Medieval Muslim scientists often focused on practical matters,\
+ particularly hydraulic engineering, as water was always a precious\
+ resource in the arid lands where Islam traditionally flourished.\
+ Engineers designed various kinds of water-raising machines, some\
+ powered by animals, others powered by rivers and streams. The\
+ waterwheels along the Orontes River in Syria were used to irrigate\
+ until modern times. Watermills were used to grind corn and other\
+ grains, though in Iran water power was often supplemented or\
+ replaced by wind.\
+")
+
+[advance_brige_construction]
+name     = _("Islamic Bridge Construction")
+req1     = "Islamic Mechanics"
+req2     = "Islamic Architecture"
+flags    = ""
+graphic     = "a.bridge_building"
+graphic_alt = "-"
+helptext = _("\
+There are frequent references to pontoon bridges in the works of\
+ Arabic writers. They were very common in Iraq for crossing the two\
+ rivers and the major irrigation canals. In the fourth/tenth century\
+ there were two pontoon bridges over the Tigris at Baghdad, but only\
+ one was in use; the other, having fallen into disrepair, was closed,\
+ because few people used it. Ibn Jubayr, writing towards the close of\
+ the sixth/twelfth century, described a bridge of large boats over the\
+ Euphrates at Hilla. It had chains on either side like twisted rods\
+ which were secured to wooden anchorages on the banks. He also mentions\
+ a similar, but larger, bridge over a canal near Baghdad. There were\
+ also pontoon bridges on the rivers of Khuzistan, the Iranian province\
+ adjoining Iraq, and on the Helmand river in Sijistan (now western\
+ Afghanistan). There seems to have been a pontoon bridge at Fustat\
+ (now Old Cairo) in Egypt for many years. In the early part of the\
+ fourth/tenth century, al-Istakhri says that one bridge crossed from\
+ the city to the island and a second bridge from the island to the far\
+ bank of the river. About two centuries later, al-Idrisi describes the\
+ same arrangement, adding that there were thirty boats in the first\
+ bridge and sixty in the second.\
+")
+
+[advance_war_engines]
+name     = _("Islamic War Engines")
+req1     = "Islamic Mechanics"
+req2 	  = "Islamic Technology"
+flags    = ""
+graphic     = "a.medieval_artillery"
+graphic_alt = "-"
+helptext = _("\
+In addition to these machines and technologies related to water,\
+ Muslim engineers also designed several types of siege engines,\
+ notably the traction and the counterweight trebuchet. Their\
+ ingenuity is clear from the many kinds of fine machines they also\
+ perfected, ranging from clocks and automata to fountains. Some\
+ were meant for practical purposes but others were designed for\
+ amusement or aesthetic enjoyment, and their components and\
+ techniques were of great importance for the development of machine\
+ technology.\
+")
+
+[advance_islamic_banking]
+name     = _("Islamic Banking")
+req1     = "Islamic Money"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.banking"
+graphic_alt = "-"
+helptext = _("\
+According to Timur Kuran, by the tenth century, Islamic law supported\
+ credit and investment instruments that were as advanced as anything\
+ in the non-Islamic world, but prior to the 19th century there were no\
+ durable financial institutions recognizable as banks in the Muslim\
+ world. The first Muslim majority-owned banks did not emerge until the\
+ 1920s. A number of economic concepts and techniques were applied in\
+ early Islamic banking, including bills of exchange, partnership\
+ (mufawada, including limited partnerships, or mudaraba), and forms of\
+ capital (al-mal), capital accumulation (nama al-mal), cheques,\
+ promissory notes, trusts (see Waqf), transactional accounts, loaning,\
+ ledgers and assignments. Muslim traders are known to have used the\
+ cheque or ṣakk system since the time of Harun al-Rashid (9th century)\
+ of the Abbasid Caliphate. Organizational enterprises independent from\
+ the state also existed in the medieval Islamic world, while the agency\
+ institution was also introduced during that time. Many of these early\
+ capitalist concepts were adopted and further advanced in medieval\
+ Europe from the 13th century onwards.\
+ ")
+
+[advance_islamic_medical_school]
+name     = _("Islamic Medical School")
+req1     = "Islamic Alchemy"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.medical research"
+graphic_alt = "-"
+helptext = _("\
+The first universities which issued diplomas were the Bimaristan\
+ medical university-hospitals of the medieval Islamic world, where\
+ medical diplomas were issued to students of Islamic medicine who\
+ were qualified to be practicing doctors of medicine from the 9th\
+ century. The Guinness Book of World Records recognizes the\
+ University of Al Karaouine in Fez, Morocco as the oldest degree-\
+ granting university in the world with its founding in 859 CE.\
+ Al-Azhar University, founded in Cairo, Egypt in the 975 CE, offered\
+ a variety of academic degrees, including postgraduate degrees, and\
+ is often considered the first full-fledged university. The origins\
+ of the doctorate also dates back to the ijazat attadris wa ‘l-ifttd\
+ (license to teach and issue legal opinions) in the medieval\
+ Madrasahs which taught Islamic law.\
+")
+
+[advance_building_construction]
+name     = _("Islamic Building Construction")
+req1     = "Islamic Architecture"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.construction"
+graphic_alt = "-"
+helptext = _("\
+Many fine buildings were constructed in the first Islamic century:\
+ the Dome of the Rock in Jerusalem, the Great Mosque in Damascus, the\
+ second Great Mosques in Kufa and Basra and the desert palaces of the\
+ Umayyads – to name only some of the more notable buildings. Once\
+ established, the tradition for fine architecture continued to\
+ flourish in Islam, as witnessed, for example, by al-Mansur’s Baghdad,\
+ the works of Ibn Tulun in Egypt, the Great Mosque of Cordoba and the\
+ Alhambra palace in Granada, the complex of splendid buildings in\
+ Isfahan and so on. Many well-illustrated books have been devoted to\
+ describing Islamic buildings and it is clearly beyond the scope of\
+ this chapter to attempt even a brief summary of the Muslim\
+ architectural achievement. Instead, we shall confine our attention\
+ to the most basic element in any building – the materials of\
+ construction.\
+")
+
+[advance_islamic_invention]
+name     = _("Islamic Invention")
+req1     = "Islamic Literacy"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.islamic_water_pump"
+graphic_alt = "-"
+helptext = _("\
+The Islamic Golden Age was a period of cultural, economic and\
+ scientific flourishing in the history of Islam, traditionally dated\
+ from the eighth century to the fourteenth century, with several\
+ contemporary scholars dating the end of the era to the fifteenth\
+ or sixteenth century. This period is traditionally understood to\
+ have begun during the reign of the Abbasid caliph Harun al-Rashid\
+ (786 to 809) with the inauguration of the House of Wisdom in Baghdad,\
+ where scholars from various parts of the world with different\
+ cultural backgrounds were mandated to gather and translate all of\
+ the world's classical knowledge into the Arabic language and\
+ subsequently development in various fields of sciences began.\
+ Science and technology in the Islamic world adopted and preserved\
+ knowledge and technologies from contemporary and earlier\
+ civilizations, including Persia, Egypt, India, China, and Greco-Roman\
+ antiquity, while making numerous improvements, innovations and\
+ inventions.\
+")
+
+[advance_islamic_clock_making]
+name     = _("Islamic Clock Making")
+req1     = "Islamic Invention"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.islamic_clocks"
+graphic_alt = "-"
+helptext = _("\
+The Abbasid Caliphs were interested in clocks and ingenious devices.\
+ The story of the clock that was presented by Harun al-Rashid (786-809),\
+ to Charlemagne in 807 C.E. is well known. It is reported also by\
+ Ibn Abi Usaybi’a that Al-Mutawakkil (d. 861) was so obsessed with\
+ ingenuous devices, literally Alat mutaharrika (moving machines), that\
+ he favoured the Bani Musa who took advantage of the Caliph’s obsession\
+ and persecuted their opponents. About the year 1050 C.E. al-Zarqali\
+ constructed a large water clock on the banks of the Tagus at Toledo in\
+ Spain. The clock was still in operation when the Christians occupied\
+ Toledo in 1085 C.E. In Damascus, Muúammad al-Khurasani al-Sa’ati (the\
+ clockmaker) built a monumental clock around 1160. The clock was described\
+ by several travellers, It was still in operation when Ibn Batuta visited\
+ Damascus in the 14th century.\
+")
+
+[advance_islamic_economics]
+name     = _("Islamic Economics")
+req1     = "Islamic Banking"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.currency"
+graphic_alt = "-"
+helptext = _("\
+Between the 9th and 14th centuries, the Muslim world developed many\
+ advanced economic concepts, techniques and usages. These ranged from\
+ areas of production, investment, finance, economic development, taxation,\
+ property use such as Hawala: an early informal value transfer system,\
+ Islamic trusts, known as waqf, systems of contract relied upon by\
+ merchants, a widely circulated common currency, cheques, promissory\
+ notes, early contracts, bills of exchange, and forms of commercial\
+ partnership such as mufawada.\
+")
+ 
+[advance_islamic_impetus]
+name     = _("Islamic Impetus Theory")
+req1     = "Islamic Mechanics"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.theory_of_impetus"
+graphic_alt = "-"
+helptext = _("\
+The theory of impetus was an auxiliary or secondary theory of\
+ Aristotelian dynamics, put forth initially to explain projectile\
+ motion against gravity. It was introduced by John Philoponus in the\
+ 6th century, and elaborated by Nur ad-Din al-Bitruji at the end\
+ of the 12th century.[ The theory was modified by Avicenna in the 11th\
+ century and Abu'l-Barakāt al-Baghdādī in the 12th century, before it was\
+ later established in Western scientific thought by Jean Buridan in the\
+ 14th century. It is the intellectual precursor to the concepts of\
+ inertia, momentum and acceleration in classical mechanics.\ 
+")
+
+[advance_islamic_animal_husbandry]
+name     = _("Islamic Animal Husbandry")
+req1     = "Islamic Zoology"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.animal_husbandry"
+graphic_alt = "-"
+helptext = _("\
+Archaeological evidence from the measurement of bones (osteometry)\
+ demonstrates that sheep in southern Portugal increased in size during\
+ the Islamic period, while cattle increased when the area became\
+ Christian after its reconquest. The archaeologist Simon Davis assumes\
+ that the change in size signifies improvement by animal husbandry,\
+ while in his view the choice of sheep is readily explained by the\
+ Islamic liking for mutton.\
+")
+
+[advance_islamic_irrigation]
+name     = _("Islamic Irrigation")
+req1     = "Islamic Agriculture"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.islamic_irrigation"
+graphic_alt = "-"
+helptext = _("\
+The Islamic period in the Fayyum depression of Middle Egypt, like\
+ medieval Islamic Spain (al-Andalus), was characterised by extremely\
+ large-scale systems of irrigation, with both the supply, via gravity-\
+ fed canals, and the management of water under local tribal control.\
+ In the Islamic period in al-Andalus, whose rural parts were equally\
+ tribal, the irrigation canal network was much enlarged. Similarly, in\
+ the Fayyum, new villages were established in the period, and new water-\
+ dependent orchards and sugar plantations were developed. A 13th century\
+ observer claimed there were 5000 waterwheels along the Guadalquivir\
+ in Islamic Spain; even allowing for medieval exaggeration, irrigation\
+ systems were certainly extensive in the region at that time. The supply\
+ of water was sufficient for cities as well as agriculture: the Roman\
+ aqueduct network into the city of Cordoba was repaired in the Umayyad\
+ period.\
+")
+
+[advance_esnaf]
+name     = _("Islamic Esnaf")
+req1     = "Islamic Economics"
+req2 	  = "Islamic Expansion"
+flags    = ""
+graphic     = "a.islamic_trade"
+graphic_alt = "-"
+helptext = _("\
+Esnaf is a Turkish word which means corporation. During the Early\
+ Modern Period belonging to a guild gave people a voice and was an\
+ important part of one's identity. Handicraft producers were linked\
+ to one another by a range of social, political, and economic ties.\
+ Guilds varied among societies, social class, and genders. There were\
+ many misconceptions, differences, as well as similarities between\
+ Europe and the Ottoman Empire. There were hierarchies within guilds;\
+ sometimes they shared tools, worked together, or worked alone.\
+") 
+
+[advance_islamic_steel_works]
+name     = _("Islamic Steel Works")
+req1     = "Islamic Bronze Working"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.iron_working"
+graphic_alt = "-"
+helptext = _("\
+Many examples of Islamic arms and armor are especially noteworthy\
+ for their opulent decoration, a fact for which they were already\
+ renowned in the Middle Ages. Sword blades of Damascus steel or\
+ watered steel refer to blades that had been given a wavy or watered\
+ pattern, produced in the steel prior to forging using specific\
+ smelting and crucible techniques. Although this technique was\
+ practiced in the Islamic Middle East at least since the Middle\
+ Ages, in western Europe such blades were believed to originate\
+ from Damascus (Syria), hence the name.\
+") 
+
+[advance_islamic_archery]
+name     = _("Islamic Archery")
+req1     = "Islamic Warrior COde"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.advanced_archery"
+graphic_alt = "-"
+helptext = _("\
+Prophet Muhammad was quite good with a bow, and appreciated the\
+ benefits of archery in sports and warfare. A recurved bow made\
+ of bamboo, and ascribed to Muhammad, is held in the Sacred Relics\
+ (Topkapı Palace) in the Chamber of the Sacred Relics in the Topkapi\
+ Museum in Istanbul. There are several comments by Muhammad concerning\
+ archery in the Hadith. Umm Salama told of Muhammed coming upon two\
+ groups practicing archery, and he praised them. Malik ibn Anas spoke\
+ about when at the battle of Uhud, the troops left Muhammad behind,\
+ where the archer, Talhah, remained behind and protected the Prophet\
+ with his shield. Uqbah ibn Amir relates how Muhammad said that archery\
+ shooting was more dear to him than riding.\
+")
+
+[advance_islamic_fursan]
+name     = _("Islamic Fursan")
+req1     = "Islamic Warrior Code"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.cavalry"
+graphic_alt = "-"
+helptext = _("\
+The Fursan unit, or the early Muslim cavalry unit, was the cavalry\
+ forces of Rashidun army during the Muslim conquest of Syria. The\
+ division which formed the early cavalry corps of the caliphate were\
+ commonly nicknamed the Mobile Guard (Arabic: طليعة متحركة, Tulay'a\
+ mutaharikkah or Arabic: الحرس المتحرك, al-Haras al-Mutaharikkah) or\
+ also nicknamed Marching army( جيش الزحف, Jaish al‐Zaḥf). These units\
+ were famously commanded by Khalid ibn Walid, the most successful early.\
+") 
+
+[advance_islamic_machinery]
+name     = _("Islamic Machinery")
+req1     = "Islamic Invention"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.machine_tools"
+graphic_alt = "-"
+helptext = _("\
+A chapter of Al-Jazari’s book was devoted to water raising machines.\
+ It also included  sophisticated machines  powered by water and gravity,\
+ simulating the principle of the balance (see the video below). As the\
+ water fills one bucket and as it spills into the large cylindrical tank\
+ a siphon sets into action and so on, to generate air pressure through\
+ a flute and gives out a sound at controlled intervals. The interval is\
+ controlled by the rate at which the water flows from the tap.\
+")
+
+[advance_islamic_sanitation]
+name     = _("Islamic Sanitation")
+req1     = "Islamic Alchemy"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.sanitation"
+graphic_alt = "-"
+helptext = _("\
+In the Abbasid Caliphate (8th-13th centuries), and as an example of\
+ high sanitary and hygienic level, its capital city of Baghdad (Iraq)\
+ had 65,000 public baths, along with a sewer system. Islamic toilet\
+ hygiene requires washing with water or cleaning after using the toilet,\
+ for purity and to minimize germs.\
+")
+
+[advance_islamic_nutrition]
+name     = _("Islamic Nutrition")
+req1     = "Islamic Pharmacology"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.nutrition"
+graphic_alt = "-"
+helptext = _("\
+According to the Holy Quran, except Haram foods (pork meat, wine, carrion\
+ meat, blood, and meat of animals not slaughtered properly in the Islamic\
+ manner), all foods are tayyeb (lawful). The Holy Quran contains many\
+ foodstuffs and verses with nutritional concepts and it recommends eating\
+ varied and balanced diet.\
+")
+
+[advance_islamic_printing]
+name     = _("Islamic Printing")
+req1     = "Islamic Machinery"
+req2 	  = "Islamic Arts"
+flags    = ""
+graphic     = "a.admin"
+graphic_alt = "-"
+helptext = _("\
+The Golden Age of Islam witnessed text printing, including passages from\
+ the Quran and hadith, embracing the Chinese craft of paper making,\
+ developed and adopted it widely in the Muslim world, which led to a\
+ major increase in the production of manuscript texts. The printing\
+ technique in Egypt was adopted reproducing texts on paper strips and\
+ supplying them in various copies to meet the demand. Block printing,\
+ known as tarsh in Arabic, was also developed during the ninth and tenth\
+ centuries, mostly for prayers and amulets. Evidences tell that the print\
+ blocks were made from non-wood materials, possibly tin, lead, or clay.\
+ Europe adopted woodblock printing from the Islamic world, at first for\
+ fabric, the method of metal block printing remained unknown in the West.\
+ Block printing later went out of use in the Muslim Timurid Renaissance.\
+")
+
+[advance_islamic_destructive_distillation]
+name     = _("Islamic Destructive Distillation")
+req1     = "Islamic Alchemy"
+req2     = "Islamic Building Construction"
+flags    = ""
+graphic     = "a.destructive_distillation"
+graphic_alt = "-"
+helptext = _("\
+Destructive distillation is a chemical process in which decomposition\
+ of unprocessed material is achieved by heating it to a high temperature;\
+ the term generally applies to processing of organic material in the\
+ absence of air or in the presence of limited amounts of oxygen or other\
+ reagents, catalysts, or solvents, such as steam or phenols. It is an\
+ application of pyrolysis. The process breaks up or 'cracks' large\
+ molecules. Coke, coal gas, gaseous carbon, coal tar, ammonia liquor,\
+ and coal oil are examples of commercial products historically produced\
+ by the destructive distillation of coal.\
+") 
+
+[advance_islamic_improved_rows]
+name     = _("Islamic Improved Roads")
+req1     = "Islamic Building Construction"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.islamic_improved_rows"
+graphic_alt = "-"
+helptext = _("\
+In the medieval Islamic world, many roads were built throughout the\
+ Arab Empire. The most sophisticated roads were those of Baghdad, Iraq,\
+ which were paved with tar in the 8th century. Tar was derived from\
+ petroleum accessed from oil fields in the region, through the chemical\
+ process of destructive distillation.\
+")
+
+[advance_islamic_theocracy]
+name     = _("Islamic Theocracy")
+req1     = "Islamic Kalam"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.monarchy"
+graphic_alt = "-"
+helptext = _("\
+Theocracy- government based on divine authority. Islam's theocracy\
+ began when Muhammad became a religious and political leader. The\
+ Islamic Empire based its rule and laws on the teachings of the Quran.\ 
+ Ruled by a caliph (Arabic khalīfah, successor), who held temporal and\
+ sometimes a degree of spiritual authority, the empire of the Caliphate\
+ grew rapidly through conquest during its first two centuries to include\
+ most of Southwest Asia, North Africa, and Spain\
+")
+
+[advance_islamic_tactics] 
+name     = _("Islamic Tactics")
+req1     = "Islamic Fursan"
+req2 	  = "Islamic Archery"
+flags    = ""
+graphic     = "a.tactics"
+graphic_alt = "-"
+helptext = _("\
+The main determinant of the Muslim tactics during the crusades was the\
+ predominant position of the horse archer in their army. As a light\
+ cavalry, the horse archers that made up the bulk of the Islamic armies\
+ were highly mobile. This mobility was used in four ways which gave the\
+ Turks an advantage over the European armies which could be highly\
+ dangerous when they approached for close combat. High mobility allowed\
+ the Islamic army to maintain a distance from the enemy and choose the\
+ moment at which they would close with them. This allowed for the Muslim\
+ forces to generally control the place and timing of the major\
+ confrontations. The second use of this mobility was the feigned retreat\
+ which allowed them to lead the Europeans into ambushes or to cause a\
+ fake retreat to last for some days to tire the enemy. Good mobility\
+ allowed them to attack the weakest points in the enemy's army. The rear\
+ and the flanks made ideal targets against the Europeans since the\
+ commander would travel in the vanguard at the front of the column while\
+ traveling. This caused chaos while traveling, and in a battle it allowed\
+ the Turks to attack the crusaders without ever coming into a pitched\
+ battle with the main body of the Europeans until they were worn-down and\
+ had lost all support from the flanks of the attack in battle. The last\
+ way in which this mobility helped the Muslims was in attacking the enemy\
+ and forcing him to fight on the march.\
+")
+
+[advance_islamic_ethics] 
+name     = _("Islamic Ethics")
+req1     = "Islamic Kalam"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.literacy"
+graphic_alt = "-"
+helptext = _("\
+Many medieval Muslim thinkers pursued humanistic, rational and scientific\
+ discourses in their search for knowledge, meaning and values. A wide\
+ range of Islamic writings on love, poetry, history and philosophical\
+ theology show that medieval Islamic thought was open to the humanistic\
+ ideas of individualism, occasional secularism, skepticism and liberalism.\ 
+ Religious freedom, though society was still controlled under Islamic\
+ values, helped create cross-cultural networks by attracting Muslim,\
+ Christian and Jewish intellectuals and thereby helped spawn the greatest\
+ period of philosophical creativity in the Middle Ages from the 8th to\
+ 13th centuries. Another reason the Islamic world flourished during this\
+ period was an early emphasis on freedom of speech\
+")
+
+[advance_islamic_agriculture] 
+name     = _("Islamic Agriculture")
+req1     = "Islamic Botony"
+req2     = "Islamic University"
+flags    = ""
+graphic     = "a.agriculture"
+graphic_alt = "-"
+helptext = _("\
+The Islamic Golden Age witnessed a fundamental transformation in\
+ agriculture known as the Arab Agricultural Revolution. Muslim\
+ traders enabled the diffusion of many crops and farming techniques\
+ between different parts of the Islamic world, as well as the\
+ adaptation of plants and techniques from beyond the Islamic world.\
+ Crops from Africa such as sorghum, crops from China such as citrus\
+ fruits, and numerous crops from India such as rice, cotton, and sugar\
+ cane, were distributed throughout Islamic lands which normally would\
+ not be able to grow these crops. Newly adopted crops combined with an
+\ increased mechanization of agriculture led to major changes in the\
+ economy, population distribution, vegetation cover, agricultural\
+ production and income, population levels, urban growth, the\
+ distribution of the labour force, cooking and diet, clothing, and\
+ numerous other aspects of life in the Islamic world.\
+ ")
+
+[advance_islamic_industrial_growth]
+name     = _("Islamic Industrial Growth") 
+req1     = "Islamic Improved Roads"
+req2 	  = "Islamic Technology"
+flags    = ""
+graphic     = "a.feudalism"
+graphic_alt = "-"
+helptext = _("\
+Hydropower, tidal power, and wind power were used to power mills and\
+ factories. Limited use was also made of fossil fuels such as petroleum.\
+ The industrial use of watermills in the Islamic world dates back to the\
+ 7th century, while horizontal-wheeled and vertical-wheeled water mills\
+ were both in widespread use since at least the 9th century. A variety\
+ of industrial mills were being employed in the Islamic world, including\
+ early fulling mills, gristmills, hullers, sawmills, shipmills, stamp\
+ mills, steel mills sugar mills, tide mills and windmills. By the 11th\
+ century, mills operated throughout the Islamic world, from Spain\
+ (al-Andalus) and North Africa to the Middle East and Central Asia.\
+ Muslim engineers also invented crankshafts and water turbines, employed\
+ gears in mills and water-raising machines, and pioneered the use of dams\
+ as sources of water power, used to provide additional power to watermills\
+ and water-raising machines. Such advances made it possible for many\
+ industrial tasks that were previously driven by manual labour in ancient\
+ times to be mechanized and driven by machinery instead in the medieval\
+ Islamic world. The transfer of these technologies to medieval Europe had\
+ an influence on the Industrial Revolution.\
+")
+
+[advance_islamic_technology] 
+name     = _("Islamic Technology") 
+req1     = "Islamic Machinery"
+req2 	  = "None"
+flags    = ""
+graphic     = "a.islamic_water_pump"
+graphic_alt = "-"
+helptext = _("\
+A significant number of inventions were produced by medieval Muslim\
+ engineers and inventors, such as Abbas Ibn Firnas, the Banū Mūsā, Taqi\
+ al-Din, and most notably al-Jazari. Some of the innovative technologies\
+ to have come from the Islamic Golden Age include the camera obscura,\
+ coffee, soap bar, toothpaste, shampoo, distilled alcohol, uric acid,\
+ nitric acid, alembic, valve, reciprocating suction piston pump,\
+ mechanized water clocks, quilting, surgical catgut, vertical-axle\
+ windmill, inoculation, cryptanalysis, frequency analysis, three-course\
+ meal, stained glass and quartz glass, Persian carpet, and a celestial\
+ globe.\
+")
+
+[advance_islamic_arts] 
+name     = _("Islamic Arts")
+req1     = "Islamic Steel Works"
+req2 	  = "Islamic Pottery"
+flags    = ""
+graphic     = "a.admin"
+graphic_alt = "-"
+helptext = _("\
+An Arabic manuscript from the 13th century depicting Socrates (Soqrāt)\
+ in discussion with his pupils. The golden age of Islamic (and/or Muslim)\
+ art lasted from 750 to the 16th century, when ceramics, glass, metalwork,\
+ textiles, illuminated manuscripts, and woodwork flourished. Lustrous\
+ glazing was an Islamic contribution to ceramics. Islamic luster-painted\
+ ceramics were imitated by Italian potters during the Renaissance.\
+ Manuscript illumination developed into an important and greatly respected\
+ art, and portrait miniature painting flourished in Persia. Calligraphy,\
+ an essential aspect of written Arabic, developed in manuscripts\
+ and architectural decoration.\
+")
+
+[advance_islamic_music] 
+name     = _("Islamic Music")
+req1     = "Islamic Kalam"
+req2     = "Islamic University"
+flags    = ""
+graphic     = "a.admin"
+graphic_alt = "-"
+helptext = _("\
+A number of musical instruments used in classical music are believed\
+ to have been derived from Arabic musical instruments: the lute was\
+ derived from the al’ud, the rebec (ancestor ofviolin) from the rebab,\
+ the guitar from qitara, naker from naqareh, adufe from al-duff, alboka\
+ from al-buq, anafil from al-nafir, exabeba from al-shabbaba (flute),\
+ atabal (bass drum) from al-tabl, atambal from al-tinbal, the balaban,\
+ the castanet from kasatan, sonajas de azófar from sunuj al-sufr, the\
+ conical bore wind instruments, the xelami from the sulami orfistula\
+ (flute or musical pipe), the shawm and dulzaina from the reed\
+ instruments zamr and al-zurna, the gaita from the ghaita, rackett\
+ from iraqya or iraqiyya, tambura, sitar, the harpand zither from the\
+ qanun, geige (violin) from ghichak, and the theorbo from the tarab.\
+")
+
+[advance_jihad] 
+name     = _("Jihad")
+req1     = "Islamic Theocracy"
+req2     = "Islamic Tactics"
+flags    = ""
+graphic     = "a.islamic_code"
+graphic_alt = "-"
+helptext = _("\
+The literal meaning of Jihad is struggle or effort, and it means much\
+ more than holy war. Muslims use the word Jihad to describe three\
+ different kinds of struggle:\
+    - A believer's internal struggle to live out the Muslim faith as
+	  well as possible\
+    - The struggle to build a good Muslim society\
+    - Holy war: the struggle to defend Islam, with force if necessary\
+Many modern writers claim that the main meaning of Jihad is the internal\
+ spiritual struggle, and this is accepted by many Muslims.\
+")
+
+[advance_islamic_expansion] 
+name     = _("Islamic Expansion")
+req1     = "Islamic Trade"
+req2     = "Islamic Industrial Growth"
+flags    = ""
+graphic     = "a.islamic_code"
+graphic_alt = "-"
+helptext = _("\
+The Rashidun can be credited for military expansion, but did Islam\
+ truly spread through their conquests? Significant conversion and\
+ cultural exchange did not occur during their short rule, nor were\
+ complex political institutions developed. It was not until the Umayyad\
+ Dynasty—from 661 to 750—that Islamic and Arabic culture began to truly\
+ spread. The Abbasid Dynasty—from 750 to 1258—intensified and solidified\
+ these cultural changes.\
+")
+
+[advance_islamic_explosives]
+name     = _("Islamic Explosives")
+req1     = "Islamic War Engines"
+req2     = "Islamic Expansion"
+flags    = ""
+graphic     = "a.explosives"
+graphic_alt = "-"
+helptext = _("\
+An explosive is a chemical compound or mixture that undergoes rapid\
+ combustion and produces heat, gas, and pressure effects. The earliest\
+ explosive compound known was gunpowder, which was first used in the\
+ 13th century, and was the only explosive known for hundred of years.\
+ The first modern explosive, a compound known as nitroglycerin, was\
+ discovered in 1846. Compounds similar to nitroglycerin are the most\
+ commonly used explosives today. Explosives vary in brisance, or\
+ shattering effect, and in their stability under various enviornmental\
+ conditions. Aside from their obvious use in weaponry, explosives are\
+ also used in such peaceful applications as rocket propellants and for\
+ mining and demolition work.\
+")
+
+[advance_ottomanism]
+name     = _("Ottomanism")
+req1     = "Islamic Esnaf"
+req2     = "Islamic Explosives"
+flags    = ""
+graphic     = "a.ottomanism2"
+graphic_alt = "-"
+helptext = _("\
+A nation-building ideology, put forward in the late days of the Ottoman\
+ Empire, that afforded equal status to Muslims and non-Muslims. It wss\
+ single Ottoman citizenship was intended to replace religious, ethnic,\
+ and linguistic divisions among the Empire’s diverse subjects.\
+ Administratively, Ottomanist policies emphasized a strong central state\
+ to which all subjects were bound. In promoting religious equality\
+ (Tanzimat Reforms), the state assumed control over previously independent\
+ community schools with the intention of teaching a common curriculum in\
+ order to create uniform citizens, which was vehemently opposed by\
+ religious leadership.\
+")

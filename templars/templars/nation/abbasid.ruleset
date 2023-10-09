@@ -1,0 +1,73 @@
+[nation_abbasid]
+
+name=_("Abbasid Caliphate")
+plural=_("?plural:Abbasids")
+groups="Medieval", "Asian"
+legend=_("Iraq was founded after the fall of the Ottoman\
+ empire. It is encompassing the ancient region of Mesopotamia at the\
+ confluence of the Tigris and Euphrates rivers.")
+
+leaders = {
+ "name",                        "sex"
+ "Abu al-'Abbas as-Saffah",     "Male"  ;Abu al-‘Abbās ‘Abdu'llāh ibn Muhammad al-Saffāḥ, 1st Abbasid caliph, 722-754
+ "Al-Mansur",				 	"Male"  ;Abu Ja'far Abdallah ibn Muhammad al-Mansur, 754-775
+ "Al-Mahdi", 					"Male"  ;Abu Abdallah Muhammad ibn Abdallah al-Mansur, 775-785
+ "Al-Hadi", 					"Male"  ;Abu Muhammad Musa ibn Mahdi al-Hadi, 785-786
+ "Harun al-Rashid",				"Male"  ;786-809
+ "Al-Amin",						"Male"  ;Abu Musa Muhammad ibn Harun al-Rashid, 809-813
+ "Ibrahim ibn al-Mahdi",     	"Male"  ;817-819
+ "Al-Ma'mun", 					"Male"  ;Abu al-Abbas Abdallah ibn Harun al-Rashid, 819-833
+ "al-Muʿtaṣim biʾllāh",			"Male"  ;Abū Isḥāq Muḥammad ibn Hārūn al-Rashīd, 833-842
+ "al-Wāthiq bi’llāh",			"Male"  ;Abū Jaʿfar Hārūn ibn Muḥammad, 842-847
+ "al-Mutawakkil ʽalà Allāh",	"Male"  ;Abu al-Faḍl Jaʽfar ibn Muḥammad al-Muʽtaṣim billāh, 10th Abbasid caliph & hieght of the empire, 847-861
+ "Al-Nasir",   				    "Male"  ;Al-Nasir li-Din Allah , 1180-1225
+ "Al-Musta'sim Billah",			"Male"  ;al-Musta'sim-Billah Abu-Ahmad Abdullah bin al-Mustansir-Billah, last of the Abbasid caliphs, 1242-1258
+}
+
+ruler_titles = {
+ "government",      "male_title",           "female_title"
+ "Communism",       _("Chairman %s"),       _("Chairwoman %s")
+ "Fundamentalism",  _("Caliph %s"),         _("Calipha %s")
+}
+
+flag="abbasid"
+flag_alt="iraq"
+city_style="Babylonian"
+
+init_techs="Islam"
+init_buildings="Mosque"
+init_units=""
+
+conflicts_with="Sumerian", "Babylonian"
+civilwar_nations="Assyrian", "Kurdish", "Kuwaiti"
+
+cities =
+ "Baghdad",
+ "Al-Basra",
+ "Mosul",
+ "An-Najaf",
+ "Kirkuk",
+ "Tikrit",
+ "Umm Qasr",
+ "Nassiriya",
+ "Ar-Rutba",
+ "Karbala",
+ "As-Sulaymaniya",
+ "Samarra",
+ "Al-Kut",
+ "Ar-Ramadi",
+ "Arbil",
+ "Kazimain",
+ "Madinat as-Sadr",
+ "Baiji",
+ "Baquba",
+ "Dahuk",
+ "Al-Diwaniya",
+ "Falluja",
+ "Halabja",
+ "Al-Hillah",
+ "Iskandariya",
+ "Muqdadiya",
+ "Osiraq",
+ "Samawa",
+ "Tadji"

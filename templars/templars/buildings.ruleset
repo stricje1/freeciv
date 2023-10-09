@@ -1,0 +1,3352 @@
+; This is the Templar 1099 AD ruleset. See doc/README.ruleset_templar
+; for a detailed description. THIS IS THE PRIMARY BUILDINGS RULESET
+; FOR THE TEMPLARS SCENARIO.
+
+; Modifying this file:
+; You should not modify this file except to make bugfixes or for other
+; "maintenance".  If you want to make custom changes, you should create
+; a new datadir subdirectory and copy this file into that directory, and
+; then modify that copy.  Then use the command "rulesetdir <mysubdir>" 
+; in the server to have freeciv use your new customized file.
+
+; Note: freeciv AI may not cope well with anything more than minor changes.
+
+[datafile]
+description="Experimental buildings data for Freeciv"
+options="+Freeciv-2.5-ruleset"
+
+; /* <-- avoid gettext warnings
+;
+; Below: The individual buildings, one per section.
+; (Buildings = City Improvements and Wonders)
+;
+; The actual tag used (the * in [building_*]) does not matter, except 
+; it must be unique within this file, and it may be used in debug 
+; output when reading this file.
+;
+; Notes:
+;
+; name          = translatable name as seen by user
+; rule_name     = (optional) name for savegames, rulesets etc; if not
+;                 present, 'name' is used. Since the name used in savegames
+;                 must not change, use this when renaming a building after a
+;                 ruleset has been released.
+; genus	        = genus; one of:
+;                 "GreatWonder", "SmallWonder", "Improvement", "Special".
+; reqs		= requirements to build the building (see effects.ruleset
+;		  and README.effects for help on requirements)
+; graphic	= icon of improvement (used in city dialog)
+; graphic_alt	= alternate icon of improvement
+; obsolete_by	= advance which makes building obsolete; special
+;		  value "None" means does not become obsolete
+; build_cost	= production shields required to build
+; upkeep	= monetary upkeep value
+; sabotage	= percent chance of diplomat sabotage being successful
+; flags         = special flag strings
+;
+; ** Building flags **
+; "VisibleByOthers"  = Anyone who can see your city knows whether it has
+;                      this improvement. (Great and small wonders are
+;                      always visible.)
+; "SaveSmallWonder"  = If you lose the city with this building in, and the
+;                      "savepalace" server setting is enabled, another will
+;                      be built for free in a random city.
+;                      Should only be used with genus "SmallWonder".
+; "Gold"             = Not a real building; production turned into gold
+;                      indefinitely (capitalization/coinage).
+;                      Genus should be "Special".
+;
+; */ <-- avoid gettext warnings
+
+[building_aqueduct]
+name		= _("Aqueduct")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Qanat", "Player"
+    }
+graphic	= "b.aqueduct"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 30
+upkeep		= 1
+sabotage	= 1
+sound		= "b_aqueduct"
+sound_alt	= "b_generic"
+helptext	= _("\
+The Romans constructed aqueducts throughout their Republic and later\
+ Empire, to bring water from outside sources into cities and towns.\
+ Aqueduct water supplied public baths, latrines, fountains, and\
+ private households; it also supported mining operations, milling,\
+ farms, and gardens. An aqueduct allows a city to grow larger than\
+ size 8 and reduces the chance of plague within the city. After\
+ Milling is researched this effect of the Aqueduct is reduced.\
+")
+
+[building_bank]
+name		= _("Bank")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Banking", "Player"
+      "Building", "Marketplace", "City"
+    }
+graphic	= "b.bank"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 40
+upkeep		= 1
+sabotage	= 1
+sound		= "b_bank"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+By the end of the thirteenth century, with its economic resurgence,\
+ three classes of credit agents became distinguishable: the \
+ pawnbroker, the moneychangers and deposit bankers, and the merchant\
+ bankers. The latter were the new elite of the profession,\
+ unprecedented in antiquity and in the early Middle Ages.\
+Together with the Marketplace improvement, a Bank increases the\
+ luxury and tax production within a city by 100%.\
+")
+
+[building_barracks]
+name		= _("Barracks")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+	  "Tech", "Warrior Code", "Player"
+    }
+graphic	= "b.barracks_1"
+graphic_alt	= "b.barracks_i"
+obsolete_by	= "Gunpowder"
+replaced_by	= "Barracks II"
+build_cost	= 10
+upkeep		= 1
+sabotage	= 1
+sound		= "b_barracks_i"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+With a Barracks, each new land unit built in a city will\
+ automatically have Veteran status, which means that its attack and\
+ defense strengths are increased by 50%.  Also, damaged land units\
+ which stay in town for one full turn without moving are completely\
+ restored.\
+")
+
+[building_barracks_ii]
+name		= _("Barracks II")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Currency", "Player"
+    }
+graphic	= "b.barracks_2"
+graphic_alt	= "b.barracks_i"
+obsolete_by	= "Combined Arms"
+replaced_by	= "Barracks III"
+build_cost	= 20
+upkeep		= 1
+sabotage	= 1
+sound		= "b_barracks_ii"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+With a Barracks, each new land unit built in a city will\
+ automatically have Veteran status, which means that its attack and\
+ defense strengths are increased by 50%.  Also, damaged land units\
+ which stay in town for one full turn without moving are completely\
+ restored.\
+")
+
+[building_barracks_iii]
+name		= _("Barracks III")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Combined Arms", "Player"
+    }
+graphic	= "b.barracks_3"
+graphic_alt	= "b.barracks_i"
+obsolete_by	= "None"
+build_cost	= 30
+upkeep		= 1
+sabotage	= 1
+sound		= "b_barracks_iii"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+With a Barracks, each new land unit built in a city will\
+ automatically have Veteran status, which means that its attack and\
+ defense strengths are increased by 50%.  Also, damaged land units\
+ which stay in town for one full turn without moving are completely\
+ restored.\
+")
+
+[building_barber_shop]
+name	= _("Barber Shop")
+genus	= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Phlebotomy", "Player"
+    }
+graphic	= "b.barber_shop"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 30
+upkeep		= 1
+sabotage	= 1
+sound		= "b_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+In the middle ages, bloodletting was not performed by physicians,\
+ but by 'barber-surgeon'. These barber-surgeons also performed\
+ amputations and pulled teeth, which is why the red stripe on a\
+ barber pole is symbolic of the bloodletting portion of their\
+ profession while the white stripe represented tooth enamel.\
+ Towards the end of the 16th century, surgery became more\
+ sophisticated as a number of fields of medicine began to advance\
+ and the job of bloodletting went back to trained physicians. Today, \
+ phlebotomy has a different use: To acquire a sample of blood from a\
+ patient for diagnostic tests under a physician’s orders.\
+ Moreover, taking a blood sample is a quick, safe and virtually\
+ painless procedure, performed by a certified phlebotomist, in a\
+ healthcare environment, using sterile tools.\
+")
+
+[building_blacksmith]
+name		= _("Blacksmith")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Guilds", "Player"
+    }
+graphic	= "b.blacksmith"
+graphic_alt	= "b.smithing"
+obsolete_by	= "None"
+build_cost	= 30
+upkeep		= 1
+sabotage	= 1
+sound		= "b_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+Medieval blacksmiths played an important role within their\
+ communities as the creators of weapons and everyday tools. They\
+ lived and worked in castles, cities, and villages and  served a\
+ wide range of people—from powerful kings to humble farmers.\
+ Blacksmiths living in cities during the middle ages worked under\
+ the authority of local guilds, which were founded sometime during\
+ the 12th century. These medieval organizations brought together\
+ working-class people like merchants, artisans, and craftsmen and\
+ operated as a combination of a trade union and vocational school.\
+ Under the guilds, medieval smiths went through rigorous training\
+ and rose through the ranks of apprentice, journeyman, and master\
+ to become more respected and influential craftsmen.\
+")
+
+[building_butcher]
+name		= _("Butcher")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Animal Husbandry", "Player"
+    }
+graphic	= "b.butcher"
+graphic_alt	= "b.butcher"
+obsolete_by	= "None"
+build_cost	= 25
+upkeep		= 1
+sabotage	= 1
+sound		= "b_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+It was during medieval times that the profession of butchery came into\
+ the fore, as preparing the animal and cutting the meat into proper\
+ cuts without waste whilst providing high levels of hygiene was\
+ paramount to the tastes and demands of customers. While butchery\
+ had become popular around the world and evidence found in ancient\
+ Rome that showed how the Romans carved and dressed meats, the earliest\
+ reference in recent history was in London, England with The Worshipful\
+ Company of Butchers Guild which was formed as early as 975AD.\
+")
+
+[building_cathedral]
+name		= _("Cathedral")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Monotheism", "Player"
+      "Building", "Temple", "City"
+    }
+graphic	= "b.cathedral"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 40
+upkeep		= 1
+sabotage	= 1
+sound		= "b_cathedral"
+sound_alt	= "b_generic"
+helptext	= _("\
+A Cathedral makes 3 unhappy citizens content in a city, making it\
+ easier to maintain order in that city; however, it does not affect\
+ citizens made unhappy by military activity.  The discovery of\
+ Theology increases the effect of a Cathedral, making an additional\
+ unhappy citizen content.  The discovery of Collectivism lessens\
+ the effect of a Cathedral, reducing by one the number of unhappy\
+ citizens made content.\
+")
+
+[building_cavalry_school]
+name		= _("Cavalry School")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Cavalry", "Player"
+      "Building", "Barracks II", "City"
+    }
+graphic	= "b.cavalry_school"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 40
+upkeep		= 1
+sabotage	= 1
+sound		= "b_generic"
+sound_alt	= "-"
+helptext	= _("\
+A cavalry school allows a city to train heavy cavalry for desert\
+ warfare. It also allows for nations to build heavy cavalry units\
+ partuicular to their culture.
+")
+
+[building_city_walls]
+name		= _("City Walls")
+genus		= "Improvement"
+flags		= "VisibleByOthers"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Masonry", "Player"
+    }
+graphic	= "b.city_walls"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 30
+upkeep		= 0
+sabotage	= 50
+sound		= "b_city_walls"
+sound_alt	= "b_generic"
+helptext	= _("\
+City Walls make it easier to defend a city. They triple the defense\
+ strength of units within the city against land and helicopter\
+ units. They are ineffective against airborne and sea units as well\
+ as Howitzers. City Walls also prevent the loss of population which\
+ occurs when a defending unit is destroyed by a land unit.\
+")
+
+[building_climate_academy]
+name		= _("Academy of Climate Studies")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Climate Analysis", "Player"
+    }
+graphic	= "b.climate_studies_academy"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 30
+upkeep		= 2
+sabotage	= 1
+sound		= "b_aqueduct"
+sound_alt	= "b_generic"
+helptext	= _("\
+This improvement is wishful thinking as science had not become\
+ globalized sufficiently to enable these kinds of studies. Be that\
+ as it may, such a contribution may have helped humankinds foresee\
+ future problems and armed the modern age to rected more promptly\
+ to climate-change issues. Building this improvement results in a\
+ make (citizens) happy effect for cities in which one is constructed.\
+")
+
+[building_coastal_defense]
+name		= _("Coastal Defense")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Gunpowder", "Player"
+      "TerrainClass", "Oceanic", "Adjacent"
+    }
+graphic	= "b.coastal_defense"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 30
+upkeep		= 1
+sabotage	= 1
+sound		= "b_coastal_defense"
+sound_alt	= "b_generic"
+helptext	= _("\
+Coast protectionrefers to systemsand structures such as sea-walls,\
+ promenades etc,that stabilise the coastline and reduce the risk of\
+ lossto land and propertycaused by erosional processesand or\
+ encroachment by the sea. The construction of a costal defense\
+ increases the defense strength of units within a city by a factor\
+ of 2 when defending against bombardments from enemy ships.\
+")
+
+[building_colosseum]
+name		= _("Colosseum")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Construction", "Player"
+    }
+graphic	= "b.colosseum"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 35
+upkeep		= 4
+sabotage	= 1
+sound		= "b_colosseum"
+sound_alt	= "b_generic"
+helptext	= _("\
+Colosseum were used in ancient Rome for gladiatoral games. By the time
+ of the middle ages, a coloseum was likely used has housing, stables,\
+ markets, etc., but was never again a site of games or sports. A\
+ city's coloseum entertains the citizens of a city, making 3 unhappy\
+ citizens content. However, it does not affect citizens made unhappy\
+ by military activity.\
+")
+
+[building_corral]
+name		= _("Corral")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Animal Husbandry", "Player"
+    }
+graphic	= "b.corral"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 30
+upkeep		= 3
+sabotage	= 1
+sound		= "b_colosseum"
+sound_alt	= "b_generic"
+helptext	= _("\
+A corral is a pen for horses, cows, or other livestock. If your sheep\
+ get out of the corral, you'll have to take the dogs out to help you\
+ round them up again. The word corral comes either from the Spanish\
+ word corro, which means ring, or from the Old Portuguese word curral,\
+ meaning pen or enclosure.\
+")
+
+[building_courthouse]
+name		= _("Courthouse")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Code of Laws", "Player"
+    }
+graphic	= "b.courthouse"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 40
+upkeep		= 1
+sabotage	= 1
+sound		= "b_courthouse"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+Courts played a big role in medeval monarchies. By the 12th Century\
+ there were all kinds of courts: county courts, village courts, manor\
+ courts, Church courts, and so on. The court in which a person was\
+ tried depended on their position in society.The courts of the city\
+ may be divided into two categories. First there were those held after\
+ 1396 by the sheriffs. Secondly, there were courts over which the mayor\
+ presided. A city courthouse reduces the corruption in a city by 50%,\
+ and makes the revolt cost, and makes the revolt cost of the city 4\
+ times bigger.\
+ ")
+
+[building_culinary_arts]
+name		= _("Culinary Arts Academy")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Nutrition", "Player"
+    }
+graphic	= "b.culinary_arts"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 40
+upkeep		= 1
+sabotage	= 1
+sound		= "b_courthouse"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+Medieval professional cooks were taught their trade through apprenticeship\
+ and practical training, working their way up in the highly defined kitchen\
+ hierarchy. A medieval cook employed in a large household would most likely\
+ have been able to plan and produce a meal without the help of recipes or\
+ written instruction. Due to the generally good condition of surviving\
+ manuscripts it has been proposed by food historian Terence Scully that they\
+ were records of household practices intended for the wealthy and literate\
+ master of a household, such as Le Ménagier de Paris from the late 14th\
+ century. Building a culinary arts academy reults in a health percenatge\
+ increase in cities where one is constructed.\
+ ")
+ 
+[building_draft_board]
+name		= _("Draft Board")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Conscription", "Player"
+    }
+graphic	= "b.draft_board"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 40
+upkeep		= 1
+sabotage	= 1
+sound		= "b_courthouse"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+Under the feudal conditions for holding land in the medieval period, all\
+ peasants, freemen commoners and noblemen aged 15 to 60 living in the\
+ countryside or in urban centers, were summoned for military duty when\
+ required by either the king or the local lord bringing with them weapons and\
+ armor according to their wealth. These levies fought as footmen, sergeants,\
+ and men at arms under local superiors appointed by the king or the local lord,\
+ such as the arrière-ban in France. Like a darfet board, Arrière-ban denoted\
+ a general levy, where all able-bodied males living in France were summoned\
+ to go to war by the King. Men were summoned by the bailiff, who were were military\
+ and political administrators installed by the King to steward and govern a specific\
+ area of a province following the king's commands and orders. The men summoned in\
+ this way were then summoned by the lieutenant who was the King's representative\
+ and military governor over an entire province comprising many bailiwicks,\
+ seneschalties and castellanies. All men from the richest noble to the poorest\
+ commoner were summoned under the arrière-ban and they were supposed to present\
+ themselves to the King or his officials carrying arms and armor according to their\
+ wealth to fight as footmen, sergeants, and men at arms. A similar system existed in\
+ England called commissions of Array. Although the exact laws varied greatly\
+ depending on the country and the period, generally these levies were only obliged\
+ to fight for one to three months. Many were subsistence farmers, and it was in\
+ everyone's interest to send the men home for harvest-time.\ 
+ ")
+ 
+[building_environment_agency]
+name		= _("Environment Agency")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Environmentalism", "Player"
+    }
+graphic	= "b.environment_agency"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 60
+upkeep		= 1
+sabotage	= 1
+sound		= "b_foundry"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+Modern developed counrties typically have an environmental organization with\
+ responsibilities relating to the protection and enhancement of the environment.\
+ For example, The Environment Agency is a non-departmental public body,\
+ established in 1995 and sponsored by the United Kingdom government's Department\
+ for Environment, Food and Rural Affairs. Building this improvement results in\
+ a pollution reduction effect in cities where one is constructed.\
+")
+
+[building_farmers_market]
+name		= _("Farmers Market")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Agronomy", "Player"
+    }
+graphic	= "b.farmers_market"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 60
+upkeep		= 1
+sabotage	= 1
+sound		= "b_foundry"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+The medieval market was held weekly in a neighbouring town, and was an event\
+ that diversified the lives of farmers. Here they sold their fat capons, eggs,\
+ butter, and cheese. Besides the weekly markets there were the great annual\
+ fairs, which lasted many days, and were frequented by all classes of the\
+ population. The fairs were absolutely necessary for trade. In those days few\
+ people travelled far from their own homes. Due to the small number of\
+ inhabitants, even the towns could not afford a sufficient market for the\
+ farmers’ and traders' stock.\ 
+")
+
+[building_forest_management]
+name		= _("Forest Management Agency")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Forestry", "Player"
+    }
+graphic	= "b.forest_management"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 60
+upkeep		= 1
+sabotage	= 1
+sound		= "b_foundry"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+The inhabitants of Easter Island used so much of their island’s palm\
+ forest for erecting their impressive Moai statues that eventually they\
+ lacked wood for building houses and boats. There are plenty of examples\
+ of early populations decimating nature and perhaps the worst of these was\
+ on Easter Island, which is now well known for its Moai statues. These\
+ stone statues, which flabbergasted the first European visitors, were also\
+ the islanders’ downfall. The island was probably settled around the year\
+ 1200, and then it was covered by a rich palm forest. But in the course of\
+ the next 500 years it became nearly a desert. The palm forest was chopped\
+ down to make scaffolds and frames for the increasingly large Moai statues,\
+ and finally this went too far. The demand for more and more and ever\
+ larger statues got out of hand, and finally there were no trees for\
+ constructing houses or boats. Woe to Europe should deforestation continue.\
+ In 1300, Forest Code introduced in France, was aimed at regulating wood\
+ production for the Navy, a first step in forest management. Building this\
+ improvement results in a 50% increase in luxery output for each city where\
+ one is constructed. A forest is not required.
+")
+
+[building_foundry]
+name		= _("Foundry")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Metallurgy", "Player"
+    }
+graphic	= "b.foundry"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 60
+upkeep		= 2
+sabotage	= 2
+sound		= "b_foundry"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+In 2016, archeologist discovered an ancient foundary in Siberia,\
+dating around 1000 A.D. A foundry is a factory that produces metal\
+ castings. Metals are cast into shapes by melting them into a liquid,\
+ pouring the metal into a mold, and removing the mold material after\
+ the metal has solidified as it cools. It is likely the forge was used\
+ by the medieval Turkic-speaking Kurykan people, who were know for\
+ their blacksmithing abilities. Building a foundary increases the\
+ shield production in a city by 50%.  This increase may also\
+ contribute significantly to pollution.\
+")
+
+[building_grail_search_map]
+name		= _("Grail Search Map")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Grail Research", "Player"
+      "Building", "Library", "City"
+      "Building", "University", "City"
+      "Building", "Research Lab", "City"
+	  "Building", "Guesthouse", "City"
+    }
+graphic	= "b.grail_map"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 1
+sound		= "b_generic"
+sound_alt	= "-"
+helptext	= _("\
+Grail Components can be differentiated into Maps and Clues\
+ Components.  Each pair of them reduces your Grail Search\
+ time.  You can build up to 8 pairs.\
+"), _("\
+Before you can build any Grail Search parts, the Grail Program wonder\
+ must have been built by any player.\
+")
+
+[building_granary]
+name		= _("Granary")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Pottery", "Player"
+    }
+graphic	= "b.granary"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 25
+upkeep		= 1
+sabotage	= 1
+sound		= "b_granary"
+sound_alt	= "b_generic"
+helptext	= _("\
+A granary is a storehouse or room in a barn for threshed grain or\
+ animal feed. Ancient or primitive granaries are most often made out\
+ of pottery. Granaries are often built above the ground to keep the\
+ stored food away from mice and other animals. From ancient times\
+ grain has been stored in bulk. The oldest granaries yet found date\
+ back to 9500 BC and are located in the Pre-Pottery Neolithic A\
+ settlements in the Jordan Valley. With a city granary, the amount\
+ of stored food will be set to half full whenever a city with a\
+ Granary shrinks or grows. This helps a city to grow faster and more\
+ easily withstand famine.\
+")
+
+[building_guesthouse]
+name		= _("Guesthouse")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Pilgrimage", "Player"
+    }
+graphic	= "b.guesthouse"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 40
+upkeep		= 1
+sabotage	= 1
+sound		= "b_generic"
+sound_alt	= "-"
+helptext	= _("\
+Information on inns and hostels before around 1300 is patchy at best\
+ and the evidence suggests that, for the early middle ages, travellers\
+ were often given board and lodging by locals, especially those higher\
+ up the social hierachy. After 1300, there are an increasing number of\
+ references to inns and hostels as well as some physical evidence.\
+ Reduces the amount of pollution by 100%.\
+")
+
+[building_harbor]
+name            = _("Harbor")
+rule_name       = "Harbor"     ; en_GB spelling used originally
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Seafaring", "Player"
+      "TerrainClass", "Oceanic", "Adjacent"
+    }
+graphic	= "b.harbor"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 40
+upkeep		= 1
+sabotage	= 1
+sound		= "b_harbor"
+sound_alt	= "b_generic"
+helptext	= _("\
+Artificial harbors are frequently built for use as ports. The oldest\
+ artificial harbor known is the Ancient Egyptian site at Wadi al-Jarf,\
+ on the Red Sea coast, which is at least 4500 years old (ca. 2600-2550\
+ BCE, reign of King Khufu). The largest artificially created harbor is\
+ Jebel Ali in Dubai.\
+A harbor gives one extra food resource on all Oceanic tiles.  The city\
+ needs to be coastal to build this improvement.\
+")
+
+[building_hospital]
+name		= _("Hospital")
+;rule_name   = "Hospital"
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Medicine", "Player"
+    }
+graphic	= "b.hospital"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 40
+upkeep		= 1
+sabotage	= 1
+sound		= "b_generic"
+sound_alt	= "-"
+helptext	= _("\
+Hospitals might not be something that you associate with the\
+ fourteenth century, but most towns had one, if not two. Many were\
+ founded in the twelfth century and were the result of both the\
+ First Crusade and what might be considered a spiritual revival at\
+ that time. Hospitals were religious institutions. Monasteries and\
+ convents had always had infirmaries where sick and elderly members\
+ of the community were cared for. From the twelfth century that care\
+ was extended formally to the community beyond the walls of the\
+ abbeys. Hospitals were usually staffed by monks and nuns, but\
+ sometimes a physician was employed as well. A city with a Hospital\
+ is less likely to suffer from plagues.\
+")
+
+[building_hydro_plant]
+name		= _("Hydro Plant")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Hydro Power", "Player"
+    }
+graphic	= "b.hydro_plant"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 40
+upkeep		= 1
+sabotage	= 1
+sound		= "b_generic"
+sound_alt	= "-"
+helptext	= _("\
+Millwrights distinguished between the two forces, impulse and weight,\
+ at work in water wheels long before 18th-century Europe. Fitzherbert,\
+ a 16th-century agricultural writer, wrote 'druieth the wheel as well\
+ as with the weight of the water as with strengthe [impulse]'.\
+ Leonardo da Vinci also discussed water power, noting 'the blow\
+ [of the water] is not weight, but excites a power of weight, almost\
+ equal to its own power'. However, even realisation of the two forces,\
+ weight and impulse, confusion remained over the advantages and\
+ disadvantages of the two, and there was no clear understanding of the\
+ superior efficiency of weight.
+A hydro plant increases citya city's resources by 100%.\
+")
+
+[building_library]
+name		= _("Library")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Writing", "Player"
+    }
+graphic	= "b.library"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 40
+upkeep		= 1
+sabotage	= 1
+sound		= "b_library"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+In the Early Middle Ages, monastery libraries developed, such as the\
+ important one at the Abbey of Montecassino in Italy. Books were\
+ usually chained to the shelves, reflecting the fact that manuscripts,\
+ which were created via the labour-intensive process of hand copying,\
+ were valuable possessions. This hand-copying was often accomplished\
+ by travelling monks who made the treks to the sources of knowledge\
+ and illumination they sought for learning or to copy the manuscripts\
+ held by other monasteries for their own monastic libraries. Despite\
+ this protectiveness, many libraries loaned books if provided with\
+ security deposits (usually money or a book of equal value). Lending\
+ was a means by which books could be copied and spread. In 1212 the\
+ council of Paris condemned those monasteries that still forbade\
+ loaning books, reminding them that lending is 'one of the chief \
+ works of mercy.'\
+A library increases the science output in a city by 100%.\
+")
+
+[building_manor]
+name		= _("Manor")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Agriculture", "Player"
+    }
+graphic	= "b.manor"
+graphic_alt	= "-"
+obsolete_by	= "Economics"
+build_cost	= 40
+upkeep		= 0
+sabotage	= 1
+sound		= "b_marketplace"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+Manors were economic and political units – blocs of farm land which\
+ formed the base on which the whole panoply of fief-holding was\
+ built. Fiefs consisted of one or more manors; and manors provided\
+ a fief-holder with income, status and power. The agricultural\
+ population under feudalism in Northern Europe was typically\
+ organized into manors consisting of several hundred or more acres\
+ of land presided over by a Lord of the manorConstructing a manor\
+ increases the luxury and tax output in a city by 50%.\
+")
+
+[building_marketplace]
+name		= _("Marketplace")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Economics", "Player"
+    }
+graphic	= "b.marketplace"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 40
+upkeep		= 0
+sabotage	= 1
+sound		= "b_marketplace"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+In early Western Europe, markets developed close to monasteries,\
+ castles or royal residences. Priories and aristocratic manorial\
+ households created considerable demand for goods and services -\
+ both luxuries and necessities and also afforded some protection\
+ to merchants and traders. These centres of trade attracted sellers\
+ which would stimulate the growth of the town. From the 12th century,\
+ English monarchs awarded a charter to local Lords to create markets\
+ and fairs for a town or village. A charter protected the town's\
+ trading privileges in return for an annual fee.
+A marketplace increases the luxury and tax output in a city by 50%.\
+")
+
+[building_medieval_kitchen]
+name		= _("Medieval Kitchen")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Building", "Medieval Kitchen", "City"
+    }
+graphic	= "b.culinary_arts"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 1
+sabotage	= 1
+sound		= "b_aqueduct"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+If you lived in medieval times a kitchen was not a separate room,\
+ unless you lived in a castle. Most often, the 'kitchen area' was the
+ area between the fireplace and entrance. Cooking on an open flame in\
+ one fashion or other was the only means of cooking, making the kitchen\
+ a dark and smoky place. In wealthier homes, the kitchen was kept on the\
+ ground floor to protect the other rooms from indoor smoke. With the\
+ advent of the chimney, the kitchen was moved from the center of the\
+ floor to the wall. Be that as it may, the stove revolutionized the\
+ kitchen for common folk, allowing for a kitchen as a separate room.\
+ Building this improvement results in a make (citizens) happy effect\
+ for cities in which one is constructed.\
+")
+
+[building_medieval_well]
+name		= _("Medieval Well")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Artesian Drilling", "Player"
+    }
+graphic	= "b.medieval_well"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 2
+sabotage	= 100
+sound		= "b_aqueduct"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+The well – as any available cisterns – provided a protected\
+ source of drinking water for the castle garrison in peace and war\
+ and also for any civil population seeking refuge during a siege. In\
+ medieval times, external wells were often poisoned, usually with a\
+ decomposing body, in order to force a garrison to surrender. But\
+ wells sunk within the castle itself could not be poisoned from\
+ outside during a siege. Wells often had to be sunk a considerable\
+ depth in order to tap the nearest geological stratum holding\
+ sufficient water, the actual depth depending on the height of\
+ the castle and level of the groundwater. This was particularly\
+ challenging in the construction of hill castles. Digging a well\ 
+ increases the food resources by 50% on each farmland tile which\
+ is being used around the city.  Farmland tiles are those which\
+ have been irrigated a second time.\
+")
+
+[building_military_academy]
+name		= _("Military Academy")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Tactics", "Player"
+    }
+graphic	= "b.military_academy"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 2
+sabotage	= 100
+sound		= "b_aqueduct"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+A military academy provides a stting for teaching tactics once that\
+ technology is obtainied. The original meaning of “tactics” is “order”,\
+ literally the “ordering of formations on the battlefield. Chinese\
+ General Sun Tzu described the difference this way: 'All the men can\
+ see the tactics I use to conquer, but what none can see is the strategy\
+ out of which great victory is evolved.' With tactics, an amrmy can\
+ begin 'ordering' battle with the formation of units, like infantry and\
+ cavalry (separately). Once the nation learns 'Combine Arms', they can\
+ begin to use different types of units together, like infantry and cavalry. 
+")
+
+[building_palace]
+name		= _("Palace")
+genus		= "SmallWonder"
+flags		= "SaveSmallWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Masonry", "Player"
+    }
+graphic	= "b.palace"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 35
+upkeep		= 0
+sabotage	= 0
+sound		= "b_palace"
+sound_alt	= "b_generic"
+helptext	= _("\
+Makes a city the capital and the center of your government.\
+ Corruption in other cities is related to how far away from the\
+ capital they are, except when the government is Democracy or\
+ Collectivism. On top of this, corruption in your capital itself is\
+ half of what it would otherwise be (as if it had a Courthouse).\
+"), _("\
+The cost to enemy Diplomats and Spies of inciting a revolt in a\
+ city also depends upon the city's distance from the capital\
+ (under all forms of government). Your capital city itself cannot\
+ be incited to revolt, and enjoys a bonus when enemy agents try\
+ to evade your own agents stationed in the city, or sabotage your\
+ buildings.\
+"), _("\
+Take good care of your capital, as its loss may result in your\
+ empire plunging into civil war. Losing your current palace also\
+ results in losing whatever spaceship you might have.\
+"), _("\
+If the capital is in a dangerous location, or a more central capital\
+ would give a better corruption distribution, you can move your palace\
+ by rebuilding it in another city.\
+"),
+; /* xgettext:no-c-format */
+_("\
+Under Despotism the city containing the palace gains a +75%\
+ production bonus, and under Monarchy a +50% production bonus.\
+")
+
+[building_printing_press]
+name		= _("Printing Press")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Movable Type", "Player"
+    }
+graphic	= "b.printing_press"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 2
+sabotage	= 100
+sound		= "b_generic"
+sound_alt	= "-"
+helptext	= _("\
+In Germany, around 1440, goldsmith Johannes Gutenberg invented the\
+ printing press, which started the Printing Revolution. Modelled on\
+ the design of existing screw presses, a single Renaissance printing\
+ press could produce up to 3,600 pages per workday, compared to forty\
+ by hand-printing and a few by hand-copying. Gutenberg's newly\
+ devised hand mould made possible the precise and rapid creation of\
+ metal movable type in large quantities. His two inventions, the hand\
+ mould and the printing press, together drastically reduced the cost\
+ of printing books and other documents in Europe, particularly for\
+ shorter print runs. 
+In cities with chapel, the printing press produces 1 happy citizen.\
+")
+
+[building_sheriff_office]
+name		= _("Sheriff Office")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Collectivism", "Player"
+    }
+graphic	= "b.sheriffs_office"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 25
+upkeep		= 2
+sabotage	= 100
+sound		= "b_police_station"
+sound_alt	= "b_generic"
+helptext	= _("\
+At the county or shire level, a sheriff was responsible for the court,\
+ which was held once a month or so. He was the chief officer in a\
+ shire, or the shire reeve. The sheriff represented the crown and\
+ investigated crimes in his jurisdiction. He could also try minor\
+ offences. When someone was accused of a serious crime, he had to\
+ detain them until a judge visited the county. Sheriffs collected\
+ revenue, fines, and rents. They also executed writs, put together\
+ juries, guarded prisoners and presided over the county court.\ 
+ Reduces the unhappiness caused by aggressively deployed military\
+ units owned by the city by 2 under Democracy and 1 under Republic\
+ -- in other words, it neutralizes the unhappiness caused by a single\
+ military unit. This improvement has no effect under other governments.\
+")
+
+[building_research_lab]
+name		= _("Research Lab")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Scientific Method", "Player"
+    }
+graphic	= "b.research_lab"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 90
+upkeep		= 2
+sabotage	= 100
+sound		= "b_research_lab"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+Byzantine science played an important role in the transmission of\
+ classical knowledge to the Islamic world and to Renaissance Italy,\
+ and also in the transmission of medieval Arabic knowledge to\
+ Renaissance Italy. Its rich historiographical tradition preserved\
+ ancient knowledge upon which splendid art, architecture, literature\
+ and technological achievements were built. A medieval research lab,\
+ if such entity existed, was most likey akin to Leanardo's workshop.
+ Building a research lab yields the total bonus is 150% if a Library,\
+ a University and a Research Lab are all present in the same city,\
+ increasing to 300% once the Great Library, Isaac Newton's College,\
+ and the Internet have all been built.\
+")
+
+[building_sawmill]
+name		=_("Sawmill")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Milling", "Player"
+      "Building", "Blacksmith", "City"
+    }
+graphic	= "b.sawmill"
+graphic_alt	= "b.saw_mill"
+obsolete_by	= "None"
+build_cost	= 60
+upkeep		= 4
+sabotage	= 100
+sound		= "b_mfg_plant"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+As early as the 3rd century AD, the water powered mill was\
+ invented, and was widely used up until the industrial revolution.\
+ The water powered mill operated essentially the same way as a\
+ modern mill with respect that uncut lumber enters at one end and\
+ cut/dimensional lumber exits at the other end. The watermill used\
+ basic crank and connecting rod technology. As the watermill\
+ evolved, eventually water was also used to float the timber into\
+ position, thus alleviating the need for intensive manual labor to\
+ handle the timber. Windmill sawmills were also prevalent during\
+ this time period, and used the same connecting rod technology,\
+ simply substituting wind power for the water wheel. With the\
+ arrival of the industrial revolution, several advancements were\
+ made, First, the circular saw had been invented. The greatly\
+ increased the speed of production, while decreasing maintenance\
+ needs. The second improvement was the introduction of the steam\
+ engine.  Together with a Foundry, a Sawmill increases the shield\
+ production in a city by 100%. A sawmill on its own increases\
+ shield production by 50%.\
+")
+
+[building_sewer_system]
+name		= _("Sewer System")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Sanitation", "Player"
+      "Building", "Aqueduct", "City"
+    }
+graphic	= "b.sewer_system"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 2
+sabotage	= 100
+sound		= "b_sewer_system"
+sound_alt	= "b_generic"
+helptext	= _("\
+Although there is evidence of surface-based storm drainage systems in\
+ early Babylonian and Mesopotamian Empires in Iraq (ca. 4000–2500 BC),\
+ it is not until after ca. 3000 BC that we find evidence of the well\
+ organized and operated sewer and drainage systems of the Minoans and\
+ Harappans in Crete and the Indus valley, respectively. The Minoans\
+ and Indus valley civilizations originally, and the Hellenes and\
+ Romans thereafter, are considered pioneers in developing basic\
+ sewerage and drainage technologies, with emphasis on sanitation in\
+ the urban environment. 
+ Building a sewer allows a city to grow larger than size 12. Pre-\
+ requirement is an Aqueduct for a city to grow larger than size 8.\
+ The Sewer System further reduces the chance of a plague.\
+")
+
+[building_septic_tank]
+name		=_("Septic Tank")
+genus		= "Improvement"
+reqs	=
+	{  "type", "name", "range"
+	   "Tech", "Solid Waste Treatment", "Player"
+	   "Building", "Sewer System", "City"
+	}
+graphic	= "b.septic_tank"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 60
+upkeep		= 2
+sabotage	= 100
+sound		= "b_generic"
+sound_alt	= "-"
+helptext	= _("\
+Ancient Rome developed one of the earliest waste management systems\
+ to handle one of its most pressing waste challenges: human waste.\
+ First introduced between 800 and 735 BC, the Romans had a complex\
+ system of sewers covered by stones — which were much like modern\
+ sewers — as well as there more visible aquaduct system. However,\
+ this was all but lost in the middle ages, in part due to the Plague\
+ It was not until 1860,when the first septic tank was developed,
+ that waste management adapted scientific methods for managing solid\
+ waste.\
+")
+
+[building_supermarket]
+name		= _("Supermarket")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Yakhchal", "Player"
+    }
+graphic	= "b.supermarket"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 3
+sabotage	= 100
+sound		= "b_supermarket"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+Although market plaes we plentiful in medieval times, the super-\
+ market is a modern-day phenomenon. However, archeologist have found\
+ evidence of the existance of supermartkets nearly 4000 years old.\
+Adding a supermarket to a city increases the food resources by 50%\
+ on each farmland tile which is being used around the city. Farmland\
+ tiles are those which have been irrigated a second time.\
+")
+
+[building_temple]
+name		= _("Temple")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Ceremonial Burial", "Player"
+    }
+graphic	= "b.temple"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 25
+upkeep		= 1
+sabotage	= 100
+sound		= "b_temple"
+sound_alt	= "b_generic"
+helptext	= _("\
+A temple (from the Latin word templum) is a building reserved for\
+ religious or spiritual rituals and activities such as prayer and\
+ sacrifice. The term typically used for such buildings belonging to\
+ all faiths where a more specific term such as church, mosque or\
+ synagogue is not generally used in English. These include Hinduism,\
+ Buddhism, Sikhism and Jainism among religions with many modern\
+ followers, as well as other ancient religions such as Ancient\
+ Egyptian religion. Makes one unhappy citizen content.  The \
+ Mysticism advance doubles this effect.  With both Mysticism and the\
+ Oracle, 4 citizens are made content.  Does not affect citizens made\
+ unhappy by military activity.\
+"), _("\
+The work of the priests also reduces the effect of plague in the city.\
+")
+
+[building_textile_mill]
+name		=_("Textile Mill")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Milling", "Player"
+      "Building", "Marketplace", "City"
+    }
+graphic	= "b.textile_mill"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 80
+upkeep		= 6
+sabotage	= 100
+sound		= "b_mfg_plant"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+In 2020, Turkish archaeologists unearthed parts of a loom, tools for\
+ creating textiles and accessories dating back four millennia in\
+ western Turkey, believed to be 4000 years old. This is evidence of\
+ the earliest mills, well before the Industrian Revolution. Together\
+ with a Foundry, a Textile Mill increases the shield production in a\
+ city by 100%. A Textile Mill on its own increases shield\
+ production by 50%.\
+")
+
+[building_university]
+name		= _("University")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "University", "Player"
+      "Building", "Library", "City"
+    }
+graphic	= "b.university"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 3
+sabotage	= 100
+sound		= "b_university"
+sound_alt	= "b_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+A medieval university was a corporation organized during the Middle\
+ Ages for the purposes of higher education. The first Western\
+ European institutions generally considered universities were\
+ established in the Kingdom of Italy (then part of the Holy Roman\
+ Empire), the Kingdom of England, the Kingdom of France, the Kingdom\
+ of Spain, and the Kingdom of Portugal between the 11th and 15th\
+ centuries for the study of the Arts and the higher disciplines of\
+ Theology, Law, and Medicine.[1] During the 14th century there was\
+ an increase in growth of universities and colleges around Europe.
+Together with a Library, a University increases the science\
+ production of a city by 250%.\
+")
+
+[building_windmill]
+name 		=_("Windmill")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Machine Tools", "Player"
+    }
+graphic	= "b.windmill"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 3
+sabotage	= 100
+sound		= "b_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+A windmill is a structure that converts wind power into rotational\
+ energy by means of vanes called sails or blades, specifically to\
+ mill grain (gristmills), but the term is also extended to windpumps,\
+ wind turbines and other applications.[1] Windmills were used\
+ throughout the high medieval and early modern periods; the\
+ horizontal or panemone windmill first appeared in Greater Iran\
+ during the 9th century, the vertical windmill in northwestern\
+ Europe in the 12th century. Together with a Library, a University\
+ increases the science production of a city by 250%.\
+")
+
+[building_windpump]
+name 		=_("Windpump")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Die Casting", "Player"
+    }
+graphic	= "b.windpump"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 3
+sabotage	= 100
+sound		= "b_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+Windpumps were used to pump water since at least the 9th century in\
+ what is now Afghanistan, Iran and Pakistan.[1] The use of wind pumps\
+ became widespread across the Muslim world and later spread to China\
+ and India.[2] Windmills were later used extensively in Europe,
+ particularly in the Netherlands and the East Anglia area of Great\
+ Britain, from the late Middle Ages onwards, to drain land for\
+ agricultural or building purposes. Together with a Library, a\
+ University increases the science production of a city by 250%.\
+")
+
+[building_wooden_crane]
+name 		=_("Wooden Crane")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Simple Machines", "Player"
+    }
+graphic	= "b.wooden_crane"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 3
+sabotage	= 100
+sound		= "b_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+A treadwheel crane (Latin: magna rota) is a wooden, human powered,\
+ hoisting and lowering device. It was primarily used during the Roman\
+ period and the Middle Ages in the building of castles and cathedrals.\
+ The often heavy charge is lifted as the individual inside the\
+ treadwheel crane walks. The rope attached to a pulley is turned onto\
+ a spindle by the rotation of the wheel thus allowing the device to\
+ hoist or lower the affixed pallet. Together with a Harbor, a Wooden\
+ Crane increases the veterangrade of naval units and restores hitpoints\
+ when damaged.\
+")
+
+; GREAT WONDERS =====================================================
+
+[building_academy_of_gondishapur]
+name		= _("Academy of Gondishapur")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Biochemistry", "Player"
+    }
+graphic	= "b.academy_of_gondishapur"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+The Academy of Gondishapur (Persian: فرهنگستان گندی‌شاپور‎), also known\
+ as the Gondishapur University, was one of the three Sasanian centers\
+ of education (Ctesiphon, Resaina, Gundeshapur) and academy of learning\
+ in the city of Gundeshapur, Iran during late antiquity, the intellectual\
+ center of the Sasanian Empire. It offered education and training in\
+ medicine, philosophy, theology and science. The faculty were versed in\
+ Persian traditions. According to The Cambridge History of Iran, it was\
+ the most important medical center of the ancient world during the 6th \
+ and 7th centuries.\
+")
+
+[building_amphibious_training_center]
+name		= _("Amphibious Training Center")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Amphibious Warfare", "Player"
+    }
+graphic	= "b.amphibious_training_center"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 1
+sabotage	= 1
+sound		= "b_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+Amphibious Training Centers are bases desesign to train units for\
+ amphibious warfare. Ambibiuos operations use naval ships to project\
+ ground forces onto a hostile or potentially hostile shore at a\
+ designated landing beach. Through history the operations were\
+ conducted using ship's boats as the primary method of delivering\
+ troops to shore.\
+ ")
+ 
+[building_aswan_dam]
+name		= _("Aswan Dam")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Hydro Power", "Player"
+      "Road", "River", "Adjacent"
+    }
+graphic	= "b.aswan_dam"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+The Aswan Dam, or more specifically since the 1960s, the Aswan High\
+ Dam, is the world's largest embankment dam built across the Nile in\
+ Aswan, Egypt, between 1960 and 1970. Its significance is largely\
+ eclipsed the previous Aswan Low Dam initially completed in 1902\
+ downstream. Based on the success of the Low Dam, then at its maximum\
+ utilization, construction of the High Dam became a key objective of\
+ the government following the Egyptian Revolution of 1952; with its\
+ ability to better control flooding, provide increased water storage\
+ for irrigation and generate hydroelectricity the dam was seen as\
+ pivotal to Egypt's planned industrialization. Like the earlier\
+ implementation, the High Dam has had a significant effect on the\
+ economy and culture of Egypt. Its construction works as if you had a\
+ Hydro Plant in every city.  (This reduces pollution and increases\
+ the effects of Foundries and Textile Mills)\
+")
+
+[building_bethlehem_steel]
+name		= _("Bethlehem Steel")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Steel", "Player"
+    }
+graphic	= "b.bethlehem_steel"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+Civilization had to wait until 19th Century and Andrew Carnegie\
+ (1835-1919)to produce a major steel works. The Bethlehem Steel\
+ Corporation was an American steel and shipbuilding company that for\
+ much of the 20th century was one of the world's largest steel\
+ producing and shipbuilding companies. The company's roots trace\
+ to 1857 with the establishment of the Bethlehem Iron Company in\
+ Bethlehem, Pennsylvania. Its construction doubles the defense of all\
+ units inside the city when attacked by land and big land units.\
+")
+
+[building_book_of_healing]
+name		= _("Book of Healing")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Physics", "Player"
+    }
+graphic	= "b.book_of_healing"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 30
+upkeep		= 1
+sabotage	= 1
+sound		= "b_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+The Book of Healing (Arabic: کتاب الشفاء‎, Latin: Sufficientia), also\
+ known as The Cure or Assepha, it is a scientific and philosophical\
+ encyclopedia written by Abu Ali ibn Sīna (aka Avicenna) from medieval\
+ Persia, near Bukhara in Maverounnahr. He most likely began to compose\
+ the book in 1014, completed it around 1020, and published it in 1027.
+ Any healing aspect of his work is intended for th soul. It is known'
+ for its theories on physics. Ibn Sina distinguished between 'force'\
+ and 'inclination' (mayl); he claimed that an object gained mayl when\
+ the object is in opposition to its natural motion. He concluded that\
+ continuation of motion depends on the inclination that is transferred\
+ to the object, and that the object remains in motion until the mayl
+ is spent.
+")
+
+[building_the_canon_of_medicine]
+name		= _("The Canon of Medicine")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Classical Mechanics", "Player"
+    }
+graphic	= "b.the_canon_of_medicine"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+The Canon of Medicine, Persian: قانون در طب, is an encyclopedia of\
+ medicine in five books compiled by Persian Muslim physician-\
+ philosopher Avicenna (Ibn Sina) and completed in 1025. It presents\
+ an overview of the contemporary medical knowledge of the Islamic\
+ world, which had been influenced by earlier traditions including\
+ Greco-Roman medicine (particularly Galen),[2] Persian medicine,\
+ Chinese medicine and Indian medicine. It boosts science production\
+ by 100% in every city you control that has a University.\
+")
+
+[building_the_castrol_stove]
+name		= _("The Castrol Stove")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "The Stove", "Player"
+    }
+graphic	= "b.castrol_stove"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 75
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+The first stove design that completely enclosed the fire was the 1735\
+ Castrol stove, built by the French architect François de Cuvilliés.\
+ This stove was a masonry construction with several fire holes covered\
+ by perforated iron plates and was also known as a stew stove. Near the\
+ end of the 18th century, the design was refined by hanging the pots in\
+ holes through the top iron plate, thus improving heat efficiency even\
+ more.\
+")
+
+[building_cia_hq]
+name		= _("CIA Hedaquarters")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Espionage", "Player"
+    }
+graphic	= "b.cia_hq"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+Yes, the CIA did not exist until 1947. The Central Intelligence Agency\
+ (CIA), principal foreign intelligence and counterintelligence agency\
+ of the U.S. government. The CIA grew out of the World War II Office\
+ of Strategic Services (OSS). Previous U.S. intelligence and counter-\
+ intelligence efforts had been conducted by the military and the\
+ Federal Bureau of Investigation (FBI) and suffered from duplication,\
+ competition, and lack of coordination, problems that continued, to\
+ some degree, into the 21st century. This wonder has no value due to\
+ lack of government funding under President Joseph Robinette Biden Jr's\
+ administration.\
+")
+
+[building_the_college_of_aristotle]
+name		= _("The College of Aristotle")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Theory of Gravity", "Player"
+    }
+graphic	= "b.the_college_of_aristotle"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+Awareness of ancient works re-entered the West through translations\
+ from Arabic to Latin. Their re-introduction, combined with Judeo-\
+ Islamic theological commentaries, had a great influence on Medieval\
+ philosophers such as Thomas Aquinas. Scholastic European scholars,\
+ who sought to reconcile the philosophy of the ancient classical\
+ philosophers with Christian theology, proclaimed Aristotle the\
+ greatest thinker of the ancient world. In cases where they didn't\
+ directly contradict the Bible, Aristotelian physics became the\
+ foundation for the physical explanations of the European Churches.\
+ Quantification became a core element of medieval physics.\
+ It boosts science production by 100% in every city you control that\
+ has a University.\
+")
+
+[building_colossus]
+name		= _("Colossus")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Bronze Working", "Player"
+    }
+graphic	= "b.colossus"
+graphic_alt	= "-"
+obsolete_by	= "Indirect Fire"
+build_cost	= 50
+upkeep		= 0
+sabotage	= 0
+sound		= "w_colossus"
+sound_alt	= "w_generic"
+helptext	= _("\
+The Colossus of Rhodes was a bronze statue of Helios, the Greek God\
+ of the Sun, erected near the mouth of the city harbor. It stood over\
+ 100 feet high, about two-thirds the height of the Statue of Liberty.\
+ Unfortunately, it was toppled by an earthquake only 56 years after\
+ its construction. Taking the counsel of an oracle, the city elected\
+ to leave the statue where it lay. For over 900 years, people from\
+ all over the ancient world came to Rhodes to see the Colossus. It\
+ remained where it was until 654 AD when the Muslims who plundered\
+ the city sold the statue for scrap. Building this wonder results\
+ each tile, around the city where it is built, that is already\
+ generating some trade produces one extra trade resource.\
+")
+
+[building_conservation_of_mass]
+name		= _("Conservation of Mass")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Chemistry", "Player"
+    }
+graphic	= "b.conservation_of_mass"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 4
+sabotage	= 0
+sound		= "b_generic"
+sound_alt	= "-"
+helptext	= _("\
+Nasir al-Din al-Tusi (Persian: نصیر الدین طوسی‎), was a Persian polymath,\
+ architect, philosopher, physician, scientist, and theologian. Nasir\
+ al-Din al-Tusi was a well published author, writing on subjects of math,\
+ engineering, prose, and mysticism. Additionally, al-Tusi made several\
+ scientific advancements. In astronomy, al-Tusi created very accurate\
+ tables of planetary motion, an updated planetary model, and critiques\
+ of Ptolemaic astronomy. He also made strides in logic, mathematics but\
+ especially trigonometry, biology, and chemistry. Nasir al-Din al-Tusi\
+ left behind a great legacy as well. His contribution to chemistry was\
+ an early theory on the conservation of mass. The law of conservation of\
+ mass or principle of mass conservation states that for any system closed\
+ to all transfers of matter and energy, the mass of the system must remain\
+ constant over time, as the system's mass cannot change, so quantity can\
+ neither be added nor be removed. Therefore, the quantity of mass is\
+ conserved over time.\ 
+")
+
+[building_copernicus_observatory]
+name		= _("Copernicus' Observatory")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Astronomy", "Player"
+    }
+graphic	= "b.copernicus_observatory"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_copernicus_observatory"
+sound_alt	= "w_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+Ancient astronomers originally put forth the theory that the Sun was\
+ the center of our solar system, and that the planets revolved around\
+ it. This knowledge was lost during the Dark Ages, but was re-\
+ introduced in the early 16th century by Nicholas Copernicus.\
+ Copernicus' research and theories form the foundation for modern\
+ astronomy. Copernicus collected his data from his observatory, a\
+ small room in the spire of an East Prussian cathedral. His research\
+ methods and observations also marked the rebirth of the scientific\
+ method, and were an important step in the advance of knowledge.\ 
+ Its discovery boosts science production by 100% in the city where it\
+ is built.\
+")
+
+[building_cure_for_plague]
+name		= _("Cure For Plague")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Phlebotomy", "Player"
+    }
+graphic	= "b.cure_for_plague"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_cure_for_plague"
+sound_alt	= "w_generic"
+helptext	= _("\
+In the Late Middle Ages Europe experienced the deadliest disease\
+ outbreak in history when the Black Death, the infamous pandemic of\
+ bubonic plague, hit in 1347, killing one-third of the European human\
+ population. Some historians believe that society subsequently became\
+ more violent as the mass mortality rate cheapened life and thus\
+ increased warfare, crime, popular revolt, waves of flagellants, and\
+ persecution. Arab historians Ibn Al-Wardni and Almaqrizi believed\
+ the Black Death originated in Mongolia. Chinese records also showed\
+ a huge outbreak in Mongolia in the early 1330s. Transmitted through\
+ fleas, the disease is caused by plague bacterium (Yersinia pestis).\
+ This stunning technological achievement makes one unhappy  citize
+ content in each of your cities, and further reduces the possibility\
+ for an illness in the city.\
+")
+
+[building_damascus_madonna]
+name		= _("Damascus Madonna")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Order of Malta", "Player"
+    }
+graphic	= "b.damascus_madonna"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 75
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+There was a great expansion of the cult of Mary after the Council of\
+ Ephesus in 431, when her status as Theotokos (God-bearer) was\ 
+ confirmed; this had been a subject of some controversy until then,\
+ though mainly for reasons to do with arguments over the nature of\
+ Christ. However, very few early images of the Virgin Mary survive,\
+ though the depiction of the Madonna has roots in ancient pictorial\
+ and sculptural traditions that informed the earliest Christian\
+ communities throughout Europe, Northern Africa and the Middle East.\
+ Important are Byzantine icons, especially those created in Constantinople\
+ (Istanbul), the capital of the longest, enduring medieval civilization\
+ whose icons participated in civic life and were celebrated for their\
+ miraculous properties. Byzantium (324–1453) saw itself as the true Rome,\
+ if Greek-speaking, Christian empire with colonies of Italians living\
+ among its citizens, participating in Crusades at the borders of its land,\
+ and ultimately, plundering its churches, palaces and monasteries of many\
+ of its treasures. A wasteful and hopeless passtime for those with more\
+ pressing matters.\
+")
+
+[building_de_re_militari]
+name 		=_("De re militari")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Tactics", "Player"
+    }
+graphic	= "b.de_re_militari"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 75
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+De re militari (Latin 'Concerning Military Matters'), also Epitoma rei\
+ militaris, is a treatise by the Late Latin writer Publius Flavius\
+ Vegetius Renatus about Roman warfare and military principles as a\
+ presentation of the methods and practices in use during the height\
+ of the Roman Empire and responsible for its power. Its discovery\
+ doubles the defense of all units inside the city when attacked by\
+ land and big land units.\
+")
+
+[building_desert_training_center]
+name 		=_("Desert Training Center")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Survivability", "Player"
+    }
+graphic	= "b.desert_training_center"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 75
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+Without water, armies in the desert become combat ineffective in short\
+ order. Consequently, sources of water, like desert springs, became strategic\
+ positions in medieval military campaigns. Although these locations where the\
+ only keys to surviving desert warfare, they truned out to be the most vital.\
+ The Crusader Army's inability to control these strategic sites directly led\ 
+ to their defeat and annihilation during The Battle of Hattin on 4 July 1187,\
+ between the Crusader states of the Levant and the forces of the Ayyubid sultan\
+ Saladin (Salah ad-Din). Centuries later, understanding the unique challenges\
+ of desert warfare, General George S. Patton, Jr. created a military training\
+ facility, the Desert Training Center (DTC), featured in the Sands of War,\
+ to prepare U.S. Soldiers for the Allied invasion of the deserts of North\
+ Africa, Operation Torch. Building this wonder results in an increase in unit\
+ hitpoints recovery per turn for the player.
+")
+
+[building_double_envelopment]
+name 		=_("Double Envelopment")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Mobile Warfare", "Player"
+    }
+graphic	= "b.double_envelopment"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 75
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+Khalid's invasion of Roman Syria in July 634—by invading Syria from an\
+ unexpected direction, the Syrian desert, is an example of taking enemy\
+ defenses by surprise through double envelopment. While the Byzantine army\
+ held the Muslim forces in southern Syria and had expected reinforcement\
+ from the conventional Syria-Arabia road in the south, Khalid, who was in\
+ Iraq, marched through the Syrian desert and entered northern Syria,\
+ completely taking the Byzantines by surprise and cutting off their\
+ communications with northern Syria. 
+")
+
+[building_fiat_panis]
+name		= _("Fiat Panis")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Agriculture", "Player"
+    }
+graphic	= "b.fao"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+The Food and Agriculture Organization of the United Nations (FAO)\
+ is a specialized agency of the United Nations that leads international\
+ efforts to defeat hunger and improve nutrition and food security.\
+ Its Latin motto, fiat panis, translates to 'let there be bread'.\
+ Increases the food resources by 50% on each farmland tile which\
+ is being used around the city.  Farmland tiles are those which\
+ have been irrigated a second time.\
+")
+
+[building_forme_of_cury]
+name		= _("The Forme of Cury")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Recipe Books", "Player"
+    }
+graphic	= "b.forme_of_cury"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+The Forme of Cury (The Method of Cooking, cury from Middle French\
+ cuire: to cook) is an extensive, 14th-century collection of medieval\
+ English recipes. Although the original manuscript is lost, the text\
+ appears in nine manuscripts, the most famous in the form of a scroll\
+ with a headnote citing it as the work of 'the chief Master Cooks of\
+ King Richard II'. The name The Forme of Cury is generally used for\
+ the family of recipes rather than any single manuscript text. It is\
+ among the oldest extant English cookery books, and the earliest known\
+ to mention olive oil, gourds, and spices such as mace and cloves.\
+ Building this wonder results in a make (citizens) happy effect for the
+ player.\
+")
+
+[building_golden_temple]
+name		= _("Golden Temple")
+genus 		= "GreatWonder"
+reqs		=
+	{ "type", "name", "range"
+	  "Tech", "Sharia", "player"
+	}
+graphic 	= "b.golden_temple"
+graphic_alt = "-"
+obsolete_by = "None"
+build_cost  = 100
+upkeep  	= 1
+sabotage  	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext 	= _("\
+The Golden Temple, also known as Harimandir Sahib ('abode of god'), is\
+ spiritually the most significant shrine in Sikhism. Completed in 1604,\
+ the Golden Temple is an open house of worship for all people, from all\
+ walks of life and faiths. Although destroyed several times by the Mughal
+ and invading Afghan armies, the temple was always restored when peace\ 
+ came to the state of Punjab, India.\
+")
+
+[building_grail_program]
+name		= _("Grail Program")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Grail Research", "Player"
+    }
+graphic	= "b.grail_program"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_great_library"
+sound_alt	= "w_generic"
+helptext	= _("\
+The Grail Program is required in order for any nation to complete the\
+ the Grail Search. The program provides research for Grail Maps, Grail\
+ Clues, Life Modules, Truth Modules, Charity Modules, and the Grail\
+ Structures that connnect them. In order to build the components, one\
+ nation must build the Grail Program. The cities that build the\
+ components require specific builduings and technologies for each\
+ part. Once the Grail Seacrh is complete, only time will tell.\
+")
+
+[building_great_library]
+name		= _("Great Library")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Literacy", "Player"
+    }
+graphic	= "b.great_library"
+graphic_alt	= "-"
+obsolete_by	= "Artesian Drilling"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_great_library"
+sound_alt	= "w_generic"
+helptext	= _("\
+The Great Library of Alexandria in Alexandria, Egypt, (circa 300 BC)\
+ was one of the largest and most significant libraries of the ancient\
+ world. The Library was part of a larger research institution called\
+ the Mouseion, which was dedicated to the Muses, the nine goddesses\
+ of the arts. The idea of a universal library in Alexandria may have\
+ been proposed by Demetrius of Phalerum, an exiled Athenian statesman\
+ living in Alexandria, to Ptolemy I Soter, who may have established\
+ plans for the Library, but the Library itself was probably not built\
+ until the reign of his son Ptolemy II Philadelphus. The Library\
+ quickly acquired many papyrus scrolls, due largely to the Ptolemaic\
+ kings' aggressive and well-funded policies for procuring texts. It\
+ is unknown precisely how many such scrolls were housed at any given\
+ time, but estimates range from 40,000 to 400,000 at its height.\
+ The civilization which builds the Great Library gets every advance\
+ that at least two other teams have achieved.\
+")
+
+[building_great_wall]
+name		= _("Great Wall")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Construction", "Player"
+    }
+graphic	= "b.great_wall"
+graphic_alt	= "-"
+obsolete_by	= "Metallurgy"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_great_wall"
+sound_alt	= "w_generic"
+helptext	= _("\
+The Great Wall of China (Chinese: 萬里長城; pinyin: Wànlǐ Chángchéng)\
+ is a series of fortifications that were built across the historical\
+ northern borders of ancient Chinese states and Imperial China as\
+ protection against various nomadic groups from the Eurasian Steppe.\
+ Several walls were built from as early as the 7th century BC, with\
+ selective stretches later joined together by Qin Shi Huang\
+ (220–206 BC), the first emperor of China. Little of the Qin wall\
+ remains.[3] Later on, many successive dynasties have built and\
+ maintained multiple stretches of border walls. The most well-known\
+ sections of the wall were built by the Ming dynasty (1368–1644).\ 
+ Its cosntuction works as a City Wall in all your cities.\
+")
+
+[building_hanging_gardens]
+name		= _("Hanging Gardens")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Pottery", "Player"
+    }
+graphic	= "b.hanging_gardens"
+graphic_alt	= "-"
+obsolete_by	= "Improved Roads"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_hanging_gardens"
+sound_alt	= "w_generic"
+helptext	= _("\
+The Hanging Gardens of Babylon were one of the Seven Wonders of the\
+ Ancient World listed by Hellenic culture. They were described as a\
+ remarkable feat of engineering with an ascending series of tiered\
+ gardens containing a wide variety of trees, shrubs, and vines,\
+ resembling a large green mountain constructed of mud bricks. It\
+ was said to have been built in the ancient city of Babylon, near\
+ present-day Hillah, Babil province, in Iraq. Its construction makes\
+ one content citizen happy in every city. Makes two extra content\
+ citizens happy in the city containing the Hanging Gardens.\
+")
+
+[building_the_holy_grail]
+name		= _("Holy Grail")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Search for the Grail", "Player"
+    }
+graphic	= "b.holy_grail"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 200
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+From the knights of medieval legends to Indiana Jones, the holy\
+grail has been the most sought-after Christian relic in popular\
+ culture for centuries. The grail is most commonly identified as\
+ the cup that Jesus drank from at the Last Supper and that Joseph\
+ of Arimathea used to collect Jesus’s blood when he was crucified.\
+ Given the importance of Jesus’s crucifixion and the eucharist in\
+ Christian beliefs, the search for the grail became the holiest of\
+ quests as it signified the pursuit of union with God.\
+ You must find the Grail to win the game.\
+")
+
+[building_human_anatomy]
+name		= _("De Humani Corporis Fabrica")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Biology", "Player"
+    }
+graphic	= "b.human_anatomy"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 40
+upkeep		= 1
+sabotage	= 1
+sound		= "b_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+De humani corporis fabrica libri septem (Latin for 'On the fabric of the\
+ human body in seven books') is a set of books on human anatomy written\
+ by Andreas Vesalius (1514–1564) and published in 1543. It was a major\
+ advance in the history of anatomy over the long-dominant work of Galen,\
+ and presented itself as such. The collection of books is based on his\
+ Paduan lectures, during which he deviated from common practice by\
+ dissecting a corpse to illustrate what he was discussing. Dissections\
+ had previously been performed by a barber surgeon under the direction\
+ of a doctor of medicine, who was not expected to perform manual labour.\
+ ")
+
+[building_the_jerusalem_hospital]
+name		= _("Jerusalem Hospital")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Medicine", "Player"
+    }
+graphic	= "b.muristan"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 75
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+The hospital set up in Jerusalem after the First Crusade in 1113 was\
+ a model for later hospitals. It had room for 1,000 to 2,000 beds\
+ with 150 staff. It cared mostly for poor people who were sick and\
+ for wounded Crusaders. It provided the ideal of what a hospital\
+ should be for many centuries. In the hospital the poor, the wounded\
+ and the sick were considered lords and those who looked after them\
+ their servants. The Church of the Redeemer is the newest church on\
+ that site in the Old City of JerusalemWith the Jerusalem Hospital,\
+ citizens are less likely to suffer from plagues.\
+")
+
+[building_the_jerusalem_post]
+name		= _("The Jerusalem Post")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Movable Type", "Player"
+    }
+graphic	= "b.jerusalem_post"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 75
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+The Jerusalem Post is a broadsheet newspaper based in Jerusalem,\
+ founded in 1932 during the British Mandate of Palestine by Gershon\
+ Agron as The Palestine Post. In 1950, it changed its name to The\
+ Jerusalem Post. In 2004, the paper was bought by Mirkaei Tikshoret,\
+ a diversified Israeli media firm controlled by investor Eli Azur.\
+ In April 2014, Azur acquired the newspaper Maariv. The newspaper is\
+ published in English and previously also printed a French edition.\
+ Formerly regarded as left-wing, the paper underwent a noticeable\
+ shift to the right in the late 1980s.\
+")
+
+[building_jousting]
+name            = _("Jousting")
+rule_name       = "Jousting"  
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Chivalry", "Player"
+    }
+graphic	= "b.jousting"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 75
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+Jousts were, from the 13th to 16th century CE, a popular part of the\
+ European medieval tournament where knights showed off their martial\
+ skills by riding against one another with wooden lances in a\
+ designated area known as the lists. The two opposing knights, from\
+ c. 1400 CE, were separated by a barrier or tilt, hence the sport’s\
+ other name of tilting.  Adopting this wonder makes all angry and\
+ unhappy citizens content in the city where it is located, including\
+ citizens unhappy about military activity.\
+")
+
+[building_the_knights_hospitaller]
+name		= _("Knights Hospitallers")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Battlefield Medicine", "Player"
+    }
+graphic	= "b.knights_hospitaller"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+Among the men returning from the Crusades were many lame, blind and\
+ sick who needed care. The Church set up Religious orders to care\
+ for the sick and injured.[3] One group who provided this care was\
+ called the Knights Hospitallers. They had set up field hospitals at\
+ Jerusalem and Acre from 1120 to 1291.\
+")
+
+[building_king_charles_i_equestrian_statue]
+name		= _("King Charles I Equestrian Statue")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Arched Saddle", "Player"
+    }
+graphic	= "b.king_charles_i_equestrian_statue"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 75
+upkeep		= 0
+sabotage	= 0
+sound		= "w_king_richards_crusade"
+sound_alt	= "w_generic"
+helptext	= _("\
+The first Renaissance-style equestrian statue in England, it was\
+ commissioned by Charles's Lord High Treasurer Richard Weston for\
+ the garden of his country house in Roehampton, Surrey. Following\
+ the English Civil War the statue was sold to a metalsmith to be\
+ broken down, but he hid it until the Restoration. It was installed\
+ in its current, far more prominent location in the centre of London\
+ in 1675, and the elaborately carved plinth dates from that time.\
+ Adds one extra shield resource on every tile around the city\
+ where it is built.\
+")
+
+[building_king_richards_crusade]
+name		= _("King Richard's Crusade")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Engineering", "Player"
+    }
+graphic	= "b.king_richards_crusade"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 75
+upkeep		= 0
+sabotage	= 0
+sound		= "w_king_richards_crusade"
+sound_alt	= "w_generic"
+helptext	= _("\
+Richard I, King of England, is known as Richard Cœur de Lion (Norman\
+ French: Le quor de lion) or Richard the Lionheart because of his\
+ reputation as a great military leader and warrior. Richard was an\
+ important Christian commander during the Third Crusade, leading the\
+ campaign after the departure of Philip II of France and achieving\
+ considerable victories against his Muslim counterpart, Saladin,\
+ although he finalized a peace treaty and ended the campaign without
+ retaking Jerusalem. Obtaining this great wonder adds one extra\
+ shield resource on every tile around the city where it is built.\
+")
+
+[building_king_solomons_temple]
+name		= _("King Solomon's Temple")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Enlightenment", "Player"
+    }
+graphic	= "b.king_solomons_temple"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+Believed to be constructed around the mid-10th Century BCE on an\
+ elevated area of ground in Jerusalem that would later come to be\
+ known as Temple Mount, Solomon’s Temple was said to be Phoenician\
+ in design. A magnificent, white marble and gold- covered building,\
+ the temple contained three chambers consisting of an outer\
+ vestibule, the main chamber and the ‘Holy of Holies’. The Holy of\
+ Holies was a small antechamber at the back of the temple where the\
+ Ark of the Covenant was traditionally thought to be kept.\
+")
+
+[building_leonardos_workshop]
+name		= _("Leonardo's Workshop")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Invention", "Player"
+    }
+graphic	= "b.leonardos_workshop"
+graphic_alt	= "-"
+obsolete_by	= "Mobile Warfare"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_leonardos_workshop"
+sound_alt	= "w_generic"
+helptext	= _("\
+Unknown until recently, the location of Leonardo da Vinci was ideal\
+ for the Renaissance genius. The monastery's library had a\
+ collection of 5000 codex, which attracted Leonardo. It was also\
+ very close to the Santa Maria Nuova hospital where he dissected\
+ more than 30 cadavers for his anatomy studies. It was right at the\
+ monastery that he might have met Lisa Gherardini, the original\
+ Mona Lisa, who he painted between 1500 and 1504, perhaps in this\
+ workshop. Its construction upgrades one obsolete unit per game
+ turn.\
+")
+
+[building_mausoleum_halicarnassus]
+name		= _("Mausoleum at Halicarnassus")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Islamic Kalam", "Player"
+    }
+graphic	    = "b.mausoleum_halicarnassus"
+graphic_alt	= "-"
+obsolete_by	= "Islamic Esnaf"
+build_cost	= 75
+upkeep		= 0
+sabotage	= 0
+sound		= "w_lighthouse"
+sound_alt	= "w_generic"
+helptext	= _("\
+The Mausoleum at Halicarnassus or Tomb of Mausolus (Ancient Greek:\
+ Μαυσωλεῖον τῆς Ἁλικαρνασσοῦ; Turkish: Halikarnas Mozolesi) was a\
+ tomb built between 353 and 350 BC in Halicarnassus (present Bodrum,\
+ Turkey) for Mausolus, an Anatolian from Caria and a satrap in the\
+ Achaemenid Empire, and his sister-wife Artemisia II of Caria. The\
+ structure was designed by the Greek architects Satyros and Pythius\
+ of Priene.Its elevated tomb structure is derived from the tombs of\
+ neighbouring Lycia, a territory Mausolus had invaded and annexed \
+ c. 360 BC, such as the Nereid Monument.\
+")
+
+[building_lighthouse]
+name		= _("Pharos Lighthouse")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Map Making", "Player"
+      "TerrainClass", "Oceanic", "Adjacent"
+    }
+graphic	    = "b.pharos_lighthouse"
+graphic_alt	= "-"
+obsolete_by	= "Magnetism"
+build_cost	= 75
+upkeep		= 0
+sabotage	= 0
+sound		= "w_lighthouse"
+sound_alt	= "w_generic"
+helptext	= _("\
+Before the development of clearly defined ports, mariners were\
+ guided by fires built on hilltops. Since elevating the fire would\
+ improve the visibility, placing the fire on a platform became a\
+ practice that led to the development of the lighthouse. In\
+ antiquity, the lighthouse functioned more as an entrance marker to\
+ ports than as a warning signal for reefs and promontories, unlike\
+ many modern lighthouses. The most famous lighthouse structure from\
+ antiquity was the Pharos of Alexandria, Egypt, which collapsed\
+ following a series of earthquakes between 956 CE and 1323 CE.\
+ Its construction gives all your sea units 1 additional movement\
+ point and makes all your new military sea units veterans.\
+")
+
+[building_magellans_expedition]
+name		= _("Magellan's Expedition")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Physics", "Player"
+      "TerrainClass", "Oceanic", "Adjacent"
+    }
+graphic	= "b.magellans_expedition"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_magellans_expedition"
+sound_alt	= "w_generic"
+helptext	= _("\
+In 1519, Portuguese explorer Ferdinand Magellan led a Spanish\
+ expedition to find a western route to the East Indies and reach\
+ the Moluccas or Spice Islands (in present day Indonesia) with a\
+ fleet known as the Armada de Molucca. After the death of Magellan\
+ in the Philippines in 1521 and following several other short-\
+ leaderships, the Spanish navigator Juan Sebastián Elcano led the\
+ expedition to the Spice Islands and ultimately the return trip to\
+ Spain, resulting in the first circumnavigation of the world in\
+ 1522. The expedition is therefore known as the Magellan's\
+ circumnavigation. Gives all your sea units 2 additional movement\
+ points.\
+")
+
+[building_magna_carta_libertatum]
+name		= _("Magna Carta Libertatum")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Collectivism", "Player"
+    }
+graphic	= "b.magna_carta_libertatum"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_united_nations"
+sound_alt	= "w_generic"
+helptext	= _("\
+Magna Carta Libertatum, commonly called Magna Carta, is a royal\
+ charter of rights agreed to by King John of England at Runnymede,\
+ near Windsor, on 15 June 1215. First drafted by Archbishop of\
+ Canterbury Stephen Langton to make peace between the unpopular\
+ king and a group of rebel barons, it promised the protection of
+ church rights, protection for the barons from illegal imprisonment,
+ access to swift justice, and limitations on feudal payments to the\
+ Crown, to be implemented through a council of 25 barons. Neither
+ side stood behind their commitments, and the charter was annulled
+ by Pope Innocent III, leading to the First Barons' War.\ 
+ All your units regain two extra hitpoints per turn.\
+")
+
+[building_marco_polos_embassy]
+name		= _("Marco Polo's Embassy")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Trade", "Player"
+    }
+graphic	= "b.marco_polos_embassy"
+graphic_alt	= "-"
+obsolete_by	= "Collectivism"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_marco_polos_embassy"
+sound_alt	= "w_generic"
+helptext	= _("\
+Marco Polo, 15 September, 1254 – January 8, 1324, was a Venetian\
+ merchant,[2][3] explorer, and writer who travelled through Asia\
+ along the Silk Road between 1271 and 1295. The Travels of Marco\
+ Polo, c. 1300, chronicles his travels and is known as a book that\
+ described to Europeans the then mysterious culture and inner\
+ workings of the Eastern world, including the wealth and great size\
+ of the Mongol Empire and China in the Yuan Dynasty, giving their\
+ first comprehensive look into China, Persia, India, Japan and\
+ other Asian cities and countries. The player who owns it gets an\
+ embassy with all players.\
+")
+
+[building_medieval_theatre]
+name            = _("Medieval Theater")
+rule_name       = "Medieval Theatre"       ; en_GB used originally
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Philosophy", "Player"
+    }
+graphic	= "b.medieval_theatre"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 75
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+Medieval theatre encompasses theatrical performance in the period\
+ between the fall of the Western Roman Empire in the 5th century and\
+ the beginning of the Renaissance in approximately the 15th century.\
+ Faced with the problem of explaining a new religion to a largely\
+ illiterate population, churches in the Early Middle Ages began\
+ staging dramatized versions of particular biblical events on specific\
+ days of the year. The dramatizations were included in order to vivify\
+ annual celebrations. Symbolic objects and actions (vestments, altars,\
+ censers, and pantomime performed by priests) recalled the events\
+ which Christian ritual celebrates. These were extensive sets of\
+ visual signs that could be used to communicate with a largely\
+ illiterate audience. These performances developed into liturgical\
+ dramas, the earliest of which is Whom do you Seek (Quem-Quaeritis)\
+ Easter trope, dating from ca. 925. Adopting this wonder makes all\
+ angry and unhappy citizens content in the city where it\
+ is located, including citizens unhappy about military activity.\
+")
+
+[building_merchant_adventurers_of_london]
+name		= _("Merchant Adventurers of London")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Economics", "Player"
+    }
+graphic	= "b.merchant_adventurers_of_london"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "ww_generic"
+sound_alt	= "-"
+helptext	= _("\
+The Company of Merchant Adventurers of London was a trading company\
+ founded in the City of London in the early 15th century. It brought\
+ together leading merchants in a regulated company in the nature of a\
+ guild. Its members' main business was exporting cloth, especially\
+ white (undyed) broadcloth, in return for a large range of foreign\
+ goods. Its discovery results in city improvements, which would\
+ normally have an upkeep of 1, are free of upkeep for all your cities.\
+")
+
+[building_michelangelos_chapel]
+name		= _("Michelangelo's Chapel")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Monotheism", "Player"
+    }
+graphic	= "b.michelangelos_chapel"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_michelangelos_chapel"
+sound_alt	= "w_generic"
+helptext	= _("\
+Counts as having a Cathedral in each of your cities. This makes 3\
+ unhappy citizens content in each city; however, it does not affect\
+ citizens made unhappy by military activity. The discovery of\
+ Theology  increases the effect of a Cathedral, making an\
+ additional unhappy citizen content.  The discovery of Collectivism\
+ lessens the effect of a Cathedral, reducing by one the number of\
+ unhappy citizens made content.\
+")
+
+[building_occams_razor]
+name		= _("Occam's Razor")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Improved Roads", "Player"
+    }
+graphic	= "b.occams_razor"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 75
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+The first half of the 14th century saw the scientific work of great\
+ thinkers. The logic studies by William of Occam led him to postulate\
+ a specific formulation of the principle of parsimony, known today as\
+ Occam's razor. This principle is one of the main heuristics used by\
+ modern science to select between two or more underdetermined\
+ theories, though it is only fair to point out that this principle\
+ was employed explicitly by both Aquinas and Aristotle before him.\
+ The principle states that 'entities should not be multiplied without\
+ necessity', or more simply, the simplest explanation is usually the\
+ right one. Discovery of this great wonder gives two immediate\
+ technology advances.\
+")
+
+[building_oracle]
+name		= _("Oracle")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Mysticism", "Player"
+    }
+graphic	= "b.oracle"
+graphic_alt	= "-"
+obsolete_by	= "Theology"
+build_cost	= 50
+upkeep		= 0
+sabotage	= 0
+sound		= "w_oracle"
+sound_alt	= "w_generic"
+helptext	= _("\
+The Pythi, or The Delphic Oracle, exerted considerable influence\
+ throughout Hellenic culture. Serving as the mouthpiece of the\
+ oracles of the god Apollo, this woman was essentially the highest\
+ authority both civilly and religiously in male-dominated ancient\
+ Greece. She responded to the questions of citizens, foreigners,\
+ kings, and philosophers on issues of political impact, war, duty,\
+ crime, family, laws—even personal issues.\
+ Makes two additional unhappy citizens content in every city with\
+ a Temple.  Does not affect citizens made unhappy by military\
+ activity.\
+")
+
+[building_persopolis]
+name = _("Persopolis")
+genus = "GreatWonder"
+reqs =
+    { "type", "name", "range"
+      "Tech", "Jihad", "Player"
+    }
+graphic = "b.persopolis"
+graphic_alt = "-"
+obsolete_by = "None"
+build_cost = 100
+upkeep = 3
+sabotage = 0
+sound = "b_generic"
+sound_alt = "-"
+helptext	= _("\
+Persepolis (/pərˈsɛpəlɪs/; Persian: تخت جمشید; romanized: Takht-e Jamshīd,\
+ lit. 'Throne of Jamshid') was the ceremonial capital of the Achaemenid\
+ Empire (c.550–330 BC). It is situated in the plains of Marvdasht,\
+ encircled by southern Zagros mountains of the Iranian plateau. Modern day\
+ Shiraz is situated 60 km (37 mi) southwest of the ruins of Persepolis.\
+ The earliest remains of Persepolis date back to 515 BC. It exemplifies\
+ the Achaemenid style of architecture. UNESCO declared the ruins of\
+ Persepolis a World Heritage Site in 1979.\
+")
+
+[building_philosophers_stone]
+name = _("The Philosopher's Stone")
+genus = "GreatWonder"
+reqs =
+    { "type", "name", "range"
+      "Tech", "Alchemy", "Player"
+    }
+graphic = "b.philosophers_stone"
+graphic_alt = "b.philosophers_stone"
+obsolete_by = "None"
+build_cost = 100
+upkeep = 3
+sabotage = 0
+sound = "b_generic"
+sound_alt = "-"
+helptext	= _("\
+The Stone of the Philosophers (Latin: lapis philosophorum) is a\
+ mythical alchemical substance capable of turning base metals such\
+ as mercury into gold (chrysopoeia, from the Greek χρυσός khrusos,\
+ 'gold', and ποιεῖν poiēin, 'to make') or silver.\
+")
+
+[building_principate]
+name = _("The Principate")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Monarchy", "Player"
+    }
+graphic	= "b.principate"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+The Principate is the name sometimes given to the first period of\
+ the Roman Empire from the beginning of the reign of Augustus in\
+ 27 BC to the end of the Crisis of the Third Century in 284 AD,\
+ after which it evolved into the so-called Dominate. The Principate\
+ is characterised by the reign of a single emperor (princeps) and\
+ an effort on the part of the early emperors, at least, to preserve\
+ the illusion of the formal continuance, in some aspects, of the\
+ Roman Republic./
+")
+
+[building_pyramids]
+name		= _("Pyramids")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Masonry", "Player"
+    }
+graphic	= "b.pyramids"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_pyramids"
+sound_alt	= "w_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+The Egyptian pyramids are ancient pyramid-shaped masonry structures\
+ located in Egypt. As of November 2008, sources cite either 118 or\
+ 138 as the number of identified Egyptian pyramids. Most were built\
+ as tombs for the country's pharaohs and their consorts during the\
+ Old and Middle Kingdom periods. The most famous Egyptian pyramids\
+ are those found at Giza, on the outskirts of Cairo. Several of the\
+ Giza pyramids are counted among the largest structures ever built.\
+ The amount of stored food lost when one of your cities grows or\
+ shrinks is reduced by 25%.  This helps a city to grow faster and\
+ more easily withstand famine.  Cumulative with Granary.\
+")
+
+[building_pont_valentre_bridge]
+name 		= _("The Pont Valentré Bridge")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Bridge Building", "Player"
+    }
+graphic	= "b.pont_valentre_bridge"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 75
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+Constructed in 1378 and spanning 138 meters, the Ponte Valentré is\
+ an example of a medieval fortified bridge. Construction of the\
+ bridge took 70 years. It is rumored that the builders of the\
+ bridge made a pact with the devil in order to meet their\
+ construction deadlines. Although the bridge was never actually\
+ used in combat, the fortifications would have been very\
+ formidable by medieval standards. It's construction provides\
+ 2 bonus move points to Land and Big Land units.\
+")
+
+[building_rosslyn_chapel]
+name		= _("Rosslyn Chapel")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Freemasonry", "Player"
+    }
+graphic	= "b.rosslyn_chapel"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 75
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+; /* xgettext:no-c-format */
+helptext	= _("\
+The chapel, built 150 years after the official dissolution of the\
+ Knights Templar, has many Templar symbols, such as the 'Two riders\
+ on a single horse' that appear on the Knights Templar Seal.
+ William Sinclair 3rd Earl of Orkney and Baron of Roslin is said\
+ to be a hereditary Grand Master of the Scottish stonemasons. was\
+ the builder of Rosslyn Chapel. A later William Sinclair of Roslin\
+ became the first Grand Master of the Grand Lodge of Scotland and,\
+ subsequently, several other members of the Sinclair family have\
+ held this position. It's construction reduces unhappiness in each\
+ city with a chapel by 100%.\
+")
+
+[building_schola_medica_salernitana]
+name		= _("Schola Medica Salernitana")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Medical Research", "Player"
+    }
+graphic	= "b.schola_medica_salernitana"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 3
+sabotage	= 100
+sound		= "-"
+sound_alt	= "b_generic"
+helptext	= _("\
+The Schola Medica Salernitana (Italian: Scuola Medica Salernitana)\
+ was  a Medieval medical school, the first and most important of\
+ its kind. Situated on the Tyrrhenian Sea in the south Italian\
+ city of Salerno, it was founded in the 9th century and rose to\
+ prominence in the 10th century, becoming the most important source\
+ of medical knowledge in Western Europe at the time.\ 
+")
+
+[building_seismoscope]
+name		= _("Seismoscope")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Geophysics", "Player"
+    }
+graphic	= "b.seismoscope"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 3
+sabotage	= 100
+sound		= "-"
+sound_alt	= "b_generic"
+helptext	= _("\
+In AD 132, Zhang Heng of China's Han dynasty invented the first\
+ seismoscope (by the definition above), which was called Houfeng\
+ Didong Yi (translated as, 'instrument for measuring the seasonal\
+ winds and the movements of the Earth'). The description we have,\
+ from the History of the Later Han Dynasty, says that it was a\
+ large bronze vessel, about 2 meters in diameter; at eight points\
+ around the top were dragon's heads holding bronze balls. When\
+ there was an earthquake, one of the dragons' mouths would open\
+ and drop its ball into a bronze toad at the base, making a sound\
+ and supposedly showing the direction of the earthquake. On at\
+ least one occasion, probably at the time of a large earthquake\
+ in Gansu in AD 143, the seismoscope indicated an earthquake even\
+ though one was not felt. The first earthquake recorded by this\
+ seismoscope was supposedly 'somewhere in the east'. Days later,\
+ a rider from the east reported this earthquake.
+")
+
+[building_the_spiral_minaret]
+name		= _("The Spiral Minaret")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Metallurgy", "Player"
+    }
+graphic	= "b.the_spiral_minaret"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 0
+sabotage	= 0
+sound		= "w_eiffel_tower"
+sound_alt	= "w_generic"
+; /* xgettext:no-c-format */
+helptext	= _("\
+The Spiral Minaret or Malwiya Minaret is part of the Great Mosque of\
+ Samarra in Iraq. The mosque is one of the largest in the world. The\
+ minaret was originally connected to the mosque by a bridge. The\
+ minaret or tower was constructed in 848 – 852 out of sandstone, and\
+ is unique among other minarets because of its ascending spiral\
+ conical design. The tower is 52 meter (162 ft) high. In 2005, \
+ insurgents blew up the top section of the tower leaving crumbled\
+ brick and clay. By building it, yuur reputation and goodwill among\
+ other nations is recovered twice as fast.\
+")
+
+[building_statue_of_galileo]
+name		= _("Statue of Galileo")
+rule_name 	= "Statue of Galileo"
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Theory of Impetus", "Player"
+    }
+graphic	= "b.statue_of_galileo"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+The Statue of Galileo was completed in 1841 and built within the\
+ first floor of the Science Museum of La Specola in Florence. to\
+ commemorate the famous Florentine scientist, Galileo Galilei and\
+ to house some of his scientific instruments. It contains a large\
+ statue of Galileo and a series of lunettes and frescoes depicting\
+ events in scientific history relating to Florence. It once\
+ contained some of his original instruments such as his geometric\
+ and military compass, an armed loadstone, two telescopes, and the\
+ objective lens of the telescope with which Galileo discovered the\
+ four largest moons of Jupiter.\
+")
+
+[building_sun_tzus_war_academy]
+name		= _("Sun Tzu's War Academy")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Feudalism", "Player"
+    }
+graphic	= "b.sun_tzus_war_academy"
+graphic_alt	= "-"
+obsolete_by	= "Mobile Warfare"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_sun_tzus_war_academy"
+sound_alt	= "w_generic"
+helptext	= _("\
+All your new military land units start with an additional veteran\
+ level (this is cumulative with any Barracks building in a city;\
+ with both, units are created as Hardened). The chance of a land\
+ unit getting the next veteran level after a battle increases by\
+ half.\
+")
+
+[building_taj_mahal]
+name		= _("Taj Mahal")
+genus 		= "GreatWonder"
+reqs		=
+	{ "type", "name", "range"
+	  "Tech", "Mathematics", "player"
+	}
+graphic 	= "b.taj_mahal"
+graphic_alt = "-"
+obsolete_by = "None"
+build_cost  = 50
+upkeep  	= 1
+sabotage  	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext 	= _("\
+The Taj Mahal is a white marble mausoleum in Agra, India. It is\
+ widely considered to be a premier example of Mughal architecture,\
+ which combines elements of Indian, Persian, and Islamic styles.\
+ With its mathematical symmetry, it is India’s top tourist\
+ attractions. It is commonly referred to as the Jewel of India.\
+ Built by the Emporer Shah Jahan, for his wife Mumtaz Mahal\
+ (who died during childbirth in 1631 A.D.), it is arguably the\
+ world's greatest monument of love.\
+")
+
+[building_theodosian_walls]
+name		= _("Theodosian Walls")
+genus		= "GreatWonder"
+reqs		=
+	{ "type", "name", "range"
+	  "Tech", "Explosives", "player"
+	}
+graphic 	= "b.theodosian_walls"
+graphic_alt = "-"
+obsolete_by = "None"
+build_cost  = 100
+upkeep  	= 1
+sabotage  	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext 	= _("\
+The Walls of Constantinople are a series of defensive stone walls\
+ that have surrounded and protected the city of Constantinople\
+ (today Istanbul in Turkey) since its founding as the new capital\
+ of the Roman Empire by Constantine the Great. With numerous\
+ additions and modifications during their history, they were the\
+ last great fortification system of antiquity, and one of the most\
+ complex and elaborate systems ever built. Initially built by\
+ Constantine the Great, the walls surrounded the new city on all\
+ sides, protecting it against attack from both sea and land. As\
+ the city grew, the famous double line of the Theodosian Walls\
+ was built in the 5th century. Although the other sections of the\
+ walls were less elaborate, they were, when well-manned, almost\
+ impregnable for any medieval besieger.
+")
+
+[building_thomaskirche]
+name		= _("Thomaskirche")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Theology", "Player"
+    }
+graphic	= "b.thomaskirche"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 1
+sabotage	= 0
+sound		= "w_js_bachs_cathedral"
+sound_alt	= "w_generic"
+helptext	= _("\
+St. Thomas Church or Thomaskirche (German) is a Lutheran church in\
+ Leipzig, Germany. There has been a church at the current site at\
+ least since the 12th century. Foundations of a Romanesque building\
+ have been discovered in the choir and crossing of the current\
+ church. Between 1212 and 1222 the earlier structure became the\
+ church of the new St. Thomas Monastery of the Augustinian order\
+ founded by Markgraf Dietrich von Meissen. This monastery later\
+ became the core of the University of Leipzig (founded in 1409).\
+ In 1217, The Minnesinger Heinrich von Morungen bequeathed to the\
+ church a relic of St. Thomas as he entered the order of canons\
+ after a trip to India. St. Thomas, on of the twelve disciples of\
+ Christ, was martydomed in present-day Channai, India.
+")
+
+[building_viking_gods_monument]
+name		= _("Viking Gods Monument")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Polytheism", "Player"
+    }
+graphic	= "b.viking_gods"
+graphic_alt	= "-"
+obsolete_by	= "Theology"
+build_cost	= 50
+upkeep		= 1
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+The Vikings had more gods that the Greeks and Romans. Norse gods\
+ belong to two major clans: Æsir and Vanir. Odin, Frigg, Thor,\
+ Loki, Balder, Hod, Heimdall and Tyr are the most elevated\
+ representatives of Æsir and are known as the main gods. The\
+ second clan, Vanir, contains the fertility gods and count Njord,\
+ Freyr, and Freyja as their most notable members. A monument to\
+ the gods generates an additional happy citizen in each city.\
+")
+
+[building_war_college]
+name		= _("National War College")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Leadership", "Player"
+    }
+graphic	= "b.war_college"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 75
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+The National War College of the United States is a school in the\
+ National Defense University. It is housed in Roosevelt Hall on\
+ Fort Lesley J. McNair, Washington, D.C., the third-oldest Army\
+ post still active.\ 
+All your new military land units start with an additional veteran\
+ level (this is cumulative with any Barracks building in a city;\
+ with both, units are created as Hardened). The chance of a land\
+ unit getting the next veteran level after a battle increases by\
+ half.\
+")
+
+[building_whitby_abbey]
+name		= _("Whitby Abbey")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Navigation", "Player"
+    }
+graphic	= "b.whitby_abbey"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+The entire map becomes permanently visible to the player who owns\
+ it--the player always has up-to-date knowledge of all terrain and\
+ cities (but not units) despite fog-of-war. It allows all players\
+ to start building spaceship parts (assuming they have researched\
+ the necessary technologies).\
+")
+
+[building_womens_suffrage]
+name		= _("Women's Suffrage")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Milling", "Player"
+    }
+graphic	= "b.womens_suffrage"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_womens_suffrage"
+sound_alt	= "w_generic"
+helptext	= _("\
+Counts as a Police Station in every city. (That is, for each city, it\
+ reduces the unhappiness caused by aggressively deployed military\
+ units owned by that city by 2 under Democracy and 1 under Republic --\
+ in other words, it neutralizes the unhappiness caused by a single\
+ military unit per city. This wonder has no effect under other\
+ governments.)\
+")
+; NOTE:
+; For Civ2 this should reduce unhappiness by one for *each* unit
+; outside a city that is causing at least one unhappiness.
+
+; SPECIAL IMPROVEMENT FOR END_GAME
+
+[building_holy_sepulchre]
+name		= _("The Holy Sepulchre")
+genus		= "GreatWonder"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Order of the Red Cross", "Player"
+    }
+graphic	= "b.holy_sepulchre"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+The Roman Emperor Constantine, who legalized Christianity, approved\
+ construction of the Holy Sepulcher in 326 A.D., and ordered “that it\
+ should surpass all the churches of the world in the beauty of its\
+ walls, columns, and marbles.” He had a Roman temple demolished to\
+ make way for a massive 250-foot-long basilica and an open-air\
+ colonnade enclosing the traditional site of the Crucifixion. He\
+ also had a round building situated just to the west built above a\
+ rock-cut tomb from the 1st century A.D., venerated as the place\
+ where Jesus rose from the dead. By the time the Crusaders entered\
+ the once-sumptuous complex more than 700 years later, it had already\
+ been battered by neglect and earthquakes, and largely destroyed once\
+ during a Persian conquest and later at the order of a mad Egyptian\
+ king. Rebuilding the Holy Sepulchre was a pristine goal. However,\
+ its reconstruction would be as meaningless as its original, and\
+ Jerusalem would soon fall to Saracen hands.\
+")
+
+[building_sacred_geometry]
+name		= _("Sacred Geometry")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Order of the Red Cross", "Player"
+    }
+graphic	= "b.sacred_geometry"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+Many teachings have described Sacred Geometry as the blueprint of\
+ creation and the genesis, the origin of all form. Sacred geometry\
+ is considered an ancient science that explores and explains the\
+ energy patterns that create and unify all things and reveals the\
+ precise way that the energy of creation organizes itself. It is\
+ said that every natural pattern of growth or movement comes back\
+ to one or more geometric shapes. The molecules of our DNA, the\
+ cornea of our eye, snowflakes, flower petals, crystals, a shell,\
+ the stars, the galaxy we spiral within, the air we breathe, and\
+ all life forms are created out of geometric codes. The knowledge\
+ derived from this science cannot be captured, destroyed, or won.\
+ One has to study and meditate upon its princplies. It is a noble\
+ pigrimage.\
+")
+
+[building_maltese_cross]
+name		= _("Maltese Cross")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Order of Malta", "Player"
+    }
+graphic	= "b.maltese_cross"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 100
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+The monastic hospitaler order was founded following the First Crusade by\
+ Gerard Thom. Gerard acquired territory and revenues for his order throughout\
+ the Kingdom of Jerusalem and beyond. Under his successor, Raymond du Puy,\
+ the original hospice was expanded to an infirmary[3] near the Church of the\
+ Holy Sepulchre in Jerusalem. Initially the group cared for pilgrims in\
+ Jerusalem, but the order soon extended to providing pilgrims with an armed\
+ escort, which soon grew into a substantial force. Thus the Order of St. John\
+ imperceptibly became military without losing its charitable character. During\
+ the Crusades, the Hospitallers s used a plain Latin cross. Occasional use of\
+ the modern form straight-edged 'eight-pointed cross' by the order begins in\
+ the early 16th century. This early form is a cross moline (ancrée) or cross\
+ branchée ending in eight points, not yet featuring the sharp vertex of the\
+ modern design. After the fall of the Kingdom of Jerusalem in 1291, the Knights\
+ were confined to the County of Tripoli and, when Acre was captured in 1291, the\
+ order sought refuge in the Kingdom of Cyprus. In 1530, after seven years of\
+ moving from place to place in Europe, Pope Clement VII reached an agreement with\
+ Charles V of Spain, to provide the knights permanent quarters on Malta. The order\
+ operated the earliest hospitals, the their namesake and a worthy cause.\ 
+")
+
+[building_fourty_days_of_silence]
+name		= _("40 Days of Silence")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Order of the Temple", "Player"
+    }
+graphic	= "b.prayer"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 50
+upkeep		= 0
+sabotage	= 0
+sound		= "w_generic"
+sound_alt	= "-"
+helptext	= _("\
+As warrior-monks, the Templars were, in general, expected to focus their thoughts\
+ on spiritual matters and to avoid frivolous conversations. Though speach was\
+ required for coordinating military operations, the monks would at times enter\
+ period of silence to proy and seek supplications for their brothers, the people\
+ they protected, and the lives they had taken. The latter was a particular\
+ struggle as their nature of cultural and religious tolerance was molded by their\
+ mission of protecting pilgrams to the Holy Land, whether Jewish, Christian, or\
+ Muslim. The taking of any life though may be necessary, was woeful. Yet, this was\
+ the epitomy of Christian charity, lost to many who saw the Christian faith as\
+ holier perhaps than Christ himself.
+")
+
+; CAPALIZATION TO BUILD TREASURY
+
+[building_capitalization]
+name		= _("Coinage")
+genus		= "Special"
+flags		= "Gold"
+reqs	=
+    { "type", "name", "range"
+
+    }
+graphic	= "b.capitalization"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 999
+upkeep		= 0
+sabotage	= 0
+; FIXME: this is the real helptext; restore when have a subordnate analogue
+; /* (ignore for gettext until fixed)
+;helptext	= _("\
+;This is not a normal improvement.  Instead, setting a city's\
+; production to Capitalization means its shield production is\
+; converted to tax output (money).\
+;")
+; */
+helptext	= _("\
+This is not a normal improvement.  Instead, setting a city's\
+ production to Coinage means its shield production is\
+ converted to tax output (money, coins!).\
+")
+
+[building_mosque]
+name		= _("Mosque")
+genus		= "Improvement"
+reqs	=
+    { "type", "name", "range"
+      "Tech", "Islam", "Player"
+    }
+graphic	= "b.mosque"
+graphic_alt	= "-"
+obsolete_by	= "None"
+build_cost	= 25
+upkeep		= 1
+sabotage	= 100
+sound		= "b_temple"
+sound_alt	= "b_generic"
+helptext	= _("\
+A temple (from the Latin word templum) is a building reserved for\
+ religious or spiritual rituals and activities such as prayer and\
+ sacrifice. The term typically used for such buildings belonging to\
+ all faiths where a more specific term such as church, mosque or\
+ synagogue is not generally used in English. These include Hinduism,\
+ Buddhism, Sikhism and Jainism among religions with many modern\
+ followers, as well as other ancient religions such as Ancient\
+ Egyptian religion. Makes one unhappy citizen content.  The \
+ Mysticism advance doubles this effect.  With both Mysticism and the\
+ Oracle, 4 citizens are made content.  Does not affect citizens made\
+ unhappy by military activity.\ 
+ The work of the priests also reduces the effect of plague in the city.\
+")
+

@@ -1,0 +1,56 @@
+[nation_imereti]
+
+name=_("Imereti")
+plural=_("?plural:Imeretis")
+groups="Early Modern", "Modern", "Asian"
+legend=_("Imereti, often called the crossroads of Central Asia, has had\
+ a very turbulent history. Through the ages, the country has been occupied\
+ by many forces including the Persian Empire, Genghis Khan and Alexander the\
+ Great. The Imereti as it is known today is part of the country of Georgia,\
+ since 1918.")
+
+leaders = {
+ "name",                "sex"
+ "David I", 			"Male" ;(1258–1293)
+ "Constantine I", 		"Male"  ;(1293–1326)
+ "Michael", 			"Male"  ;(1326–1329)
+ "Bagrat I", 			"Male"  ;(1329–1330)
+;"Vacant",						;(1330–1387)
+ "Alexandre I", 		"Male"  ;(1387–1389)
+ "George I", 			"Male"  ;(1389–1396)
+ "Constantine II", 		"Male"  ;(1396–1401)
+ "Demetrius I", 		"Male"  ;(1401–1455)
+}
+
+ruler_titles = {
+ "government",      "male_title",          "female_title"
+ "Monarchy",        _("Emir %s"),          _("Emira %s")
+ "Communism",       _("General Secretary %s"), _("?female:General Secretary %s")
+ "Fundamentalism",  _("Mullah %s"),        _("?female:Mullah %s")
+}
+
+flag="imereti"
+flag_alt = "-"
+city_style = "Classical"
+
+init_techs="Islam"
+init_buildings="Mosque"
+init_units=""
+
+civilwar_nations="Iranian", "Pakistani", "Pashtun"
+
+; City list based on data from this page:
+; https://en.wikipedia.org/wiki/Imereti
+cities =
+ "Kutaisi",
+ "Baghdati",
+ "Vani",
+ "Zestafoni",
+ "Terjola",
+ "Samtredia",
+ "Sachkhere",
+ "Tqibuli",
+ "Chiatura",
+ "Tsqaltubo",
+ "Kharagauli",
+ "Khoni"

@@ -1,0 +1,114 @@
+[nation_templar]
+
+name=_("Knights Templar")
+plural=_("?plural:Templars")
+groups="European", "Medieval"
+legend=_("The Knights Templar were formed after the first Crusade in order\
+ to protect Pilgrims on their journeys in the Holy Land. The organization\
+ grew to immense power and wealth in the next 200 years, and were the\
+ innovators of many modern concepts such as Banking.")
+
+leaders = {
+ "name",                        "sex"
+ "Geoffrey de Strick",			"Male"  ;1110-1118
+ "Hugh de Payens",              "Male"  ;1118–1136
+ "Robert de Craon",             "Male"  ;1136–1147
+ "Everard des Barres",          "Male"  ;1147–1151
+ "Bernhard de Tremelay",        "Male"  ;1151–1153
+ "Andre de Montebard",          "Male"  ;1153–1156 
+ "Bertrand de Blanquefort",     "Male"  ;1156–1169
+ "Philip de Nablus",            "Male"  ;1169–1171 
+ "Odo de St. Amand",            "Male"  ;1171–1179 
+ "Arnold de Toroga",            "Male"  ;1181–1184
+ "Gerard de Ridfort",           "Male"  ;1185–1189 
+ "Robert de Sable",             "Male"  ;1191–1193 
+ "Gilbert Erail",               "Male"  ;1193–1200 
+ "Philip de Plessiez",          "Male"  ;1201–1208
+ "William de Chartres",         "Male"  ;1209–1219 
+ "Pedro de Montaigu",           "Male"  ;1218–1232
+ "Armand de Perigord",          "Male"  ;1232–1244 
+ "Richard de Bures",            "Male"  ;1245–1247 
+ "William de Sonnac",           "Male"  ;1247–1250
+ "Reynald de Vichiers",         "Male"  ;1250–1256
+ "Thomas Berard",               "Male"  ;1256–1273
+ "William de Beaujeu",          "Male"  ;1273–1291
+ "Tibald de Gaudin",            "Male"  ;1291–1292
+ "Jacques de Molay",            "Male"  ;1292–1314 
+}
+
+ruler_titles = {
+ "government",      "male_title",         "female_title"
+ "Despotism",       _("Grand Master %s"), _("Grand Master %s")
+ "Monarchy",        _("Grand Master %s"), _("Grand Master %s")
+ "Republic",	    _("Grand Master %s"), _("Grand Master %s")
+ "Democracy",       _("Grand Master %s"), _("?female:Grand Master %s")
+}
+
+flag="templar"
+flag_alt = "stpatrick"
+city_style = "Babylonian"
+
+init_techs=""
+init_buildings=""
+init_units=""
+
+civilwar_nations="Holy Roman", "French"
+
+cities =
+ "Jerusalem",
+ "Karak",
+ "Acre",
+ "Antioch",
+ "Ascalon",
+ "Safed",
+ "Baghras",
+ "Edessa",
+ "Ibelin",
+ "Clairvaux",
+ "Chastel Pelegrin",
+ "Mansourah",
+ "Tripoli",
+ "Bethleham",
+ "Temple Mount",
+ "Jericho",
+ "Tortosa",
+ "Toron",
+ "Jaffa",
+ "Courtenay",
+ "Tyre",
+ "Sidon",
+ "Beaufort",
+ "Krak des Chevaliers",
+ "Atlit",
+ "Arwad",
+ "Botrun",
+ "Castle Tomar",
+ "Chatillon",
+ "Monzon",
+ "Cressing",
+ "Witham",
+ "Tiberias",
+ "Soissons",
+ "Aquilers",
+ "Springs of Cresson",
+ "Cowley",
+ "Aleppo",
+ "Hitchin",
+ "Anjou",
+ "Laodicea",
+ "Gaza",
+ "Jacob's Ford",
+ "Paneas",
+ "Nazareth",
+ "Joppa",
+ "Damietta",
+ "Lemesos",
+ "Constantia",
+ "Crete",
+ "Cilicia",
+ "Salamis",
+ "Famagusta",
+ "Stravovoun",
+ "Larnaca",
+ "Nicosia",
+ "Kyrenia"

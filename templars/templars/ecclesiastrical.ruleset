@@ -1,0 +1,38 @@
+;------------------------------------------------------------------------
+[government_ecclesiastical]
+
+name        = _("Ecclesiastical")
+reqs = { "type", "name", "range"
+         "tech", "Papacy", "Player"
+       }
+graphic     = "gov.ecclesiastical"
+graphic_alt = "-"
+
+ruler_male_title = _("Pope %s")
+ruler_female_title = _("?female:Pope %s")
+
+helptext = _("\
+Ecclesiastical or sacerdotal-monarchical state (a type of theocracy)\
+ ruled by the pope who is the bishop of Rome and head of the Catholic\
+ Church. The highest state functionaries are all Catholic clergy of\
+ various national origins. After the Avignon Papacy (1309–1437), the\
+ popes have mainly resided at the Apostolic Palace within what is now\
+ Vatican City, although at times residing instead in the Quirinal\
+ Palace in Rome or elsewhere.
+"),
+; /* xgettext:no-c-format */
+_("\
+* Cities produce an extra trade point for every worked land tile that is\
+ already producing trade.\n\
+* Celebrating cities produce a further trade point for every worked tile\
+ (land or water) which is already producing trade. (Cities below size 3\
+ will not celebrate.)\n\
+* Each city can support one unit for free; further units each cost\
+ 1 shield per turn.\n\
+* Each city tolerates a single aggressively deployed military unit;\
+ each further unit causes 1 unhappy citizen.\n\
+* Base corruption is 25%. This increases with distance from the capital\
+ (half as fast with knowledge of The Corporation).\n\
+* Base production waste is 5%. This increases with distance from the\
+ capital (half as fast with knowledge of Trade).\
+")

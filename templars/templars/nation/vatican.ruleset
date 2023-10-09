@@ -1,0 +1,66 @@
+[nation_vatican]
+
+translation_domain="freeciv"
+
+name=_("Vatican")
+plural=_("?plural:Vatican")
+groups="European", "Early Modern", "Core"
+legend=_("As governed by the Holy See, the Vatican City State is an\
+ ecclesiastical or sacerdotal-monarchical state (a type of theocracy)\
+ ruled by the pope who is the bishop of Rome and head of the Catholic\
+ Church. The highest state functionaries are all Catholic clergy of\
+ various national origins. After the Avignon Papacy (1309–1437), the\
+ popes have mainly resided at the Apostolic Palace within what is now\
+ Vatican City, although at times residing instead in the Quirinal\
+ Palace in Rome or elsewhere. The Holy See dates back to Early\
+ Christianity and is the principal episcopal see of the Catholic\
+ Church, which has approximately 1.313 billion baptised Catholic\
+ Christians in the world as of 2017 in the Latin Church and 23\
+ Eastern Catholic Churches. The independent state of Vatican City,\
+ on the other hand, came into existence on 11 February 1929 by the\
+ Lateran Treaty between the Holy See and Italy, which spoke of it as\
+ a new creation, not as a vestige of the much larger Papal States\
+ (756–1870), which had previously encompassed much of central Italy.")
+
+leaders = {
+ "name",                        "sex"
+ "Pope Gregory VI",				"Male"
+ "Pope Clement II",       		"Male" 
+ "Pope Urban II",               "Male"
+ "Pope Innocent III",  			"Male"
+ "Pope Gregory IX",				"Male"
+ "Pope Nicholas II",        	"Male"
+ "Pope Boniface VIII",          "Male"  
+ "Pope Clement V",              "Male"
+ "Pope John XXII",              "Male"
+ "Pope Benedict XII",        	"Male"
+ "Pope Clement VI",       		"Male"
+ "Pope Innocent VI",            "Male" 
+ "Pope Urban V",               	"Male"
+ "Pope Gregory XI",             "Male"
+ "Pope Clement VII",            "Male"
+}
+
+ruler_titles = {
+ "government",      "male_title",            "female_title"
+; "Ecclesiastical",  _("Pope %s"),           _("?female:Pope %s")
+ "Monarchy",  _("Pope %s"),           _("?female:Pope %s")
+}
+
+flag="vatican"
+flag_alt = "-"
+city_style = "European"
+
+init_techs = "Papacy"
+init_buildings = "Palace", "Cathedral", "Aqueduct"
+init_units = ""
+
+expansionist = 50
+trader = 50
+aggressive = 50
+
+civilwar_nations = "byzantium"
+
+cities =
+ "Vatican City",
+ "Rome"

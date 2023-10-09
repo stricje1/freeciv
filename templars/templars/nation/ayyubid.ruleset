@@ -1,0 +1,97 @@
+[nation_ayyubid]
+
+name=_("Ayyubid Sultanate")
+plural=_("?plural:Ayyubids")
+groups="Medieval", "African", "Asian"
+legend=_("Established in 1171, the Ayyubid Dynasty preceded modern Egypt.\
+ It was a Sunni Muslim dynasty of Kurdish origin, founded by Saladin and\
+ centered in Egypt, ruling over the Levant, Mesopotamia, Hijaz, Nubia and\
+ parts of the Maghreb. The dynasty ruled large parts of the Middle East\
+ during the 12th–13th and 14th centuries. Was one of the most populous in\
+ Africa. It was located on the site of one of the world's most ancient\
+ civilizations.")
+
+leaders = {
+ "name",                "sex"
+ "Salah ad-Din",		"Male"   ;Al-Nasir Salah al-Din Yusuf ibn Ayyub, or Salah ad-Din, son of Ayyub, 1169–1193
+ "Al-Aziz Uthman", 		"Male"   ;Al-Malik al-Aziz Uthman ibn Salah ad-Din Yusuf, son of Saladin, 1193–1198
+ "Al-Mansur",			"Male"   ;Nasir al-Din Muhammad", son of al-Aziz Uthman, 1198–1200
+ "Al-Adil I",			"Male"   ;Al-Adil Sayf al-Din Abu Bakr I (al-Adil I)", brother of Saladin, 1200–1218
+ "Al-Kamil", 			"Male"   ;al-Malik al-Kamil Naser ad-Din Abu al-Ma'ali Muhammad, son of al-Adil I, 1218–1238
+ "Al-Adil II", 			"Male"   ;Al-Malik al-ʿĀdil Sayf ad-Dīn Abū Bakr ibn Nāṣir ad-Dīn Muḥammad, son of al-Kamil, 1238–1240
+ "as-Salih Ayyu", 		"Male"   ;Al-Malik as-Salih Najm al-Din Ayyub, son of al-Kamil, 1240–1249
+ "Turanshah", 			"Male"   ;al-Malik al-Muazzam Ghayath al-Din Turanshah, son of as-Salih Ayyub, 1249–1250
+ "Al-Ashraf Musa",		"Male"   ;Al-Ashraf Muzaffar ad-Din Musa, presumed descendant of Saladin (nominal rule, under Mamluk sultan Aybak), 1250–1254.
+ "Shajar al-Durr",      "Female" ;al-Malika ʿAṣmat ad-Dīn ʾUmm-Khalīl Shajar ad-Durr. She was the wife of As-Salih Ayyub, the last Egyptian sultan of the Ayyubid dynasty.
+ "Izz al-Din Aybak", 	"Male"   ;al-Malik al-Mu'izz Izz al-Din Aybak al-Jawshangir al-Turkmani al-Salih, 1250-1257. First Mamluk sultans i Egypt. Married Shajar al-Durr.
+ "Al-Nasir Muhammad",   "Male"   ;Al-Malik an-Nasir Nasir ad-Din Muhammad ibn Qalawun, December 1293–December 1294, 1299–1309, and 1310 until his death in 1341.
+ "Barquq",              "Male"   ;Al-Malik Az-Zahir Sayf ad-Din Barquq, 1382-1389
+ "Tuman bay II",		"Male"   ;Al-Ashraf Abu Al-Nasr Tuman bay, 1516-1517. Last Sultan of Egypt before the country's conquest by the Ottoman Empire in 1517.
+}
+
+ruler_titles = {
+ "government",      "male_title",           "female_title"
+ "Communism",       _("Chairman %s"),       _("Chairwoman %s")
+ "Despotism",       _("Sheikh %s"),         _("Shaykha %s")
+ "Fundamentalism",  _("Caliph %s"),         _("Calipha %s")
+}
+
+flag="ayyubid"
+flag_alt = "egypt_ancient"
+city_style = "Babylonian"
+
+init_techs="Islam"
+init_buildings="Mosque"
+init_units=""
+
+expansionist = 125
+trader = 50
+aggressive = 150
+
+conflicts_with="egyptian"
+civilwar_nations="palestinian", "sudanese", "libyan", "arab"
+
+cities =
+ "Al-Qahira",			;Cairo
+ "Eskendereyya",		;Alexandria
+ "As-Suways",			;Suez
+ "Al-Mansura",
+ "El-Giza",			;Gizeh
+ "Shubra el-Kheima",
+ "Bur Sa'id",			;Port Said
+ "Al-Uqsur",			;Luxor
+ "El-Mahalla el-Kubra",
+ "Tanta",
+ "Asyut",
+ "Al-Ismayliya",
+ "Al-Fayyum",
+ "Az-Zaqaziq",
+ "Dumyat",
+ "Aswan",
+ "Al-Minya",
+ "Damanhur",
+ "Bani Suwayf",
+ "Qina",
+ "Al-Gardaqa",
+ "Madinat Sitta Uktubar",
+ "Sawhaj",
+ "Shibin-al-Kawm",
+ "Banha",
+ "Al-Asir mir-Ramadan",
+ "Kafr-as-Shayh",
+ "Al-Arish",
+ "Matra",
+ "Mallawi",
+ "Bilbays",
+ "Idfu",
+ "Mit Gamr",
+ "Al-Hawamidiya",
+ "Disuq",
+ "Qalyub",
+ "Abu Kabir",
+ "Ahmim",
+ "Jirja",
+ "Al-Matariya",
+ "Rashid",
+ "Naj Hammadi",
+ "Sharm al-Shaykh"
