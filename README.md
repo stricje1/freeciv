@@ -19,4 +19,5 @@ The main purpose of this book is to demonstrate how to build a scenario, in gene
 8. Technological advances, like iron working, advanced archery, and so on.
 9. Buildings, like houses, fortresses, barracks, markets, and so on.
 10. Rules and effects, like how battlefield medicine affects unit health, and so on.
+
 So, as we walk through scenario construction for Freeciv, we should keep the main purpose in mind: Scenario Design and Construction.
